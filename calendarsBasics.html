@@ -1,0 +1,53 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+     "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>jQuery Calendars</title>
+<style type="text/css">
+</style>
+<script type="text/javascript" src="js/jquery-1.3.2.js"></script>
+<script type="text/javascript" src="js/jquery.calendars.js"></script>
+<script type="text/javascript" src="js/jquery.calendars.plus.js"></script>
+<script type="text/javascript" src="js/jquery.calendars.julian.js"></script>
+<script type="text/javascript" src="js/jquery.calendars.persian.js"></script>
+<script type="text/javascript" src="js/jquery.calendars.islamic.js"></script>
+<script type="text/javascript" src="js/jquery.calendars.hebrew.js"></script>
+<script type="text/javascript" src="js/jquery.calendars.mayan.js"></script>
+<script type="text/javascript">
+var calendar;
+
+$(function() {
+	$('#calendar').change(function() {
+		calendar = $.calendars.instance($(this).val());
+		$('#default').text(calendar.local.dateFormat);
+	}).change();
+	$('#check').click(function() {
+		try {
+			var date = calendar.parseDate('', $('#input').val());
+			$('#output').val(calendar.formatDate($('#format').val(), date));
+		}
+		catch (e) {
+			alert(e);
+		}
+	});
+});
+</script>
+</head>
+<body>
+<h1>jQuery Calendars</h1>
+<p>This page demonstrates the very basics of the
+	<a href="http://keith-wood.name/calendars.html">jQuery Calendars plugin</a>.
+	It contains the minimum requirements for using the plugin and
+	can be used as the basis for your own experimentation.</p>
+<p>For more detail see the <a href="http://keith-wood.name/calendarsRef.html">documentation reference</a> page.</p>
+<p>Select a calendar: <select id="calendar">
+	<option value="gregorian">Gregorian</option><option value="julian">Julian</option>
+	<option value="persian">Persian</option><option value="islamic">Islamic</option>
+	<option value="hebrew">Hebrew</option><option value="mayan">Mayan</option></select></p>
+<p>Enter a date: <input type="text" id="input" value="01/26/2009"> (<span id="default"></span>)</p>
+<p>Check and format: <input type="text" id="format" value="DD, MM d, yyyy">
+	<button type="button" id="check">Format</button></p>
+<p>Result: <input type="text" id="output" size="40" readonly></p>
+</body>
+</html>
