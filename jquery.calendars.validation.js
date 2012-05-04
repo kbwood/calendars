@@ -1,5 +1,5 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Calendars Validation extension for jQuery 1.1.1.
+   Calendars Validation extension for jQuery 1.1.2.
    Requires Jörn Zaefferer's Validation plugin (http://plugins.jquery.com/project/validate).
    Written by Keith Wood (kbwood{at}iinet.com.au).
    Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
@@ -43,8 +43,13 @@ if ($.fn.validate) {
 		   @param  element  (jQuery) the field in error */
 		errorPlacement: function(error, element) {
 			var inst = $.data(element[0], $.calendars.picker.dataName);
-			error[inst.get('isRTL') ? 'insertBefore' : 'insertAfter'](
-				inst.trigger.length > 0 ? inst.trigger : element);
+			if (inst) {
+				error[inst.get('isRTL') ? 'insertBefore' : 'insertAfter'](
+					inst.trigger.length > 0 ? inst.trigger : element);
+			}
+			else {
+				error.insertAfter(element);
+			}
 		},
 
 		/* Format a validation error message involving dates.

@@ -1,5 +1,5 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Calendars for jQuery v1.1.1.
+   Calendars for jQuery v1.1.2.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
    Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
    MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
@@ -786,7 +786,7 @@ $.calendars.calendars.gregorian = GregorianCalendar;
 
 })(jQuery);
 /* http://keith-wood.name/calendars.html
-   Calendars extras for jQuery v1.1.1.
+   Calendars extras for jQuery v1.1.2.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
    Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
    MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
@@ -1163,7 +1163,7 @@ $.extend($.calendars.baseCalendar.prototype, {
 
 })(jQuery);
 /* http://keith-wood.name/calendars.html
-   Calendars date picker for jQuery v1.1.1.
+   Calendars date picker for jQuery v1.1.2.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
    Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
    MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
@@ -1193,6 +1193,7 @@ function CalendarsPicker() {
 		monthsOffset: 0, // How many months to offset the primary month by
 		monthsToStep: 1, // How many months to move when prev/next clicked
 		monthsToJump: 12, // How many months to move when large prev/next clicked
+		useMouseWheel: true, // True to use mousewheel if available, false to never use it
 		changeMonth: true, // True to change month/year via drop-down, false for navigation only
 		yearRange: 'c-10:c+10', // Range of years to show in drop-down: 'any' for direct text entry
 			// or 'start:end', where start/end are '+-nn' for relative to today
@@ -1512,6 +1513,9 @@ $.extend(CalendarsPicker.prototype, {
 		inst.settings = $.extend({}, settings || {}, inlineSettings || {});
 		if (inst.inline) {
 			this._update(target[0]);
+			if ($.fn.mousewheel) {
+				target.mousewheel(this._doMouseWheel);
+			}
 		}
 		else {
 			this._attachments(target, inst);
@@ -1600,6 +1604,10 @@ $.extend(CalendarsPicker.prototype, {
 					}
 				}));
 		this._autoSize(target, inst);
+		var dates = this._extractDates(inst, target.val());
+		if (dates) {
+			this.setDate(target[0], dates, null, true);
+		}
 		if (inst.get('selectDefaultDate') && inst.get('defaultDate') &&
 				inst.selectedDates.length == 0) {
 			var calendar = inst.get('calendar');
@@ -1648,7 +1656,10 @@ $.extend(CalendarsPicker.prototype, {
 			inst.trigger.remove();
 		}
 		target.removeClass(this.markerClass).empty().unbind('.' + this.dataName);
-		if (inst.get('autoSize') && !inst.inline) {
+		if (inst.inline && $.fn.mousewheel) {
+			target.unmousewheel();
+		}
+		if (!inst.inline && inst.get('autoSize')) {
 			target.removeAttr('size');
 		}
 		$.removeData(target[0], this.dataName);
@@ -1844,6 +1855,9 @@ $.extend(CalendarsPicker.prototype, {
 							left: target.offset().left,
 							top: target.offset().top + target.outerHeight()}).
 						appendTo($(inst.get('popupContainer') || 'body'));
+					if ($.fn.mousewheel) {
+						inst.div.mousewheel(this._doMouseWheel);
+					}
 				}
 				inst.div.html(this._generateContent(target[0], inst));
 				target.focus();
@@ -2140,6 +2154,25 @@ $.extend(CalendarsPicker.prototype, {
 		return true;
 	},
 
+	/* Increment/decrement month/year on mouse wheel activity.
+	   @param  event  (event) the mouse wheel event
+	   @param  delta  (number) the amount of change */
+	_doMouseWheel: function(event, delta) {
+		var target = ($.calendars.picker.curInst && $.calendars.picker.curInst.target[0]) ||
+			$(event.target).closest('.' + $.calendars.picker.markerClass)[0];
+		if ($.calendars.picker.isDisabled(target)) {
+			return;
+		}
+		var inst = $.data(target, $.calendars.picker.dataName);
+		if (inst.get('useMouseWheel')) {
+			delta = ($.browser.opera ? -delta : delta);
+			delta = (delta < 0 ? -1 : +1);
+			$.calendars.picker.changeMonth(target,
+				-inst.get(event.ctrlKey ? 'monthsToJump' : 'monthsToStep') * delta);
+		}
+		event.preventDefault();
+	},
+
 	/* Clear an input and close a popup datepicker.
 	   @param  target  (element) the control to use */
 	clear: function(target) {
@@ -2224,6 +2257,37 @@ $.extend(CalendarsPicker.prototype, {
 				this._updateInput(target, keyUp);
 			}
 		}
+	},
+
+	/* Determine whether a date is selectable for this datepicker.
+	   @param  target  (element) the control to check
+	   @param  date    (Date or string or number) the date to check
+	   @return  (boolean) true if selectable, false if not */
+	isSelectable: function(target, date) {
+		var inst = $.data(target, this.dataName);
+		if (!inst) {
+			return false;
+		}
+		date = $.calendars.picker.determineDate(date,
+			inst.selectedDates[0] || inst.get('calendar').today(), null,
+			inst.get('dateFormat'), inst.getConfig());
+		return this._isSelectable(target, date, inst.get('onDate'),
+			inst.get('minDate'), inst.get('maxDate'));
+	},
+
+	/* Internally determine whether a date is selectable for this datepicker.
+	   @param  target   (element) the control to check
+	   @param  date     (Date) the date to check
+	   @param  onDate   (function or boolean) any onDate callback or callback.selectable
+	   @param  mindate  (Date) the minimum allowed date
+	   @param  maxdate  (Date) the maximum allowed date
+	   @return  (boolean) true if selectable, false if not */
+	_isSelectable: function(target, date, onDate, minDate, maxDate) {
+		var dateInfo = (typeof onDate == 'boolean' ? {selectable: onDate} :
+			(!onDate ? {} : onDate.apply(target, [date, true])));
+		return (dateInfo.selectable != false) &&
+			(!minDate || date.toJD() >= minDate.toJD()) &&
+			(!maxDate || date.toJD() <= maxDate.toJD());
 	},
 
 	/* Perform a named action for a calendar picker.
@@ -2531,10 +2595,8 @@ $.extend(CalendarsPicker.prototype, {
 				}
 				var dateInfo = (!onDate ? {} :
 					onDate.apply(target, [drawDate, drawDate.month() == month]));
-				var selectable = (dateInfo.selectable == null || dateInfo.selectable) &&
-					(selectOtherMonths || drawDate.month() == month) &&
-					(!minDate || drawDate.compareTo(minDate) != -1) &&
-					(!maxDate || drawDate.compareTo(maxDate) != +1);
+				var selectable = (selectOtherMonths || drawDate.month() == month) &&
+					this._isSelectable(target, drawDate, dateInfo.selectable, minDate, maxDate);
 				days += this._prepare(renderer.day, inst).replace(/\{day\}/g,
 					(selectable ? '<a href="javascript:void(0)"' : '<span') +
 					' class="jd' + jd + ' ' + (dateInfo.dateClass || '') +
@@ -2640,17 +2702,28 @@ $.extend(CalendarsPicker.prototype, {
 				((yearRange[1].match('[+-].*') ? todayYear : 0) + parseInt(yearRange[1], 10)));
 			selector = '<select class="' + this._monthYearClass +
 				'" title="' + inst.get('yearStatus') + '">';
-			var min = calendar.newDate(start + 1, calendar.firstMonth, calendar.minDay).
-				add(-1, 'd');
-			min = (minDate && minDate.compareTo(min) == +1 ? minDate : min).year();
-			var max = calendar.newDate(end, calendar.firstMonth, calendar.minDay);
-			max = (maxDate && maxDate.compareTo(max) == -1 ? maxDate : max).year();
-			for (var y = min; y <= max; y++) {
+			start = calendar.newDate(start + 1, calendar.firstMonth, calendar.minDay).add(-1, 'd');
+			end = calendar.newDate(end, calendar.firstMonth, calendar.minDay);
+			var addYear = function(y) {
 				if (y != 0 || calendar.hasYearZero) {
 					selector += '<option value="' +
 						Math.min(month, calendar.monthsInYear(y) - 1 + calendar.minMonth) +
 						'/' + y + '"' + (year == y ? ' selected="selected"' : '') + '>' +
 						y + '</option>';
+				}
+			};
+			if (start.toJD() < end.toJD()) {
+				start = (minDate && minDate.compareTo(start) == +1 ? minDate : start).year();
+				end = (maxDate && maxDate.compareTo(end) == -1 ? maxDate : end).year();
+				for (var y = start; y <= end; y++) {
+					addYear(y);
+				}
+			}
+			else {
+				start = (maxDate && maxDate.compareTo(start) == -1 ? maxDate : start).year();
+				end = (minDate && minDate.compareTo(end) == +1 ? minDate : end).year();
+				for (var y = start; y >= end; y--) {
+					addYear(y);
 				}
 			}
 			selector += '</select>';
@@ -2709,7 +2782,7 @@ function extendRemove(target, props) {
    @return  (jQuery) for chaining further calls */
 $.fn.calendarsPicker = function(options) {
 	var otherArgs = Array.prototype.slice.call(arguments, 1);
-	if ($.inArray(options, ['getDate', 'isDisabled', 'options', 'retrieveDate']) > -1) {
+	if ($.inArray(options, ['getDate', 'isDisabled', 'isSelectable', 'options', 'retrieveDate']) > -1) {
 		return $.calendars.picker[options].apply($.calendars.picker, [this[0]].concat(otherArgs));
 	}
 	return this.each(function() {
