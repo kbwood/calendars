@@ -1,5 +1,5 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Calendars date picker extensions for jQuery v1.1.0.
+   Calendars date picker extensions for jQuery v1.1.1.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
    Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
    MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
@@ -143,6 +143,40 @@ $.extend($.calendars.picker, {
 				$(this).removeAttr('title').hover(
 					function() { status.text(title || defaultStatus); },
 					function() { status.text(defaultStatus); });
+			});
+	},
+
+	/* Allow easier navigation by month.
+	   Usage: onShow: $.calendars.picker.monthNavigation.
+	   @param  picker    (jQuery) the completed datepicker division
+	   @param  calendar  (*Calendar) the calendar implementation
+	   @param  inst      (object) the current instance settings */
+	monthNavigation: function(picker, calendar, inst) {
+		var target = $(this);
+		var renderer = inst.get('renderer');
+		var isTR = (renderer.selectedClass == 'ui-state-active');
+		var minDate = inst.curMinDate();
+		var maxDate = inst.get('maxDate');
+		var monthNames = calendar.local.monthNames;
+		var monthNamesShort = calendar.local.monthNamesShort;
+		var year = inst.drawDate.year();
+		var html = '<div class="' + (!isTR ? 'calendars-month-nav' : 'ui-datepicker-month-nav') + '">';
+		for (var i = 0; i < calendar.monthsInYear(year); i++) {
+			var ord = calendar.fromMonthOfYear(year, i + calendar.minMonth) - calendar.minMonth;
+			var inRange = ((!minDate || calendar.newDate(year, i + calendar.minMonth,
+				calendar.daysInMonth(year, i + calendar.minMonth)).compareTo(minDate) > -1) && (!maxDate ||
+				calendar.newDate(year, i + calendar.minMonth, calendar.minDay).compareTo(maxDate) < +1));
+			html += '<div>' + (inRange ? '<a href="#" class="jd' +
+				calendar.newDate(year, i + calendar.minMonth, calendar.minDay).toJD() + '"' : '<span') +
+				' title="' + monthNames[ord] + '">' + monthNamesShort[ord] +
+				(inRange ? '</a>' : '</span>') + '</div>';
+		}
+		html += '</div>';
+		$(html).insertAfter(picker.find('div.calendars-nav,div.ui-datepicker-header:first')).
+			find('a').click(function() {
+				var date = $.calendars.picker.retrieveDate(target[0], this);
+				target.calendarsPicker('showMonth', date.year(), date.month());
+				return false;
 			});
 	},
 

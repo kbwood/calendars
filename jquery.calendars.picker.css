@@ -1,4 +1,4 @@
-/* Default styling for jQuery Calendars Picker v1.1.0. */
+/* Default styling for jQuery Calendars Picker v1.1.1. */
 .calendars {
 	background-color: #fff;
 	color: #000;
@@ -54,6 +54,12 @@
 .calendars-cmd {
 	width: 30%;
 }
+.calendars-cmd:hover {
+	background-color: #777;
+}
+.calendars-ctrl .calendars-cmd:hover {
+	background-color: #f08080;
+}
 .calendars-cmd-prevJump, .calendars-cmd-nextJump {
 	width: 8%;
 }
@@ -93,6 +99,20 @@ button.calendars-cmd {
 	padding-left: 2%;
 	padding-right: 0%;
 	text-align: left;
+}
+.calendars-month-nav {
+	float: left;
+	background-color: #777;
+	text-align: center;
+}
+.calendars-month-nav div {
+	float: left;
+	width: 12.5%;
+	margin: 1%;
+	padding: 1%;
+}
+.calendars-month-nav span {
+	color: #888;
 }
 .calendars-month-row {
 	clear: left;
@@ -141,8 +161,10 @@ button.calendars-cmd {
 	background-color: #eee;
 	border: 1px solid #aaa;
 }
-.calendars-month td.calendars-week a,
-.calendars-month td.calendars-week span {
+.calendars-month td.calendars-week {
+	border: 1px solid #777;
+}
+.calendars-month td.calendars-week * {
 	background-color: #777;
 	color: #fff;
 	border: none;
@@ -184,6 +206,7 @@ button.calendars-cmd {
 	color: #fff;
 }
 .calendars-status {
+	clear: both;
 	background-color: #ddd;
 	text-align: center;
 }

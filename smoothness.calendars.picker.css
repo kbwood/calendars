@@ -1,8 +1,8 @@
-/* Smoothness styling for jQuery Calendars Picker v1.1.0. */
+/* Smoothness styling for jQuery Calendars Picker v1.1.1. */
 .calendars {
 	background-color: #fff;
 	color: #222;
-	border: 1px solid #444;
+	border: 1px solid #aaa;
     border-radius: 0.25em;
     -moz-border-radius: 0.25em;
     -webkit-border-radius: 0.25em;
@@ -53,6 +53,12 @@
 .calendars-cmd {
 	width: 30%;
 }
+.calendars-cmd:hover {
+	background-color: #e0e0e0;
+}
+.calendars-ctrl .calendars-cmd:hover {
+	background-color: #f08080;
+}
 .calendars-cmd-prevJump, .calendars-cmd-nextJump {
 	width: 8%;
 }
@@ -93,6 +99,19 @@ button.calendars-cmd {
 	padding-right: 0%;
 	text-align: left;
 }
+.calendars-month-nav {
+	float: left;
+	text-align: center;
+}
+.calendars-month-nav div {
+	float: left;
+	width: 12.5%;
+	margin: 1%;
+	padding: 1%;
+}
+.calendars-month-nav span {
+	color: #888;
+}
 .calendars-month-row {
 	clear: left;
 }
@@ -120,6 +139,9 @@ button.calendars-cmd {
 	width: 100%;
 	border-collapse: collapse;
 }
+.calendars-month thead {
+	border-bottom: 1px solid #aaa;
+}
 .calendars-month th, .calendars-month td {
 	margin: 0em;
 	padding: 0em;
@@ -133,15 +155,18 @@ button.calendars-cmd {
 	background-color: #eee;
 	border: 1px solid #aaa;
 }
-.calendars-month td.calendars-week a,
-.calendars-month td.calendars-week span {
+.calendars-month td.calendars-week * {
 	background-color: #e0e0e0;
 	color: #222;
+	border: none;
 }
 .calendars-month a {
 	display: block;
 	width: 100%;
 	padding: 0.125em 0em;
+	background-color: #eee;
+	color: #000;
+	text-decoration: none;
 }
 .calendars-month span {
 	display: block;
@@ -154,6 +179,9 @@ button.calendars-cmd {
 .calendars-month td .calendars-other-month {
 	background-color: #fff;
 }
+.calendars-month td .calendars-weekend {
+	background-color: #ddd;
+}
 .calendars-month td .calendars-today {
 	background-color: #fbf9ee;
 }
@@ -161,9 +189,10 @@ button.calendars-cmd {
 	background-color: #dadada;
 }
 .calendars-month td .calendars-selected {
-	background-color: #e0e0e0;
+	background-color: #fcc;
 }
 .calendars-status {
+	clear: both;
 	text-align: center;
 }
 .calendars-clear-fix {

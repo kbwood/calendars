@@ -1,5 +1,5 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Calendars date picker for jQuery v1.1.0.
+   Calendars date picker for jQuery v1.1.1.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
    Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
    MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
@@ -354,6 +354,9 @@ $.extend(CalendarsPicker.prototype, {
 			target.bind('keydown.' + this.dataName, this._keyDown).
 				bind('keypress.' + this.dataName, this._keyPress).
 				bind('keyup.' + this.dataName, this._keyUp);
+			if (target.attr('disabled')) {
+				this.disable(target[0]);
+			}
 		}
 	},
 
@@ -539,10 +542,12 @@ $.extend(CalendarsPicker.prototype, {
 					return false;
 				}
 			});
+			var zIndex = $target.css('zIndex');
+			zIndex = (zIndex == 'auto' ? 0 : parseInt(zIndex, 10)) + 1;
 			$target.prepend('<div class="' + this._disableClass + '" style="' +
 				'width: ' + inline.outerWidth() + 'px; height: ' + inline.outerHeight() +
-				'px; left: ' + (offset.left - relOffset.left) +
-				'px; top: ' + (offset.top - relOffset.top) + 'px;"></div>').
+				'px; left: ' + (offset.left - relOffset.left) + 'px; top: ' +
+				(offset.top - relOffset.top) + 'px; z-index: ' + zIndex + '"></div>').
 				find('button,select').attr('disabled', 'disabled').end().
 				find('a').removeAttr('href');
 		}
@@ -593,6 +598,8 @@ $.extend(CalendarsPicker.prototype, {
 			// And display
 			var showAnim = inst.get('showAnim');
 			var showSpeed = inst.get('showSpeed');
+			showSpeed = (showSpeed == 'normal' && $.ui && $.ui.version >= '1.8' ?
+				'_default' : showSpeed);
 			var postProcess = function() {
 				var borders = $.calendars.picker._getBorders(inst.div);
 				inst.div.find('.' + $.calendars.picker._coverClass). // IE6- only
@@ -813,6 +820,8 @@ $.extend(CalendarsPicker.prototype, {
 		if (inst && inst == $.calendars.picker.curInst) {
 			var showAnim = (immediate ? '' : inst.get('showAnim'));
 			var showSpeed = inst.get('showSpeed');
+			showSpeed = (showSpeed == 'normal' && $.ui && $.ui.version >= '1.8' ?
+				'_default' : showSpeed);
 			var postProcess = function() {
 				inst.div.remove();
 				inst.div = null;
@@ -878,12 +887,12 @@ $.extend(CalendarsPicker.prototype, {
 				handled = true;
 			}
 		}
+		inst.ctrlKey = ((event.keyCode < 48 && event.keyCode != 32) ||
+			event.ctrlKey || event.metaKey);
 		if (handled) {
 			event.preventDefault();
 			event.stopPropagation();
 		}
-		inst.ctrlKey = ((event.keyCode < 48 && event.keyCode != 32) ||
-			event.ctrlKey || event.metaKey);
 		return !handled;
 	},
 
@@ -1226,6 +1235,13 @@ $.extend(CalendarsPicker.prototype, {
 				renderer.commandLinkClass);
 		}
 		picker = $(picker);
+		if (monthsToShow[1] > 1) {
+			var count = 0;
+			$(renderer.monthSelector, picker).each(function() {
+				var nth = ++count % monthsToShow[1];
+				$(this).addClass(nth == 1 ? 'first' : (nth == 0 ? 'last' : ''));
+			});
+		}
 		// Add calendar behaviour
 		var self = this;
 		picker.find(renderer.daySelector + ' a').hover(
@@ -1282,7 +1298,11 @@ $.extend(CalendarsPicker.prototype, {
 		}
 		// Resize
 		$('body').append(picker);
-		picker.width(monthsToShow[1] * picker.find(renderer.monthSelector).outerWidth());
+		var width = 0;
+		picker.find(renderer.monthSelector).each(function() {
+			width += $(this).outerWidth();
+		});
+		picker.width(width / monthsToShow[0]);
 		// Pre-show customisation
 		var onShow = inst.get('onShow');
 		if (onShow) {

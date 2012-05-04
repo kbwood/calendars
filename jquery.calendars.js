@@ -1,5 +1,5 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Calendars for jQuery v1.1.0.
+   Calendars for jQuery v1.1.1.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
    Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
    MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
@@ -358,7 +358,7 @@ $.extend(BaseCalendar.prototype, {
 	},
 
 	/* Calculate the month's ordinal position within the year -
-	   for those years that don't start at month 1!
+	   for those calendars that don't start at month 1!
 	   @param  year   (CDate) the date to examine or
 	                  (number) the year to examine
 	   @param  month  (number) the month to examine

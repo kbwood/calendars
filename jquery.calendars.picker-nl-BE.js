@@ -1,8 +1,8 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Dutch localisation for calendars datepicker for jQuery.
+   Dutch/Belgian localisation for calendars datepicker for jQuery.
    Written by Mathias Bynens <http://mathiasbynens.be/>. */
 (function($) {
-	$.calendars.picker.regional['nl'] = {
+	$.calendars.picker.regional['nl-BE'] = {
 		renderer: $.calendars.picker.defaultRenderer,
 		prevText: '←', prevStatus: 'Bekijk de vorige maand',
 		prevJumpText: '«', nextJumpStatus: 'Bekijk het vorige jaar',
@@ -14,8 +14,8 @@
 		closeText: 'Sluiten', closeStatus: 'Sluit zonder verandering',
 		yearStatus: 'Bekijk een ander jaar', monthStatus: 'Bekijk een andere maand',
 		weekText: 'Wk', weekStatus: 'Week van het jaar',
-		dayStatus: 'dd-mm-yyyy', defaultStatus: 'Kies een datum',
+		dayStatus: 'dd/mm/yyyy', defaultStatus: 'Kies een datum',
 		isRTL: false
 	};
-	$.calendars.picker.setDefaults($.calendars.picker.regional['nl']);
+	$.calendars.picker.setDefaults($.calendars.picker.regional['nl-BE']);
 })(jQuery);

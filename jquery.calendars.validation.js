@@ -1,5 +1,5 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Calendars Validation extension for jQuery 1.1.0.
+   Calendars Validation extension for jQuery 1.1.1.
    Requires Jörn Zaefferer's Validation plugin (http://plugins.jquery.com/project/validate).
    Written by Keith Wood (kbwood{at}iinet.com.au).
    Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
@@ -80,9 +80,11 @@ if ($.fn.validate) {
 		if (ok) {
 			try {
 				var dateFormat = inst.get('dateFormat');
+				var onDate = inst.get('onDate');
 				$.each(dates, function(i, v) {
 					dates[i] = inst.get('calendar').parseDate(dateFormat, v);
-					ok = ok && test(dates[i]);
+					var dateInfo = (onDate ? onDate.apply(element, [dates[i], true]) : {});
+					ok = ok && test(dates[i]) && dateInfo.selectable != false;
 				});
 			}
 			catch (e) {

@@ -1,4 +1,4 @@
-/* Redmond styling for jQuery Calendars Picker v1.1.0. */
+/* Redmond styling for jQuery Calendars Picker v1.1.1. */
 .calendars {
 	background-color: #fff;
 	color: #222;
@@ -44,6 +44,7 @@
 .calendars-nav, .calendars-ctrl {
 	float: left;
 	width: 100%;
+	background-color: #fff;
 	font-size: 90%;
 	font-weight: bold;
 }
@@ -52,6 +53,12 @@
 }
 .calendars-cmd {
 	width: 30%;
+}
+.calendars-cmd:hover {
+	background-color: #dfeffc;
+}
+button.calendars-cmd:hover {
+	background-color: #79b7e7;
 }
 .calendars-cmd-prevJump, .calendars-cmd-nextJump {
 	width: 8%;
@@ -93,13 +100,26 @@ button.calendars-cmd {
 	padding-right: 0%;
 	text-align: left;
 }
+.calendars-month-nav {
+	float: left;
+	text-align: center;
+}
+.calendars-month-nav div {
+	float: left;
+	width: 12.5%;
+	margin: 1%;
+	padding: 1%;
+}
+.calendars-month-nav span {
+	color: #888;
+}
 .calendars-month-row {
 	clear: left;
 }
 .calendars-month {
 	float: left;
 	width: 15em;
-	border: 1px solid #a6c9e2;
+	border: 1px solid #5c9ccc;
 	text-align: center;
 }
 .calendars-month-header, .calendars-month-header select, .calendars-month-header input {
@@ -120,6 +140,9 @@ button.calendars-cmd {
 	width: 100%;
 	border-collapse: collapse;
 }
+.calendars-month thead {
+	border-bottom: 1px solid #aaa;
+}
 .calendars-month th, .calendars-month td {
 	margin: 0em;
 	padding: 0em;
@@ -133,8 +156,7 @@ button.calendars-cmd {
 .calendars-month td {
 	border: 1px solid #c5dbec;
 }
-.calendars-month td.calendars-week a,
-.calendars-month td.calendars-week span {
+.calendars-month td.calendars-week * {
 	background-color: #d0e5f5;
 	color: #222;
 	border: none;
@@ -169,6 +191,7 @@ button.calendars-cmd {
 	color: #fff;
 }
 .calendars-status {
+	clear: both;
 	text-align: center;
 }
 .calendars-clear-fix {

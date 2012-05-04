@@ -1,8 +1,8 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Dutch localisation for Gregorian/Julian calendars for jQuery.
+   Dutch/Belgian localisation for Gregorian/Julian calendars for jQuery.
    Written by Mathias Bynens <http://mathiasbynens.be/>. */
 (function($) {
-	$.calendars.calendars.gregorian.prototype.regional['nl'] = {
+	$.calendars.calendars.gregorian.prototype.regional['nl-BE'] = {
 		name: 'Gregorian',
 		epochs: ['BCE', 'CE'],
 		monthNames: ['januari', 'februari', 'maart', 'april', 'mei', 'juni',
@@ -12,12 +12,12 @@
 		dayNames: ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'],
 		dayNamesShort: ['zon', 'maa', 'din', 'woe', 'don', 'vri', 'zat'],
 		dayNamesMin: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
-		dateFormat: 'dd-mm-yyyy',
+		dateFormat: 'dd/mm/yyyy',
 		firstDay: 1,
 		isRTL: false
 	};
 	if ($.calendars.calendars.julian) {
-		$.calendars.calendars.julian.prototype.regional['nl'] =
-			$.calendars.calendars.gregorian.prototype.regional['nl'];
+		$.calendars.calendars.julian.prototype.regional['nl-BE'] =
+			$.calendars.calendars.gregorian.prototype.regional['nl-BE'];
 	}
 })(jQuery);

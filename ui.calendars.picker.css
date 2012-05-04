@@ -1,4 +1,4 @@
-/* ThemeRoller override style sheet for jQuery Calendars Picker v1.1.0. */
+/* ThemeRoller override style sheet for jQuery Calendars Picker v1.1.1. */
 #ui-datepicker-div,
 .ui-datepicker-inline {
 	width: 17em;
@@ -53,6 +53,19 @@ button.ui-datepicker-cmd {
 	float: left;
 	width: 37%;
 	text-align: center;
+}
+.ui-datepicker-month-nav {
+	float: left;
+	text-align: center;
+}
+.ui-datepicker-month-nav div {
+	float: left;
+	width: 12.5%;
+	margin: 1%;
+	padding: 1%;
+}
+.ui-datepicker-month-nav span {
+	color: #888;
 }
 .ui-datepicker-row-break {
 	width: 100%;
