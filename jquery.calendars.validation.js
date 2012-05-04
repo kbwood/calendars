@@ -1,10 +1,10 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Calendars Validation extension for jQuery 1.0.0.
+   Calendars Validation extension for jQuery 1.0.1.
    Requires Jörn Zaefferer's Validation plugin (http://plugins.jquery.com/project/validate).
    Written by Keith Wood (kbwood{at}iinet.com.au).
    Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
    MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
-   Please attribute the authors if you use it. */
+   Please attribute the author if you use it. */
 
 (function($) { // Hide the namespace
 
@@ -33,7 +33,7 @@ if ($.fn.validate) {
 			if (!inst.inline && $.fn.validate) {
 				var validation = $(target).parents('form').validate();
 				if (validation) {
-					validation.element(target.id);
+					validation.element('#' + target.id);
 				}
 			}
 		},

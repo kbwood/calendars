@@ -1,5 +1,5 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Calendars date picker extensions for jQuery v1.0.0.
+   Calendars date picker extensions for jQuery v1.0.1.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
    Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
    MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
@@ -199,6 +199,24 @@ $.extend($.calendars.picker, {
 				}).
 				appendTo(this);
 		});
+	},
+
+	/* Select a month only instead of a single day.
+	   Usage: onShow: $.calendars.picker.monthOnly.
+	   @param  picker    (jQuery) the completed datepicker division
+	   @param  calendar  (*Calendar) the calendar implementation
+	   @param  inst      (object) the current instance settings */
+	monthOnly: function(picker, calendar, inst) {
+		var target = $(this);
+		var selectMonth = $('<div style="text-align: center;"><button type="button">Select</button></div>').
+			insertAfter(picker.find('.calendars-month-row:last,.ui-datepicker-row-break:last')).
+			children().click(function() {
+				var monthYear = picker.find('.calendars-month-year:first').val().split('/');
+				target.calendarsPicker('setDate', calendar.newDate(
+					parseInt(monthYear[1], 10), parseInt(monthYear[0], 10), calendar.minDay)).
+					calendarsPicker('hide');
+			});
+		picker.find('.calendars-month-row table,.ui-datepicker-row-break table').remove();
 	}
 });
 

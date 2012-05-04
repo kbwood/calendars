@@ -1,8 +1,11 @@
-/* Humanity styling for jQuery Calendars Picker v1.0.0. */
+/* Humanity styling for jQuery Calendars Picker v1.0.1. */
 .calendars {
 	background-color: #f4f0ec;
 	color: #1e1b1c;
 	border: 1px solid #e0cfc2;
+    border-radius: 0.25em;
+    -moz-border-radius: 0.25em;
+    -webkit-border-radius: 0.25em;
 	font-family: Arial,Helvetica,Sans-serif;
 	font-size: 90%;
 }
@@ -26,6 +29,17 @@
 .calendars a.calendars-disabled {
 	color: #888;
 	cursor: auto;
+}
+.calendars button {
+    margin: 0.25em;
+    padding: 0.125em 0em;
+    background-color: #cb842e;
+    color: #fff;
+    border: none;
+    border-radius: 0.25em;
+    -moz-border-radius: 0.25em;
+    -webkit-border-radius: 0.25em;
+    font-weight: bold;
 }
 .calendars-nav, .calendars-ctrl {
 	float: left;

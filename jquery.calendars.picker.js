@@ -1,5 +1,5 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Calendars date picker for jQuery v1.0.0.
+   Calendars date picker for jQuery v1.0.1.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
    Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
    MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
@@ -351,6 +351,9 @@ $.extend(CalendarsPicker.prototype, {
 		}
 		else {
 			this._attachments(target, inst);
+			target.bind('keydown.' + this.dataName, this._keyDown).
+				bind('keypress.' + this.dataName, this._keyPress).
+				bind('keyup.' + this.dataName, this._keyUp);
 		}
 	},
 
@@ -430,9 +433,6 @@ $.extend(CalendarsPicker.prototype, {
 					}
 				}));
 		this._autoSize(target, inst);
-		target.bind('keydown.' + this.dataName, this._keyDown).
-			bind('keypress.' + this.dataName, this._keyPress).
-			bind('keyup.' + this.dataName, this._keyUp);
 		if (inst.get('selectDefaultDate') && inst.get('defaultDate') &&
 				inst.selectedDates.length == 0) {
 			var calendar = inst.get('calendar');
@@ -509,7 +509,8 @@ $.extend(CalendarsPicker.prototype, {
 		var inst = $.data(target, this.dataName);
 		if (inst.inline)
 			$target.children('.' + this._disableClass).remove().end().
-				find('select').attr('disabled', '');
+				find('button,select').attr('disabled', '').end().
+				find('a').attr('href', 'javascript:void(0)');
 		else {
 			target.disabled = false;
 			inst.trigger.filter('button.' + this._triggerClass).
@@ -542,7 +543,8 @@ $.extend(CalendarsPicker.prototype, {
 				'width: ' + inline.outerWidth() + 'px; height: ' + inline.outerHeight() +
 				'px; left: ' + (offset.left - relOffset.left) +
 				'px; top: ' + (offset.top - relOffset.top) + 'px;"></div>').
-				find('select').attr('disabled', 'disabled');
+				find('button,select').attr('disabled', 'disabled').end().
+				find('a').removeAttr('href');
 		}
 		else {
 			target.disabled = true;
@@ -739,8 +741,10 @@ $.extend(CalendarsPicker.prototype, {
 			offset.left -= document.documentElement.scrollLeft;
 			offset.top -= document.documentElement.scrollTop;
 		}
-		var browserWidth = document.documentElement.clientWidth;
-		var browserHeight = document.documentElement.clientHeight;
+		var browserWidth = (!$.browser.mozilla || document.doctype ?
+			document.documentElement.clientWidth : 0) || document.body.clientWidth;
+		var browserHeight = (!$.browser.mozilla || document.doctype ?
+			document.documentElement.clientHeight : 0) || document.body.clientHeight;
 		if (browserWidth == 0) {
 			return offset;
 		}
@@ -818,10 +822,9 @@ $.extend(CalendarsPicker.prototype, {
 				inst.div.hide(showAnim, inst.get('showOptions'), showSpeed, postProcess);
 			}
 			else {
-				var hideAnim = (showAnim == 'show' ? 'hide' :
-					(showAnim == 'slideDown' ? 'slideUp' :
-					(showAnim == 'fadeIn' ? 'fadeOut' : '')));
-				inst.div[hideAnim || 'hide']((hideAnim ? showSpeed : ''), postProcess);
+				var hideAnim = (showAnim == 'slideDown' ? 'slideUp' :
+					(showAnim == 'fadeIn' ? 'fadeOut' : 'hide'));
+				inst.div[hideAnim]((showAnim ? showSpeed : ''), postProcess);
 			}
 			if (!showAnim) {
 				postProcess();
@@ -850,7 +853,7 @@ $.extend(CalendarsPicker.prototype, {
 				for (var name in commands) {
 					var command = commands[name];
 					if (command.keystroke.keyCode == event.keyCode &&
-							!!command.keystroke.ctrlKey == (event.ctrlKey || event.metaKey) &&
+							!!command.keystroke.ctrlKey == !!(event.ctrlKey || event.metaKey) &&
 							!!command.keystroke.altKey == event.altKey &&
 							!!command.keystroke.shiftKey == event.shiftKey) {
 						$.calendars.picker.performAction(target, name);
@@ -863,7 +866,7 @@ $.extend(CalendarsPicker.prototype, {
 		else { // Show on 'current' keystroke
 			var command = inst.get('commands').current;
 			if (command.keystroke.keyCode == event.keyCode &&
-					!!command.keystroke.ctrlKey == (event.ctrlKey || event.metaKey) &&
+					!!command.keystroke.ctrlKey == !!(event.ctrlKey || event.metaKey) &&
 					!!command.keystroke.altKey == event.altKey &&
 					!!command.keystroke.shiftKey == event.shiftKey) {
 				$.calendars.picker.show(target);
@@ -888,7 +891,8 @@ $.extend(CalendarsPicker.prototype, {
 		if (inst && inst.get('constrainInput')) {
 			var ch = String.fromCharCode(event.keyCode || event.charCode);
 			var allowedChars = $.calendars.picker._allowedChars(inst);
-			return (inst.ctrlKey || ch < ' ' || !allowedChars || allowedChars.indexOf(ch) > -1);
+			return (event.metaKey || inst.ctrlKey || ch < ' ' ||
+				!allowedChars || allowedChars.indexOf(ch) > -1);
 		}
 		return true;
 	},
@@ -1179,15 +1183,14 @@ $.extend(CalendarsPicker.prototype, {
 		var drawDate = inst.drawDate.newDate().add(-inst.get('monthsOffset'), 'm');
 		// Generate months
 		var monthRows = '';
-		var months = '';
 		for (var row = 0; row < monthsToShow[0]; row++) {
+			var months = '';
 			for (var col = 0; col < monthsToShow[1]; col++) {
 				months += this._generateMonth(target, inst, drawDate.year(),
 					drawDate.month(), calendar, renderer, (row == 0 && col == 0));
 				drawDate.add(1, 'm');
 			}
 			monthRows += this._prepare(renderer.monthRow, inst).replace(/\{months\}/, months);
-			months = '';
 		}
 		var picker = this._prepare(renderer.picker, inst).replace(/\{months\}/, monthRows).
 			replace(/\{weekHeader\}/g, this._generateDayHeaders(inst, calendar, renderer)) +
@@ -1246,6 +1249,11 @@ $.extend(CalendarsPicker.prototype, {
 				}
 				catch (e) {
 					alert(e);
+				}
+			}).keydown(function(event) {
+				if (event.keyCode == 27) { // Escape
+					$(event.target).hide();
+					inst.target.focus();
 				}
 			});
 		// Add command behaviour

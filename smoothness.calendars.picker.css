@@ -1,8 +1,11 @@
-/* Smoothness styling for jQuery Calendars Picker v1.0.0. */
+/* Smoothness styling for jQuery Calendars Picker v1.0.1. */
 .calendars {
 	background-color: #fff;
 	color: #222;
 	border: 1px solid #444;
+    border-radius: 0.25em;
+    -moz-border-radius: 0.25em;
+    -webkit-border-radius: 0.25em;
 	font-family: Arial,Helvetica,Sans-serif;
 	font-size: 90%;
 }
@@ -26,6 +29,16 @@
 .calendars a.calendars-disabled {
 	color: #888;
 	cursor: auto;
+}
+.calendars button {
+    margin: 0.25em;
+    padding: 0.125em 0em;
+    background-color: #fcc;
+    border: none;
+    border-radius: 0.25em;
+    -moz-border-radius: 0.25em;
+    -webkit-border-radius: 0.25em;
+    font-weight: bold;
 }
 .calendars-nav, .calendars-ctrl {
 	float: left;
