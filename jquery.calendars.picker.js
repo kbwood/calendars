@@ -1,5 +1,5 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Calendars date picker for jQuery v1.1.3.
+   Calendars date picker for jQuery v1.1.4.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
    Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
    MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
@@ -613,11 +613,13 @@ $.extend(CalendarsPicker.prototype, {
 			showSpeed = (showSpeed == 'normal' && $.ui && $.ui.version >= '1.8' ?
 				'_default' : showSpeed);
 			var postProcess = function() {
-				var borders = $.calendars.picker._getBorders(inst.div);
-				inst.div.find('.' + $.calendars.picker._coverClass). // IE6- only
-					css({left: -borders[0], top: -borders[1],
+				var cover = inst.div.find('.' + $.calendars.picker._coverClass); // IE6- only
+				if (cover.length) {
+					var borders = $.calendars.picker._getBorders(inst.div);
+					cover.css({left: -borders[0], top: -borders[1],
 						width: inst.div.outerWidth() + borders[0],
 						height: inst.div.outerHeight() + borders[1]});
+				}
 			};
 			if ($.effects && $.effects[showAnim]) {
 				var data = inst.div.data(); // Update old effects data

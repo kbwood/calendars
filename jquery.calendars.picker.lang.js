@@ -1,4 +1,10 @@
 ﻿/* http://keith-wood.name/calendars.html
+   Calendars date picker localisations for jQuery v1.1.4.
+   Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
+   Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
+   MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
+   Please attribute the author if you use it. */
+/* http://keith-wood.name/calendars.html
    Afrikaans localisation for calendars datepicker for jQuery.
    Written by Renier Pretorius. */
 (function($) {
@@ -18,6 +24,27 @@
 		isRTL: false
 	};
 	$.calendars.picker.setDefaults($.calendars.picker.regional['af']);
+})(jQuery);
+﻿/* http://keith-wood.name/calendars.html
+   Algerian (and Tunisian) Arabic localisation for calendars datepicker for jQuery.
+   Mohamed Cherif BOUCHELAGHEM -- cherifbouchelaghem@yahoo.fr */
+(function($) {
+	$.calendars.picker.regional['ar-DZ'] = {
+		renderer: $.calendars.picker.defaultRenderer,
+		prevText: '&#x3c;السابق', prevStatus: 'عرض الشهر السابق',
+		prevJumpText: '&#x3c;&#x3c;', prevJumpStatus: '',
+		nextText: 'التالي&#x3e;', nextStatus: 'عرض الشهر القادم',
+		nextJumpText: '&#x3e;&#x3e;', nextJumpStatus: '',
+		currentText: 'اليوم', currentStatus: 'عرض الشهر الحالي',
+		todayText: 'اليوم', todayStatus: 'عرض الشهر الحالي',
+		clearText: 'مسح', clearStatus: 'امسح التاريخ الحالي',
+		closeText: 'إغلاق', closeStatus: 'إغلاق بدون حفظ',
+		yearStatus: 'عرض سنة آخرى', monthStatus: 'عرض شهر آخر',
+		weekText: 'أسبوع', weekStatus: 'أسبوع السنة',
+		dayStatus: 'اختر D, M d', defaultStatus: 'اختر يوم',
+		isRTL: true
+	};
+	$.calendars.picker.setDefaults($.calendars.picker.regional['ar-DZ']);
 })(jQuery);
 ﻿/* http://keith-wood.name/calendars.html
    Arabic localisation for calendars datepicker for jQuery.
@@ -230,6 +257,27 @@
 	$.calendars.picker.setDefaults($.calendars.picker.regional['el']);
 })(jQuery);
 ﻿/* http://keith-wood.name/calendars.html
+   English/Australia localisation for calendars datepicker for jQuery.
+   Based on en-GB. */
+(function($) {
+	$.calendars.picker.regional['en-AU'] = {
+		renderer: $.calendars.picker.defaultRenderer,
+		prevText: 'Prev', prevStatus: 'Show the previous month',
+		prevJumpText: '&lt;&lt;', prevJumpStatus: 'Show the previous year',
+		nextText: 'Next', nextStatus: 'Show the next month',
+		nextJumpText: '&gt;&gt;', nextJumpStatus: 'Show the next year',
+		currentText: 'Current', currentStatus: 'Show the current month',
+		todayText: 'Today', todayStatus: 'Show today\'s month',
+		clearText: 'Clear', clearStatus: 'Clear all the dates',
+		closeText: 'Done', closeStatus: 'Close the datepicker',
+		yearStatus: 'Change the year', monthStatus: 'Change the month',
+		weekText: 'Wk', weekStatus: 'Week of the year',
+		dayStatus: 'Select DD, M d, yyyy', defaultStatus: 'Select a date',
+		isRTL: false
+	};
+	$.calendars.picker.setDefaults($.calendars.picker.regional['en-AU']);
+})(jQuery);
+﻿/* http://keith-wood.name/calendars.html
    English/UK localisation for calendars datepicker for jQuery.
    Stuart. */
 (function($) {
@@ -249,6 +297,27 @@
 		isRTL: false
 	};
 	$.calendars.picker.setDefaults($.calendars.picker.regional['en-GB']);
+})(jQuery);
+﻿/* http://keith-wood.name/calendars.html
+   English/New Zealand localisation for calendars datepicker for jQuery.
+   Based on en-GB. */
+(function($) {
+	$.calendars.picker.regional['en-NZ'] = {
+		renderer: $.calendars.picker.defaultRenderer,
+		prevText: 'Prev', prevStatus: 'Show the previous month',
+		prevJumpText: '&lt;&lt;', prevJumpStatus: 'Show the previous year',
+		nextText: 'Next', nextStatus: 'Show the next month',
+		nextJumpText: '&gt;&gt;', nextJumpStatus: 'Show the next year',
+		currentText: 'Current', currentStatus: 'Show the current month',
+		todayText: 'Today', todayStatus: 'Show today\'s month',
+		clearText: 'Clear', clearStatus: 'Clear all the dates',
+		closeText: 'Done', closeStatus: 'Close the datepicker',
+		yearStatus: 'Change the year', monthStatus: 'Change the month',
+		weekText: 'Wk', weekStatus: 'Week of the year',
+		dayStatus: 'Select DD, M d, yyyy', defaultStatus: 'Select a date',
+		isRTL: false
+	};
+	$.calendars.picker.setDefaults($.calendars.picker.regional['en-NZ']);
 })(jQuery);
 ﻿/* http://keith-wood.name/calendars.html
    Esperanto localisation for calendars datepicker for jQuery.
@@ -291,6 +360,27 @@
 		isRTL: false
 	};
 	$.calendars.picker.setDefaults($.calendars.picker.regional['es-AR']);
+})(jQuery);
+﻿/* http://keith-wood.name/calendars.html
+   Spanish/Perú localisation for calendars datepicker for jQuery.
+   Written by Fischer Tirado (fishdev@globant.com) of ASIX (http://www.asixonline.com). */
+(function($) {
+	$.calendars.picker.regional['es-PE'] = {
+		renderer: $.calendars.picker.defaultRenderer,
+		prevText: '&#x3c;Ant', prevStatus: '',
+		prevJumpText: '&#x3c;&#x3c;', prevJumpStatus: '',
+		nextText: 'Sig&#x3e;', nextStatus: '',
+		nextJumpText: '&#x3e;&#x3e;', nextJumpStatus: '',
+		currentText: 'Hoy', currentStatus: '',
+		todayText: 'Hoy', todayStatus: '',
+		clearText: 'Limpiar', clearStatus: '',
+		closeText: 'Cerrar', closeStatus: '',
+		yearStatus: '', monthStatus: '',
+		weekText: 'Sm', weekStatus: '',
+		dayStatus: 'DD d, MM yyyy', defaultStatus: '',
+		isRTL: false
+	};
+	$.calendars.picker.setDefaults($.calendars.picker.regional['es-PE']);
 })(jQuery);
 ﻿/* http://keith-wood.name/calendars.html
    Spanish localisation for calendars datepicker for jQuery.
@@ -801,6 +891,27 @@
 	$.calendars.picker.setDefaults($.calendars.picker.regional['mk']);
 })(jQuery);
 ﻿/* http://keith-wood.name/calendars.html
+   Malayalam localisation for calendars datepicker for jQuery.
+   Saji Nediyanchath (saji89@gmail.com). */
+(function($) {
+	$.calendars.picker.regional['ml'] = {
+		renderer: $.calendars.picker.defaultRenderer,
+		prevText: 'മുന്നത്തെ', prevStatus: '',
+		prevJumpText: '&#x3c;&#x3c;', prevJumpStatus: '',
+		nextText: 'അടുത്തത് ', nextStatus: '',
+		nextJumpText: '&#x3e;&#x3e;', nextJumpStatus: '',
+		currentText: 'ഇന്ന്', currentStatus: '',
+		todayText: 'ഇന്ന്', todayStatus: '',
+		clearText: 'X', clearStatus: '',
+		closeText: 'ശരി', closeStatus: '',
+		yearStatus: '', monthStatus: '',
+		weekText: 'ആ', weekStatus: '',
+		dayStatus: 'DD d MM', defaultStatus: '',
+		isRTL: false
+	};
+	$.calendars.picker.setDefaults($.calendars.picker.regional['ml']);
+})(jQuery);
+﻿/* http://keith-wood.name/calendars.html
    Malaysian localisation for calendars datepicker for jQuery.
    Written by Mohd Nawawi Mohamad Jamili (nawawi@ronggeng.net). */
 (function($) {
@@ -925,6 +1036,27 @@
 		isRTL: false
 	};
 	$.calendars.picker.setDefaults($.calendars.picker.regional['pt-BR']);
+})(jQuery);
+﻿/* http://keith-wood.name/calendars.html
+   Romansh localisation for calendars datepicker for jQuery.
+   Yvonne Gienal (yvonne.gienal@educa.ch). */
+(function($) {
+	$.calendars.picker.regional['rm'] = {
+		renderer: $.calendars.picker.defaultRenderer,
+		prevText: '&#x3c;Suandant', prevStatus: '',
+		prevJumpText: '&#x3c;&#x3c;', prevJumpStatus: '',
+		nextText: 'Precedent&#x3e;', nextStatus: '',
+		nextJumpText: '&#x3e;&#x3e;', nextJumpStatus: '',
+		currentText: 'Actual', currentStatus: '',
+		todayText: 'Actual', todayStatus: '',
+		clearText: 'X', clearStatus: '',
+		closeText: 'Serrar', closeStatus: '',
+		yearStatus: '', monthStatus: '',
+		weekText: 'emna', weekStatus: '',
+		dayStatus: 'DD d MM', defaultStatus: '',
+		isRTL: false
+	};
+	$.calendars.picker.setDefaults($.calendars.picker.regional['rm']);
 })(jQuery);
 ﻿/* http://keith-wood.name/calendars.html
    Romanian localisation for calendars datepicker for jQuery.

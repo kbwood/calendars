@@ -1,5 +1,5 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Calendars extras for jQuery v1.1.3.
+   Calendars extras for jQuery v1.1.4.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
    Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
    MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
@@ -221,8 +221,8 @@ $.extend($.calendars.baseCalendar.prototype, {
 		};
 		// Extract a number from the string value
 		var getNumber = function(match, step) {
-			doubled(match, step);
-			var size = [2, 3, 4, 4, 10, 11, 20]['oyYJ@!'.indexOf(match) + 1];
+			var isDoubled = doubled(match, step);
+			var size = [2, 3, isDoubled ? 4 : 2, isDoubled ? 4 : 2, 10, 11, 20]['oyYJ@!'.indexOf(match) + 1];
 			var digits = new RegExp('^-?\\d{1,' + size + '}');
 			var num = value.substring(iValue).match(digits);
 			if (!num) {
@@ -369,7 +369,7 @@ $.extend($.calendars.baseCalendar.prototype, {
 		dateSpec = (dateSpec == null ? defaultDate :
 			(typeof dateSpec == 'string' ? offsetString(dateSpec) : (typeof dateSpec == 'number' ?
 			(isNaN(dateSpec) || dateSpec == Infinity || dateSpec == -Infinity ? defaultDate :
-			calendar.today().add(dateSpec, 'd')) : dateSpec)));
+			calendar.today().add(dateSpec, 'd')) : calendar.newDate(dateSpec))));
 		return dateSpec;
 	}
 });

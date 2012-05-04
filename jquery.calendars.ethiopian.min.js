@@ -1,5 +1,5 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Ethiopian calendar for jQuery v1.1.3.
+   Ethiopian calendar for jQuery v1.1.4.
    Written by Keith Wood (kbwood{at}iinet.com.au) February 2010.
    Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
    MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 

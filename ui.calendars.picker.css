@@ -1,4 +1,7 @@
-/* ThemeRoller override style sheet for jQuery Calendars Picker v1.1.3. */
+/* ThemeRoller override style sheet for jQuery Calendars Picker v1.1.4. */
+.ui-datepicker {
+	display: block;
+}
 #ui-datepicker-div,
 .ui-datepicker-inline {
 	width: 17em;

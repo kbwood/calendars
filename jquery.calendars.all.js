@@ -1,5 +1,5 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Calendars for jQuery v1.1.3.
+   Calendars for jQuery v1.1.4.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
    Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
    MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
@@ -786,7 +786,7 @@ $.calendars.calendars.gregorian = GregorianCalendar;
 
 })(jQuery);
 /* http://keith-wood.name/calendars.html
-   Calendars extras for jQuery v1.1.3.
+   Calendars extras for jQuery v1.1.4.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
    Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
    MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
@@ -1008,8 +1008,8 @@ $.extend($.calendars.baseCalendar.prototype, {
 		};
 		// Extract a number from the string value
 		var getNumber = function(match, step) {
-			doubled(match, step);
-			var size = [2, 3, 4, 4, 10, 11, 20]['oyYJ@!'.indexOf(match) + 1];
+			var isDoubled = doubled(match, step);
+			var size = [2, 3, isDoubled ? 4 : 2, isDoubled ? 4 : 2, 10, 11, 20]['oyYJ@!'.indexOf(match) + 1];
 			var digits = new RegExp('^-?\\d{1,' + size + '}');
 			var num = value.substring(iValue).match(digits);
 			if (!num) {
@@ -1156,14 +1156,14 @@ $.extend($.calendars.baseCalendar.prototype, {
 		dateSpec = (dateSpec == null ? defaultDate :
 			(typeof dateSpec == 'string' ? offsetString(dateSpec) : (typeof dateSpec == 'number' ?
 			(isNaN(dateSpec) || dateSpec == Infinity || dateSpec == -Infinity ? defaultDate :
-			calendar.today().add(dateSpec, 'd')) : dateSpec)));
+			calendar.today().add(dateSpec, 'd')) : calendar.newDate(dateSpec))));
 		return dateSpec;
 	}
 });
 
 })(jQuery);
 /* http://keith-wood.name/calendars.html
-   Calendars date picker for jQuery v1.1.3.
+   Calendars date picker for jQuery v1.1.4.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
    Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
    MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
@@ -1777,11 +1777,13 @@ $.extend(CalendarsPicker.prototype, {
 			showSpeed = (showSpeed == 'normal' && $.ui && $.ui.version >= '1.8' ?
 				'_default' : showSpeed);
 			var postProcess = function() {
-				var borders = $.calendars.picker._getBorders(inst.div);
-				inst.div.find('.' + $.calendars.picker._coverClass). // IE6- only
-					css({left: -borders[0], top: -borders[1],
+				var cover = inst.div.find('.' + $.calendars.picker._coverClass); // IE6- only
+				if (cover.length) {
+					var borders = $.calendars.picker._getBorders(inst.div);
+					cover.css({left: -borders[0], top: -borders[1],
 						width: inst.div.outerWidth() + borders[0],
 						height: inst.div.outerHeight() + borders[1]});
+				}
 			};
 			if ($.effects && $.effects[showAnim]) {
 				var data = inst.div.data(); // Update old effects data

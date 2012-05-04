@@ -13,7 +13,7 @@
 		dayNames: ['Søndag','Mandag','Tirsdag','Onsdag','Torsdag','Fredag','Lørdag'],
 		dayNamesMin: ['Sø','Ma','Ti','On','To','Fr','Lø'],
 		dateFormat: 'dd.mm.yyyy',
-		firstDay: 0,
+		firstDay: 1,
 		isRTL: false
 	};
 	if ($.calendars.calendars.julian) {
