@@ -1,5 +1,5 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Calendars for jQuery v1.1.2.
+   Calendars for jQuery v1.1.3.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
    Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
    MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
@@ -786,7 +786,7 @@ $.calendars.calendars.gregorian = GregorianCalendar;
 
 })(jQuery);
 /* http://keith-wood.name/calendars.html
-   Calendars extras for jQuery v1.1.2.
+   Calendars extras for jQuery v1.1.3.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
    Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
    MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
@@ -1163,7 +1163,7 @@ $.extend($.calendars.baseCalendar.prototype, {
 
 })(jQuery);
 /* http://keith-wood.name/calendars.html
-   Calendars date picker for jQuery v1.1.2.
+   Calendars date picker for jQuery v1.1.3.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
    Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
    MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
@@ -1492,12 +1492,7 @@ $.extend(CalendarsPicker.prototype, {
 					this.settings[name] : $.calendars.picker._defaults[name];
 				if ($.inArray(name, ['defaultDate', 'minDate', 'maxDate']) > -1) { // Decode date settings
 					value = this.get('calendar').determineDate(
-						value, null, this.selectedDates[0], this.get('dateFormat'),
-						{dayNames: this.get('dayNames'),
-						dayNamesShort: this.get('dayNamesShort'),
-						monthNames: this.get('monthNames'),
-						monthNamesShort: this.get('monthNamesShort'),
-						shortYearCutoff: this.get('shortYearCutoff')});
+						value, null, this.selectedDates[0], this.get('dateFormat'), inst.getConfig());
 				}
 				else if (name == 'dateFormat') {
 					value = value || this.get('calendar').local.dateFormat;
@@ -1506,6 +1501,12 @@ $.extend(CalendarsPicker.prototype, {
 			},
 			curMinDate: function() {
 				return (this.pickingRange ? this.selectedDates[0] : this.get('minDate'));
+			},
+			getConfig: function() {
+				return {dayNamesShort: this.get('dayNamesShort'), dayNames: this.get('dayNames'),
+					monthNamesShort: this.get('monthNamesShort'), monthNames: this.get('monthNames'),
+					calculateWeek: this.get('calculateWeek'),
+					shortYearCutoff: this.get('shortYearCutoff')};
 			}
 		};
 		$.data(target[0], this.dataName, inst);
@@ -1783,7 +1784,13 @@ $.extend(CalendarsPicker.prototype, {
 						height: inst.div.outerHeight() + borders[1]});
 			};
 			if ($.effects && $.effects[showAnim]) {
-				inst.div.show(showAnim, inst.get('showOptions'), showSpeed, postProcess);
+				var data = inst.div.data(); // Update old effects data
+				for (var key in data) {
+					if (key.match(/^ec\.storage\./)) {
+						data[key] = inst._mainDiv.css(key.replace(/ec\.storage\./, ''));
+					}
+				}
+				inst.div.data(data).show(showAnim, inst.get('showOptions'), showSpeed, postProcess);
 			}
 			else {
 				inst.div[showAnim || 'show']((showAnim ? showSpeed : ''), postProcess);
@@ -1845,6 +1852,13 @@ $.extend(CalendarsPicker.prototype, {
 		target = $(target.target || target);
 		var inst = $.data(target[0], $.calendars.picker.dataName);
 		if (inst) {
+			if (inst.inline || $.calendars.picker.curInst == inst) {
+				var onChange = inst.get('onChangeMonthYear');
+				if (onChange && (!inst.prevDate || inst.prevDate.year() != inst.drawDate.year() ||
+						inst.prevDate.month() != inst.drawDate.month())) {
+					onChange.apply(target[0], [inst.drawDate.year(), inst.drawDate.month()]);
+				}
+			}
 			if (inst.inline) {
 				target.html(this._generateContent(target[0], inst));
 			}
@@ -1861,13 +1875,6 @@ $.extend(CalendarsPicker.prototype, {
 				}
 				inst.div.html(this._generateContent(target[0], inst));
 				target.focus();
-			}
-			if (inst.inline || $.calendars.picker.curInst == inst) {
-				var onChange = inst.get('onChangeMonthYear');
-				if (onChange && (!inst.prevDate || inst.prevDate.year() != inst.drawDate.year() ||
-						inst.prevDate.month() != inst.drawDate.month())) {
-					onChange.apply(target[0], [inst.drawDate.year(), inst.drawDate.month()]);
-				}
 			}
 		}
 	},
@@ -2220,7 +2227,8 @@ $.extend(CalendarsPicker.prototype, {
 			var curDate = inst.selectedDates[0];
 			inst.selectedDates = [];
 			for (var i = 0; i < dates.length; i++) {
-				var date = calendar.determineDate(dates[i], null, curDate, dateFormat);
+				var date = calendar.determineDate(
+					dates[i], null, curDate, dateFormat, inst.getConfig());
 				if (date) {
 					if ((!minDate || date.compareTo(minDate) != -1) &&
 							(!maxDate || date.compareTo(maxDate) != +1)) {
@@ -2268,7 +2276,7 @@ $.extend(CalendarsPicker.prototype, {
 		if (!inst) {
 			return false;
 		}
-		date = $.calendars.picker.determineDate(date,
+		date = inst.get('calendar').determineDate(date,
 			inst.selectedDates[0] || inst.get('calendar').today(), null,
 			inst.get('dateFormat'), inst.getConfig());
 		return this._isSelectable(target, date, inst.get('onDate'),

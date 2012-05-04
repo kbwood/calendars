@@ -12,7 +12,7 @@
 		dayNamesShort: ['Søn','Man','Tir','Ons','Tor','Fre','Lør'],
 		dayNames: ['Søndag','Mandag','Tirsdag','Onsdag','Torsdag','Fredag','Lørdag'],
 		dayNamesMin: ['Sø','Ma','Ti','On','To','Fr','Lø'],
-		dateFormat: 'yyyy-mm-dd',
+		dateFormat: 'dd.mm.yyyy',
 		firstDay: 0,
 		isRTL: false
 	};

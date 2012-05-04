@@ -1,11 +1,4 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Calendars date picker localisations for jQuery v1.1.2.
-   Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
-   Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
-   MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
-   Please attribute the author if you use it. */
-
-/* http://keith-wood.name/calendars.html
    Afrikaans localisation for calendars datepicker for jQuery.
    Written by Renier Pretorius. */
 (function($) {
@@ -743,6 +736,69 @@
 		isRTL: false
 	};
 	$.calendars.picker.setDefaults($.calendars.picker.regional['lv']);
+})(jQuery);
+﻿/* http://keith-wood.name/calendars.html
+   Montenegrin localisation for calendars datepicker for jQuery.
+   Written by Miloš Milošević - fleka d.o.o. */
+(function($) {
+	$.calendars.picker.regional['me-ME'] = {
+		renderer: $.calendars.picker.defaultRenderer,
+		prevText: '&#x3c;', prevStatus: 'Prikaži prethodni mjesec',
+		prevJumpText: '&#x3c;&#x3c;', prevJumpStatus: 'Prikaži prethodnu godinu',
+		nextText: '&#x3e;', nextStatus: 'Prikaži sljedeći mjesec',
+		nextJumpText: '&#x3e;&#x3e;', nextJumpStatus: 'Prikaži sljedeću godinu',
+		currentText: 'Danas', currentStatus: 'Tekući mjesec',
+		todayText: 'Danas', todayStatus: 'Tekući mjesec',
+		clearText: 'Obriši', clearStatus: 'Obriši trenutni datum',
+		closeText: 'Zatvori', closeStatus: 'Zatvori kalendar',
+		yearStatus: 'Prikaži godine', monthStatus: 'Prikaži mjesece',
+		weekText: 'Sed', weekStatus: 'Sedmica',
+		dayStatus: '\'Datum\' DD, M d', defaultStatus: 'Odaberi datum',
+		isRTL: false
+	};
+	$.calendars.picker.setDefaults($.calendars.picker.regional['me-ME']);
+})(jQuery);
+/* http://keith-wood.name/calendars.html
+   Montenegrin localisation for calendars datepicker for jQuery.
+   Written by Miloš Milošević - fleka d.o.o. */
+(function($) {
+	$.calendars.picker.regional['me'] = {
+		renderer: $.calendars.picker.defaultRenderer,
+		prevText: '&#x3c;', prevStatus: 'Прикажи претходни мјесец',
+		prevJumpText: '&#x3c;&#x3c;', prevJumpStatus: 'Прикажи претходну годину',
+		nextText: '&#x3e;', nextStatus: 'Прикажи сљедећи мјесец',
+		nextJumpText: '&#x3e;&#x3e;', nextJumpStatus: 'Прикажи сљедећу годину',
+		currentText: 'Данас', currentStatus: 'Текући мјесец',
+		todayText: 'Данас', todayStatus: 'Текући мјесец',
+		clearText: 'Обриши', clearStatus: 'Обриши тренутни датум',
+		closeText: 'Затвори', closeStatus: 'Затвори календар',
+		yearStatus: 'Прикажи године', monthStatus: 'Прикажи мјесеце',
+		weekText: 'Сед', weekStatus: 'Седмица',
+		dayStatus: '\'Датум\' DD d MM', defaultStatus: 'Одабери датум',
+		isRTL: false
+	};
+	$.calendars.picker.setDefaults($.calendars.picker.regional['me']);
+})(jQuery);
+﻿/* http://keith-wood.name/calendars.html
+   Македонски MK localisation for calendars datepicker for jQuery.
+   Hajan Selmani (hajan [at] live [dot] com). */
+(function($) {
+	$.calendars.picker.regional['mk'] = {
+		renderer: $.calendars.picker.defaultRenderer,
+		prevText: 'Претх.', prevStatus: 'Прикажи го претходниот месец',
+		prevJumpText: '&#x3c;&#x3c;', prevJumpStatus: 'Прикажи ја претходната година',
+		nextText: 'Следен', nextStatus: 'Прикажи го следниот месец',
+		nextJumpText: '&#x3e;&#x3e;', nextJumpStatus: 'Прикажи ја следната година',
+		currentText: 'Тековен', currentStatus: 'Прикажи го тековниот месец',
+		todayText: 'Денес', todayStatus: 'Прикажи го денешниот месец',
+		clearText: 'Бриши', clearStatus: 'Избриши го тековниот датум',
+		closeText: 'Затвори', closeStatus: 'Затвори без промени',
+		yearStatus: 'Избери друга година', monthStatus: 'Избери друг месец',
+		weekText: 'Нед', weekStatus: 'Недела во годината',
+		dayStatus: 'Избери DD, M d', defaultStatus: 'Избери датум',
+		isRTL: false
+	};
+	$.calendars.picker.setDefaults($.calendars.picker.regional['mk']);
 })(jQuery);
 ﻿/* http://keith-wood.name/calendars.html
    Malaysian localisation for calendars datepicker for jQuery.

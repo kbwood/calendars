@@ -1,11 +1,4 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Calendars localisations for jQuery v1.1.2.
-   Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
-   Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
-   MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
-   Please attribute the author if you use it. */
-
-/* http://keith-wood.name/calendars.html
    Afrikaans localisation for Gregorian/Julian calendars for jQuery.
    Written by Renier Pretorius. */
 (function($) {
@@ -764,7 +757,7 @@
 			$.calendars.calendars.gregorian.prototype.regional['ko'];
 	}
 })(jQuery);
-/* http://keith-wood.name/calendars.html
+﻿/* http://keith-wood.name/calendars.html
    Lithuanian localisation for Gregorian/Julian calendars for jQuery.
    Arturas Paleicikas <arturas@avalon.lt>. */
 (function($) {
@@ -808,6 +801,75 @@
 	if ($.calendars.calendars.julian) {
 		$.calendars.calendars.julian.prototype.regional['lv'] =
 			$.calendars.calendars.gregorian.prototype.regional['lv'];
+	}
+})(jQuery);
+/* http://keith-wood.name/calendars.html
+   Montenegrin localisation for Gregorian/Julian calendars for jQuery.
+   By Miloš Milošević - fleka d.o.o. */
+(function($) {
+	$.calendars.calendars.gregorian.prototype.regional['me-ME'] = {
+		name: 'Gregorijanski',
+		epochs: ['pne', 'ne'],
+		monthNames: ['Januar','Februar','Mart','April','Maj','Jun',
+		'Jul','Avgust','Septembar','Oktobar','Novembar','Decembar'],
+		monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'Maj', 'Jun',
+		'Jul', 'Avg', 'Sep', 'Okt', 'Nov', 'Dec'],
+		dayNames: ['Neđelja', 'Poneđeljak', 'Utorak', 'Srijeda', 'Četvrtak', 'Petak', 'Subota'],
+		dayNamesShort: ['Neđ', 'Pon', 'Uto', 'Sri', 'Čet', 'Pet', 'Sub'],
+		dayNamesMin: ['Ne','Po','Ut','Sr','Če','Pe','Su'],
+		dateFormat: 'dd/mm/yyyy',
+		firstDay: 1,
+		isRTL: false
+	};
+	if ($.calendars.calendars.julian) {
+		$.calendars.calendars.julian.prototype.regional['me-ME'] =
+			$.calendars.calendars.gregorian.prototype.regional['me-ME'];
+	}
+})(jQuery);
+/* http://keith-wood.name/calendars.html
+   Montenegrin localisation for Gregorian/Julian calendars for jQuery.
+   By Miloš Milošević - fleka d.o.o. */
+(function($) {
+	$.calendars.calendars.gregorian.prototype.regional['me'] = {
+		name: 'Грегоријански',
+		epochs: ['пне', 'не'],
+		monthNames: ['Јануар','Фебруар','Март','Април','Мај','Јун',
+		'Јул','Август','Септембар','Октобар','Новембар','Децембар'],
+		monthNamesShort: ['Јан', 'Феб', 'Мар', 'Апр', 'Мај', 'Јун',
+		'Јул', 'Авг', 'Сеп', 'Окт', 'Нов', 'Дец'],
+		dayNames: ['Неђеља', 'Понеђељак', 'Уторак', 'Сриједа', 'Четвртак', 'Петак', 'Субота'],
+		dayNamesShort: ['Неђ', 'Пон', 'Уто', 'Сри', 'Чет', 'Пет', 'Суб'],
+		dayNamesMin: ['Не','По','Ут','Ср','Че','Пе','Су'],
+		dateFormat: 'dd/mm/yyyy',
+		firstDay: 1,
+		isRTL: false
+	};
+	if ($.calendars.calendars.julian) {
+		$.calendars.calendars.julian.prototype.regional['me'] =
+			$.calendars.calendars.gregorian.prototype.regional['me'];
+	}
+})(jQuery);
+﻿/* http://keith-wood.name/calendars.html
+   Македонски MK localisation for Gregorian/Julian calendars for jQuery.
+   Hajan Selmani (hajan [at] live [dot] com). */
+(function($) {
+	$.calendars.calendars.gregorian.prototype.regional['mk'] = {
+		name: 'Gregorian',
+		epochs: ['BCE', 'CE'],
+		monthNames: ['Јануари','Февруари','Март','Април','Мај','Јуни',
+		'Јули','Август','Септември','Октомври','Ноември','Декември'],
+		monthNamesShort: ['Јан', 'Фев', 'Мар', 'Апр', 'Мај', 'Јун',
+		'Јул', 'Авг', 'Сеп', 'Окт', 'Нов', 'Дек'],
+		dayNames: ['Недела', 'Понеделник', 'Вторник', 'Среда', 'Четврток', 'Петок', 'Сабота'],
+		dayNamesShort: ['Нед', 'Пон', 'Вто', 'Сре', 'Чет', 'Пет', 'Саб'],
+		dayNamesMin: ['Не','По','Вт','Ср','Че','Пе','Са'],
+		dateFormat: 'dd/mm/yyyy',
+		firstDay: 1,
+		isRTL: false
+	};
+	if ($.calendars.calendars.julian) {
+		$.calendars.calendars.julian.prototype.regional['mk'] =
+			$.calendars.calendars.gregorian.prototype.regional['mk'];
 	}
 })(jQuery);
 ﻿/* http://keith-wood.name/calendars.html
@@ -893,7 +955,7 @@
 		dayNamesShort: ['Søn','Man','Tir','Ons','Tor','Fre','Lør'],
 		dayNames: ['Søndag','Mandag','Tirsdag','Onsdag','Torsdag','Fredag','Lørdag'],
 		dayNamesMin: ['Sø','Ma','Ti','On','To','Fr','Lø'],
-		dateFormat: 'yyyy-mm-dd',
+		dateFormat: 'dd.mm.yyyy',
 		firstDay: 0,
 		isRTL: false
 	};
@@ -1162,7 +1224,7 @@
 		name: 'Gregorian',
 		epochs: ['BCE', 'CE'],
 		monthNames: ['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน',
-		'กรกฏาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'],
+		'กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'],
 		monthNamesShort: ['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.',
 		'ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'],
 		dayNames: ['อาทิตย์','จันทร์','อังคาร','พุธ','พฤหัสบดี','ศุกร์','เสาร์'],
