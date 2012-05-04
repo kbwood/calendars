@@ -13,7 +13,7 @@
 		clearText: 'Curat', clearStatus: 'Sterge data curenta',
 		closeText: 'Închide', closeStatus: 'Închide fara schimbare',
 		yearStatus: 'Arat un an diferit', monthStatus: 'Arata o luna diferita',
-		weekText: 'Sapt', weekStatus: 'Saptamana anului',
+		weekText: 'Săpt', weekStatus: 'Săptamana anului',
 		dayStatus: 'Selecteaza DD, M d', defaultStatus: 'Selecteaza o data',
 		isRTL: false
 	};

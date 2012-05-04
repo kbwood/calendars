@@ -1,5 +1,5 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Calendars extras for jQuery v1.0.1.
+   Calendars extras for jQuery v1.1.0.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
    Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
    MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
@@ -30,7 +30,7 @@ $.extend($.calendars.cdate.prototype, {
 $.extend($.calendars.baseCalendar.prototype, {
 
 	UNIX_EPOCH: $.calendars.instance().newDate(1970, 1, 1).toJD(),
-	MS_PER_DAY: 24 * 60 * 60 * 1000,
+	SECS_PER_DAY: 24 * 60 * 60,
 	TICKS_EPOCH: $.calendars.instance().jdEpoch, // 1 January 0001 CE
 	TICKS_PER_DAY: 24 * 60 * 60 * 10000000,
 
@@ -67,7 +67,7 @@ $.extend($.calendars.baseCalendar.prototype, {
 	   yyyy - year (four digit)
 	   YYYY - formatted year
 	   J  - Julian date (days since January 1, 4713 BCE Greenwich noon)
-	   @  - Unix timestamp (ms since 01/01/1970)
+	   @  - Unix timestamp (s since 01/01/1970)
 	   !  - Windows ticks (100ns since 01/01/0001)
 	   '...' - literal text
 	   '' - single quote
@@ -153,7 +153,7 @@ $.extend($.calendars.baseCalendar.prototype, {
 						output += date.formatYear();
 						break;
 					case 'J': output += date.toJD(); break;
-					case '@': output += (date.toJD() - this.UNIX_EPOCH) * this.MS_PER_DAY; break;
+					case '@': output += (date.toJD() - this.UNIX_EPOCH) * this.SECS_PER_DAY; break;
 					case '!': output += (date.toJD() - this.TICKS_EPOCH) * this.TICKS_PER_DAY; break;
 					case "'":
 						if (doubled("'")) {
@@ -222,7 +222,7 @@ $.extend($.calendars.baseCalendar.prototype, {
 		// Extract a number from the string value
 		var getNumber = function(match, step) {
 			doubled(match, step);
-			var size = [2, 3, 4, 4, 10, 14, 20]['oyYJ@!'.indexOf(match) + 1];
+			var size = [2, 3, 4, 4, 10, 11, 20]['oyYJ@!'.indexOf(match) + 1];
 			var digits = new RegExp('^-?\\d{1,' + size + '}');
 			var num = value.substring(iValue).match(digits);
 			if (!num) {
@@ -285,7 +285,7 @@ $.extend($.calendars.baseCalendar.prototype, {
 							getNumber('J');
 						}
 						break;
-					case '@': jd = getNumber('@') / this.MS_PER_DAY + this.UNIX_EPOCH; break;
+					case '@': jd = getNumber('@') / this.SECS_PER_DAY + this.UNIX_EPOCH; break;
 					case '!': jd = getNumber('!') / this.TICKS_PER_DAY + this.TICKS_EPOCH; break;
 					case '*': iValue = value.length; break;
 					case "'":

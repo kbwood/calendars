@@ -9,10 +9,10 @@
 		'Iulie','August','Septembrie','Octombrie','Noiembrie','Decembrie'],
 		monthNamesShort: ['Ian', 'Feb', 'Mar', 'Apr', 'Mai', 'Iun',
 		'Iul', 'Aug', 'Sep', 'Oct', 'Noi', 'Dec'],
-		dayNames: ['Duminica', 'Luni', 'Marti', 'Miercuri', 'Joi', 'Vineri', 'Sâmbata'],
+		dayNames: ['Duminică', 'Luni', 'Marti', 'Miercuri', 'Joi', 'Vineri', 'Sâmbătă'],
 		dayNamesShort: ['Dum', 'Lun', 'Mar', 'Mie', 'Joi', 'Vin', 'Sâm'],
 		dayNamesMin: ['Du','Lu','Ma','Mi','Jo','Vi','Sâ'],
-		dateFormat: 'dd MM yyyy',
+		dateFormat: 'dd.mm.yyyy',
 		firstDay: 1,
 		isRTL: false
 	};

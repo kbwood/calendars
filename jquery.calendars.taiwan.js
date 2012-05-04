@@ -1,26 +1,28 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Islamic calendar for jQuery v1.1.0.
-   Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
+   Taiwanese (Minguo) calendar for jQuery v1.1.0.
+   Written by Keith Wood (kbwood{at}iinet.com.au) February 2010.
    Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
    MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
    Please attribute the author if you use it. */
 
 (function($) { // Hide scope, no $ conflict
 
-/* Implementation of the Islamic or '16 civil' calendar.
-   Based on code from http://www.iranchamber.com/calendar/converter/iranian_calendar_converter.php.
-   See also http://en.wikipedia.org/wiki/Islamic_calendar.
+var gregorianCalendar = $.calendars.instance();
+
+/* Implementation of the Taiwanese calendar.
+   See http://en.wikipedia.org/wiki/Minguo_calendar.
    @param  language  (string) the language code (default English) for localisation (optional) */
-function IslamicCalendar(language) {
+function TaiwanCalendar(language) {
 	this.local = this.regional[language || ''] || this.regional[''];
 }
 
-IslamicCalendar.prototype = new $.calendars.baseCalendar;
+TaiwanCalendar.prototype = new $.calendars.baseCalendar;
 
-$.extend(IslamicCalendar.prototype, {
-	name: 'Islamic', // The calendar name
-	jdEpoch: 1948439.5, // Julian date of start of Islamic epoch: 16 July 622 CE
-	daysPerMonth: [30, 29, 30, 29, 30, 29, 30, 29, 30, 29, 30, 29], // Days per month in a common year
+$.extend(TaiwanCalendar.prototype, {
+	name: 'Taiwan', // The calendar name
+	jdEpoch: 2419402.5, // Julian date of start of Taiwan epoch: 1 January 1912 CE (Gregorian)
+	yearsOffset: 1911, // Difference in years between Taiwan and Gregorian calendars
+	daysPerMonth: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31], // Days per month in a common year
 	hasYearZero: false, // True if has a year zero, false if not
 	minMonth: 1, // The minimum month number
 	firstMonth: 1, // The first month in the year
@@ -28,18 +30,17 @@ $.extend(IslamicCalendar.prototype, {
 
 	regional: { // Localisations
 		'': {
-			name: 'Islamic', // The calendar name
-			epochs: ['BH', 'AH'],
-			monthNames: ['Muharram', 'Safar', 'Rabi\' al-awwal', 'Rabi\' al-thani', 'Jumada al-awwal', 'Jumada al-thani',
-			'Rajab', 'Sha\'aban', 'Ramadan', 'Shawwal', 'Dhu al-Qi\'dah', 'Dhu al-Hijjah'],
-			monthNamesShort: ['Muh', 'Saf', 'Rab1', 'Rab2', 'Jum1', 'Jum2', 'Raj', 'Sha\'', 'Ram', 'Shaw', 'DhuQ', 'DhuH'],
-			dayNames: ['Yawm al-ahad', 'Yawm al-ithnayn', 'Yawm ath-thulaathaa\'',
-			'Yawm al-arbi\'aa\'', 'Yawm al-khamīs', 'Yawm al-jum\'a', 'Yawm as-sabt'],
-			dayNamesShort: ['Aha', 'Ith', 'Thu', 'Arb', 'Kha', 'Jum', 'Sab'],
-			dayNamesMin: ['Ah','It','Th','Ar','Kh','Ju','Sa'],
-			dateFormat: 'yyyy/mm/dd', // See format options on BaseCalendar.formatDate
-			firstDay: 6, // The first day of the week, Sun = 0, Mon = 1, ...
-			isRTL: false // True if right-to-left language, false if left-to-right
+			name: 'Taiwan', // The calendar name
+			epochs: ['BROC', 'ROC'],
+			monthNames: ['January', 'February', 'March', 'April', 'May', 'June',
+			'July', 'August', 'September', 'October', 'November', 'December'],
+			monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+			dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+			dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+			dayNamesMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+			dateFormat: 'yyyy/mm/dd',
+			firstDay: 1,
+			isRTL: false
 		}
 	},
 
@@ -50,10 +51,11 @@ $.extend(IslamicCalendar.prototype, {
 	   @throws  error if an invalid year or a different calendar used */
 	leapYear: function(year) {
 		var date = this._validate(year, this.minMonth, this.minDay, $.calendars.local.invalidYear);
-		return (date.year() * 11 + 14) % 30 < 11;
+		var year = this._t2gYear(date.year());
+		return gregorianCalendar.leapYear(year);
 	},
 
-	/* Determine the week of the year for a date.
+	/* Determine the week of the year for a date - ISO 8601.
 	   @param  year   (CDate) the date to examine or
 	                  (number) the year to examine
 	   @param  month  (number) the month to examine
@@ -61,19 +63,9 @@ $.extend(IslamicCalendar.prototype, {
 	   @return  (number) the week of the year
 	   @throws  error if an invalid date or a different calendar used */
 	weekOfYear: function(year, month, day) {
-		// Find Sunday of this week starting on Sunday
-		var checkDate = this.newDate(year, month, day);
-		checkDate.add(-checkDate.dayOfWeek(), 'd');
-		return Math.floor((checkDate.dayOfYear() - 1) / 7) + 1;
-	},
-
-	/* Retrieve the number of days in a year.
-	   @param  year   (CDate) the date to examine or
-	                  (number) the year to examine
-	   @return  (number) the number of days
-	   @throws  error if an invalid year or a different calendar used */
-	daysInYear: function(year) {
-		return (this.leapYear(year) ? 355 : 354);
+		var date = this._validate(year, this.minMonth, this.minDay, $.calendars.local.invalidYear);
+		var year = this._t2gYear(date.year());
+		return gregorianCalendar.weekOfYear(year, date.month(), date.day());
 	},
 
 	/* Retrieve the number of days in a month.
@@ -85,7 +77,7 @@ $.extend(IslamicCalendar.prototype, {
 	daysInMonth: function(year, month) {
 		var date = this._validate(year, month, this.minDay, $.calendars.local.invalidMonth);
 		return this.daysPerMonth[date.month() - 1] +
-			(date.month() == 12 && this.leapYear(date.year()) ? 1 : 0);
+			(date.month() == 2 && this.leapYear(date.year()) ? 1 : 0);
 	},
 
 	/* Determine whether this date is a week day.
@@ -96,7 +88,7 @@ $.extend(IslamicCalendar.prototype, {
 	   @return  (boolean) true if a week day, false if not
 	   @throws  error if an invalid date or a different calendar used */
 	weekDay: function(year, month, day) {
-		return this.dayOfWeek(year, month, day) != 5;
+		return (this.dayOfWeek(year, month, day) || 7) < 6;
 	},
 
 	/* Retrieve the Julian date equivalent for this date,
@@ -109,28 +101,35 @@ $.extend(IslamicCalendar.prototype, {
 	   @throws  error if an invalid date or a different calendar used */
 	toJD: function(year, month, day) {
 		var date = this._validate(year, month, day, $.calendars.local.invalidDate);
-		year = date.year();
-		month = date.month();
-		day = date.day();
-		year = (year <= 0 ? year + 1 : year);
-		return day + Math.ceil(29.5 * (month - 1)) + (year - 1) * 354 +
-			Math.floor((3 + (11 * year)) / 30) + this.jdEpoch - 1;
+		var year = this._t2gYear(date.year());
+		return gregorianCalendar.toJD(year, date.month(), date.day());
 	},
 
 	/* Create a new date from a Julian date.
 	   @param  jd  (number) the Julian date to convert
 	   @return  (CDate) the equivalent date */
 	fromJD: function(jd) {
-		jd = Math.floor(jd) + 0.5;
-		var year = Math.floor((30 * (jd - this.jdEpoch) + 10646) / 10631);
-		year = (year <= 0 ? year - 1 : year);
-		var month = Math.min(12, Math.ceil((jd - 29 - this.toJD(year, 1, 1)) / 29.5) + 1);
-		var day = jd - this.toJD(year, month, 1) + 1;
-		return this.newDate(year, month, day);
+		var date = gregorianCalendar.fromJD(jd);
+		var year = this._g2tYear(date.year());
+		return this.newDate(year, date.month(), date.day());
+	},
+
+	/* Convert Taiwanese to Gregorian year.
+	   @param  year  the Taiwanese year
+	   @return  the corresponding Gregorian year */
+	_t2gYear: function(year) {
+		return year + this.yearsOffset + (year >= -this.yearsOffset && year <= -1 ? 1 : 0);
+	},
+
+	/* Convert Gregorian to Taiwanese year.
+	   @param  year  the Gregorian year
+	   @return  the corresponding Taiwanese year */
+	_g2tYear: function(year) {
+		return year - this.yearsOffset - (year >= 1 && year <= this.yearsOffset ? 1 : 0);
 	}
 });
 
-// Islamic (16 civil) calendar implementation
-$.calendars.calendars.islamic = IslamicCalendar;
+// Taiwan calendar implementation
+$.calendars.calendars.taiwan = TaiwanCalendar;
 
 })(jQuery);

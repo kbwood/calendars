@@ -1,5 +1,5 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Calendars date picker for jQuery v1.0.1.
+   Calendars date picker for jQuery v1.1.0.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
    Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
    MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
@@ -579,6 +579,7 @@ $.extend(CalendarsPicker.prototype, {
 		}
 		if (inst) {
 			// Retrieve existing date(s)
+			inst.lastVal = null;
 			inst.selectedDates = $.calendars.picker._extractDates(inst, $(target).val());
 			inst.pickingRange = false;
 			inst.drawDate = $.calendars.picker._checkMinMax((inst.selectedDates[0] ||
@@ -616,6 +617,10 @@ $.extend(CalendarsPicker.prototype, {
 	   @param  text  (string) the text to extract from
 	   @return  (CDate[]) the extracted dates */
 	_extractDates: function(inst, datesText) {
+		if (datesText == inst.lastVal) {
+			return;
+		}
+		inst.lastVal = datesText;
 		var calendar = inst.get('calendar');
 		var dateFormat = inst.get('dateFormat');
 		var multiSelect = inst.get('multiSelect');
@@ -948,7 +953,7 @@ $.extend(CalendarsPicker.prototype, {
 	_keyUp: function(event) {
 		var target = event.target;
 		var inst = $.data(target, $.calendars.picker.dataName);
-		if (inst && !inst.ctrlKey) {
+		if (inst && !inst.ctrlKey && inst.lastVal != inst.target.val()) {
 			try {
 				var dates = $.calendars.picker._extractDates(inst, inst.target.val());
 				if (dates.length > 0) {
@@ -1316,7 +1321,8 @@ $.extend(CalendarsPicker.prototype, {
 		var calculateWeek = inst.get('calculateWeek');
 		var today = calendar.today();
 		var drawDate = calendar.newDate(year, month, calendar.minDay);
-		drawDate.add(-leadDays - (fixedWeeks && drawDate.dayOfWeek() == firstDay ?
+		drawDate.add(-leadDays - (fixedWeeks &&
+			(drawDate.dayOfWeek() == firstDay || drawDate.daysInMonth() < calendar.daysInWeek())?
 			calendar.daysInWeek() : 0), 'd');
 		var jd = drawDate.toJD();
 		// Generate weeks

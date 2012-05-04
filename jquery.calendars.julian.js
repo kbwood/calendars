@@ -1,5 +1,5 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Julian calendar for jQuery v1.0.1.
+   Julian calendar for jQuery v1.1.0.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
    Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
    MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
@@ -30,12 +30,12 @@ $.extend(JulianCalendar.prototype, {
 		'': {
 			name: 'Julian', // The calendar name
 			epochs: ['BC', 'AD'],
-			monthNames: ['January','February','March','April','May','June',
-			'July','August','September','October','November','December'],
+			monthNames: ['January', 'February', 'March', 'April', 'May', 'June',
+			'July', 'August', 'September', 'October', 'November', 'December'],
 			monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 			dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
 			dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-			dayNamesMin: ['Su','Mo','Tu','We','Th','Fr','Sa'],
+			dayNamesMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
 			dateFormat: 'mm/dd/yyyy', // See format options on parseDate
 			firstDay: 0, // The first day of the week, Sun = 0, Mon = 1, ...
 			isRTL: false // True if right-to-left language, false if left-to-right
@@ -130,11 +130,6 @@ $.extend(JulianCalendar.prototype, {
 		return this.newDate(year, month, day);
 	}
 });
-
-// Modulus function which works for non-integers.
-function mod(a, b) {
-	return a - (b * Math.floor(a / b));
-}
 
 // Julian calendar implementation
 $.calendars.calendars.julian = JulianCalendar;

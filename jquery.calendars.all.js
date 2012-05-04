@@ -1,5 +1,5 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Calendars for jQuery v1.0.1.
+   Calendars for jQuery v1.1.0.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
    Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
    MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
@@ -635,12 +635,12 @@ $.extend(GregorianCalendar.prototype, {
 		'': {
 			name: 'Gregorian', // The calendar name
 			epochs: ['BCE', 'CE'],
-			monthNames: ['January','February','March','April','May','June',
-			'July','August','September','October','November','December'],
+			monthNames: ['January', 'February', 'March', 'April', 'May', 'June',
+			'July', 'August', 'September', 'October', 'November', 'December'],
 			monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 			dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
 			dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-			dayNamesMin: ['Su','Mo','Tu','We','Th','Fr','Sa'],
+			dayNamesMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
 			dateFormat: 'mm/dd/yyyy', // See format options on parseDate
 			firstDay: 0, // The first day of the week, Sun = 0, Mon = 1, ...
 			isRTL: false // True if right-to-left language, false if left-to-right
@@ -786,7 +786,7 @@ $.calendars.calendars.gregorian = GregorianCalendar;
 
 })(jQuery);
 /* http://keith-wood.name/calendars.html
-   Calendars extras for jQuery v1.0.1.
+   Calendars extras for jQuery v1.1.0.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
    Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
    MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
@@ -817,7 +817,7 @@ $.extend($.calendars.cdate.prototype, {
 $.extend($.calendars.baseCalendar.prototype, {
 
 	UNIX_EPOCH: $.calendars.instance().newDate(1970, 1, 1).toJD(),
-	MS_PER_DAY: 24 * 60 * 60 * 1000,
+	SECS_PER_DAY: 24 * 60 * 60,
 	TICKS_EPOCH: $.calendars.instance().jdEpoch, // 1 January 0001 CE
 	TICKS_PER_DAY: 24 * 60 * 60 * 10000000,
 
@@ -854,7 +854,7 @@ $.extend($.calendars.baseCalendar.prototype, {
 	   yyyy - year (four digit)
 	   YYYY - formatted year
 	   J  - Julian date (days since January 1, 4713 BCE Greenwich noon)
-	   @  - Unix timestamp (ms since 01/01/1970)
+	   @  - Unix timestamp (s since 01/01/1970)
 	   !  - Windows ticks (100ns since 01/01/0001)
 	   '...' - literal text
 	   '' - single quote
@@ -940,7 +940,7 @@ $.extend($.calendars.baseCalendar.prototype, {
 						output += date.formatYear();
 						break;
 					case 'J': output += date.toJD(); break;
-					case '@': output += (date.toJD() - this.UNIX_EPOCH) * this.MS_PER_DAY; break;
+					case '@': output += (date.toJD() - this.UNIX_EPOCH) * this.SECS_PER_DAY; break;
 					case '!': output += (date.toJD() - this.TICKS_EPOCH) * this.TICKS_PER_DAY; break;
 					case "'":
 						if (doubled("'")) {
@@ -1009,7 +1009,7 @@ $.extend($.calendars.baseCalendar.prototype, {
 		// Extract a number from the string value
 		var getNumber = function(match, step) {
 			doubled(match, step);
-			var size = [2, 3, 4, 4, 10, 14, 20]['oyYJ@!'.indexOf(match) + 1];
+			var size = [2, 3, 4, 4, 10, 11, 20]['oyYJ@!'.indexOf(match) + 1];
 			var digits = new RegExp('^-?\\d{1,' + size + '}');
 			var num = value.substring(iValue).match(digits);
 			if (!num) {
@@ -1072,7 +1072,7 @@ $.extend($.calendars.baseCalendar.prototype, {
 							getNumber('J');
 						}
 						break;
-					case '@': jd = getNumber('@') / this.MS_PER_DAY + this.UNIX_EPOCH; break;
+					case '@': jd = getNumber('@') / this.SECS_PER_DAY + this.UNIX_EPOCH; break;
 					case '!': jd = getNumber('!') / this.TICKS_PER_DAY + this.TICKS_EPOCH; break;
 					case '*': iValue = value.length; break;
 					case "'":
@@ -1163,7 +1163,7 @@ $.extend($.calendars.baseCalendar.prototype, {
 
 })(jQuery);
 /* http://keith-wood.name/calendars.html
-   Calendars date picker for jQuery v1.0.1.
+   Calendars date picker for jQuery v1.1.0.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
    Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
    MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
@@ -1743,6 +1743,7 @@ $.extend(CalendarsPicker.prototype, {
 		}
 		if (inst) {
 			// Retrieve existing date(s)
+			inst.lastVal = null;
 			inst.selectedDates = $.calendars.picker._extractDates(inst, $(target).val());
 			inst.pickingRange = false;
 			inst.drawDate = $.calendars.picker._checkMinMax((inst.selectedDates[0] ||
@@ -1780,6 +1781,10 @@ $.extend(CalendarsPicker.prototype, {
 	   @param  text  (string) the text to extract from
 	   @return  (CDate[]) the extracted dates */
 	_extractDates: function(inst, datesText) {
+		if (datesText == inst.lastVal) {
+			return;
+		}
+		inst.lastVal = datesText;
 		var calendar = inst.get('calendar');
 		var dateFormat = inst.get('dateFormat');
 		var multiSelect = inst.get('multiSelect');
@@ -2112,7 +2117,7 @@ $.extend(CalendarsPicker.prototype, {
 	_keyUp: function(event) {
 		var target = event.target;
 		var inst = $.data(target, $.calendars.picker.dataName);
-		if (inst && !inst.ctrlKey) {
+		if (inst && !inst.ctrlKey && inst.lastVal != inst.target.val()) {
 			try {
 				var dates = $.calendars.picker._extractDates(inst, inst.target.val());
 				if (dates.length > 0) {
@@ -2480,7 +2485,8 @@ $.extend(CalendarsPicker.prototype, {
 		var calculateWeek = inst.get('calculateWeek');
 		var today = calendar.today();
 		var drawDate = calendar.newDate(year, month, calendar.minDay);
-		drawDate.add(-leadDays - (fixedWeeks && drawDate.dayOfWeek() == firstDay ?
+		drawDate.add(-leadDays - (fixedWeeks &&
+			(drawDate.dayOfWeek() == firstDay || drawDate.daysInMonth() < calendar.daysInWeek())?
 			calendar.daysInWeek() : 0), 'd');
 		var jd = drawDate.toJD();
 		// Generate weeks

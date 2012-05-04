@@ -82,7 +82,7 @@
 	};
 	$.calendars.picker.setDefaults($.calendars.picker.regional['bg']);
 })(jQuery);
-/* http://keith-wood.name/calendars.html
+﻿/* http://keith-wood.name/calendars.html
    Bosnian localisation for calendars datepicker for jQuery.
    Kenan Konjo. */
 (function($) {
@@ -356,27 +356,6 @@
 	$.calendars.picker.setDefaults($.calendars.picker.regional['fi']);
 })(jQuery);
 ﻿/* http://keith-wood.name/calendars.html
-   French localisation for calendars datepicker for jQuery.
-   Stéphane Nahmani (sholby@sholby.net). */
-(function($) {
-	$.calendars.picker.regional['fr'] = {
-		renderer: $.calendars.picker.defaultRenderer,
-		prevText: '&#x3c;Préc', prevStatus: 'Voir le mois précédent',
-		prevJumpText: '&#x3c;&#x3c;', prevJumpStatus: 'Voir l\'année précédent',
-		nextText: 'Suiv&#x3e;', nextStatus: 'Voir le mois suivant',
-		nextJumpText: '&#x3e;&#x3e;', nextJumpStatus: 'Voir l\'année suivant',
-		currentText: 'Courant', currentStatus: 'Voir le mois courant',
-		todayText: 'Aujourd\'hui', todayStatus: 'Voir aujourd\'hui',
-		clearText: 'Effacer', clearStatus: 'Effacer la date sélectionnée',
-		closeText: 'Fermer', closeStatus: 'Fermer sans modifier',
-		yearStatus: 'Voir une autre année', monthStatus: 'Voir un autre mois',
-		weekText: 'Sm', weekStatus: 'Semaine de l\'année',
-		dayStatus: '\'Choisir\' le DD d MM', defaultStatus: 'Choisir la date',
-		isRTL: false
-	};
-	$.calendars.picker.setDefaults($.calendars.picker.regional['fr']);
-})(jQuery);
-﻿/* http://keith-wood.name/calendars.html
    Swiss French localisation for calendars datepicker for jQuery.
    Written by Martin Voelkle (martin.voelkle@e-tc.ch). */
 (function($) {
@@ -396,6 +375,27 @@
 		isRTL: false
 	};
 	$.calendars.picker.setDefaults($.calendars.picker.regional['fr-CH']);
+})(jQuery);
+﻿/* http://keith-wood.name/calendars.html
+   French localisation for calendars datepicker for jQuery.
+   Stéphane Nahmani (sholby@sholby.net). */
+(function($) {
+	$.calendars.picker.regional['fr'] = {
+		renderer: $.calendars.picker.defaultRenderer,
+		prevText: '&#x3c;Préc', prevStatus: 'Voir le mois précédent',
+		prevJumpText: '&#x3c;&#x3c;', prevJumpStatus: 'Voir l\'année précédent',
+		nextText: 'Suiv&#x3e;', nextStatus: 'Voir le mois suivant',
+		nextJumpText: '&#x3e;&#x3e;', nextJumpStatus: 'Voir l\'année suivant',
+		currentText: 'Courant', currentStatus: 'Voir le mois courant',
+		todayText: 'Aujourd\'hui', todayStatus: 'Voir aujourd\'hui',
+		clearText: 'Effacer', clearStatus: 'Effacer la date sélectionnée',
+		closeText: 'Fermer', closeStatus: 'Fermer sans modifier',
+		yearStatus: 'Voir une autre année', monthStatus: 'Voir un autre mois',
+		weekText: 'Sm', weekStatus: 'Semaine de l\'année',
+		dayStatus: '\'Choisir\' le DD d MM', defaultStatus: 'Choisir la date',
+		isRTL: false
+	};
+	$.calendars.picker.setDefaults($.calendars.picker.regional['fr']);
 })(jQuery);
 ﻿/* http://keith-wood.name/calendars.html
    Hebrew localisation for calendars datepicker for jQuery.
@@ -752,7 +752,7 @@
 		clearText: 'Curat', clearStatus: 'Sterge data curenta',
 		closeText: 'Închide', closeStatus: 'Închide fara schimbare',
 		yearStatus: 'Arat un an diferit', monthStatus: 'Arata o luna diferita',
-		weekText: 'Sapt', weekStatus: 'Saptamana anului',
+		weekText: 'Săpt', weekStatus: 'Săptamana anului',
 		dayStatus: 'Selecteaza DD, M d', defaultStatus: 'Selecteaza o data',
 		isRTL: false
 	};
@@ -846,27 +846,6 @@
    Serbian localisation for calendars datepicker for jQuery.
    Written by Dejan Dimić. */
 (function($) {
-	$.calendars.picker.regional['sr'] = {
-		renderer: $.calendars.picker.defaultRenderer,
-		prevText: '&#x3c;', prevStatus: 'Прикажи предходни месец',
-		prevJumpText: '&#x3c;&#x3c;', prevJumpStatus: 'Прикажи предходну годину',
-		nextText: '&#x3e;', nextStatus: 'Прикажи слецећи месец',
-		nextJumpText: '&#x3e;&#x3e;', nextJumpStatus: 'Прикажи следећу годину',
-		currentText: 'Данас', currentStatus: 'Текући месец',
-		todayText: 'Данас', todayStatus: 'Текући месец',
-		clearText: 'Обриши', clearStatus: 'Обриши тренутни датум',
-		closeText: 'Затвори', closeStatus: 'Затвори календар',
-		yearStatus: 'Прикажи године', monthStatus: 'Прикажи месеце',
-		weekText: 'Сед', weekStatus: 'Седмица',
-		dayStatus: '\'Датум\' DD d MM', defaultStatus: 'Одабери датум',
-		isRTL: false
-	};
-	$.calendars.picker.setDefaults($.calendars.picker.regional['sr']);
-})(jQuery);
-﻿/* http://keith-wood.name/calendars.html
-   Serbian localisation for calendars datepicker for jQuery.
-   Written by Dejan Dimić. */
-(function($) {
 	$.calendars.picker.regional['sr-SR'] = {
 		renderer: $.calendars.picker.defaultRenderer,
 		prevText: '&#x3c;', prevStatus: 'Prikaži predhodni mesec',
@@ -883,6 +862,27 @@
 		isRTL: false
 	};
 	$.calendars.picker.setDefaults($.calendars.picker.regional['sr-SR']);
+})(jQuery);
+﻿/* http://keith-wood.name/calendars.html
+   Serbian localisation for calendars datepicker for jQuery.
+   Written by Dejan Dimić. */
+(function($) {
+	$.calendars.picker.regional['sr'] = {
+		renderer: $.calendars.picker.defaultRenderer,
+		prevText: '&#x3c;', prevStatus: 'Прикажи предходни месец',
+		prevJumpText: '&#x3c;&#x3c;', prevJumpStatus: 'Прикажи предходну годину',
+		nextText: '&#x3e;', nextStatus: 'Прикажи слецећи месец',
+		nextJumpText: '&#x3e;&#x3e;', nextJumpStatus: 'Прикажи следећу годину',
+		currentText: 'Данас', currentStatus: 'Текући месец',
+		todayText: 'Данас', todayStatus: 'Текући месец',
+		clearText: 'Обриши', clearStatus: 'Обриши тренутни датум',
+		closeText: 'Затвори', closeStatus: 'Затвори календар',
+		yearStatus: 'Прикажи године', monthStatus: 'Прикажи месеце',
+		weekText: 'Сед', weekStatus: 'Седмица',
+		dayStatus: '\'Датум\' DD d MM', defaultStatus: 'Одабери датум',
+		isRTL: false
+	};
+	$.calendars.picker.setDefaults($.calendars.picker.regional['sr']);
 })(jQuery);
 ﻿/* http://keith-wood.name/calendars.html
    Swedish localisation for calendars datepicker for jQuery.
@@ -1013,6 +1013,29 @@
 	$.calendars.picker.setDefaults($.calendars.picker.regional['zh-CN']);
 })(jQuery);
 ﻿/* http://keith-wood.name/calendars.html
+   Hong Kong Chinese localisation for calendars datepicker for jQuery.
+   Written by SCCY (samuelcychan@gmail.com). */
+(function($) {
+	$.calendars.picker.regional['zh-HK'] = {
+		renderer: $.extend({}, $.calendars.picker.defaultRenderer,
+			{month: $.calendars.picker.defaultRenderer.month.
+				replace(/monthHeader/, 'monthHeader:yyyy年 MM')}),
+		prevText: '&#x3c;上月', prevStatus: '顯示上月',
+		prevJumpText: '&#x3c;&#x3c;', prevJumpStatus: '顯示上一年',
+		nextText: '下月&#x3e;', nextStatus: '顯示下月',
+		nextJumpText: '&#x3e;&#x3e;', nextJumpStatus: '顯示下一年',
+		currentText: '今天', currentStatus: '顯示本月',
+		todayText: '今天', todayStatus: '顯示本月',
+		clearText: '清除', clearStatus: '清除已選日期',
+		closeText: '關閉', closeStatus: '不改變目前的選擇',
+		yearStatus: '選擇年份', monthStatus: '選擇月份',
+		weekText: '周', weekStatus: '年內周次',
+		dayStatus: '選擇 m月 d日, DD', defaultStatus: '請選擇日期',
+		isRTL: false
+	};
+	$.calendars.picker.setDefaults($.calendars.picker.regional['zh-HK']);
+})(jQuery);
+﻿/* http://keith-wood.name/calendars.html
    Traditional Chinese localisation for calendars datepicker for jQuery.
    Written by Ressol (ressol@gmail.com). */
 (function($) {
@@ -1035,4 +1058,3 @@
 	};
 	$.calendars.picker.setDefaults($.calendars.picker.regional['zh-TW']);
 })(jQuery);
-jQuery(function() { $.calendars.picker.setDefaults($.calendars.picker.regional['']); }); 
