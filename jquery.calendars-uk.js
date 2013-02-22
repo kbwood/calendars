@@ -1,5 +1,5 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Ukranian localisation for Gregorian/Julian calendars for jQuery.
+   Ukrainian localisation for Gregorian/Julian calendars for jQuery.
    Written by Maxim Drogobitskiy (maxdao@gmail.com). */
 (function($) {
 	$.calendars.calendars.gregorian.prototype.regional['uk'] = {

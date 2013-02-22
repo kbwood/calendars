@@ -1,12 +1,6 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Calendars localisations for jQuery v1.1.4.
-   Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
-   Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
-   MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
-   Please attribute the author if you use it. */
-/* http://keith-wood.name/calendars.html
    Afrikaans localisation for Gregorian/Julian calendars for jQuery.
-   Written by Renier Pretorius. */
+   Written by Renier Pretorius and Ruediger Thiede. */
 (function($) {
 	$.calendars.calendars.gregorian.prototype.regional['af'] = {
 		name: 'Gregorian',
@@ -16,7 +10,7 @@
 		monthNamesShort: ['Jan', 'Feb', 'Mrt', 'Apr', 'Mei', 'Jun',
 		'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Des'],
 		dayNames: ['Sondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrydag', 'Saterdag'],
-		dayNamesShort: ['Son', 'Maa', 'Din', 'Woe', 'Don', 'Vry', 'Sat'],
+		dayNamesShort: ['Son', 'Maan', 'Dins', 'Woens', 'Don', 'Vry', 'Sat'],
 		dayNamesMin: ['So','Ma','Di','Wo','Do','Vr','Sa'],
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 1,
@@ -25,6 +19,29 @@
 	if ($.calendars.calendars.julian) {
 		$.calendars.calendars.julian.prototype.regional['af'] =
 			$.calendars.calendars.gregorian.prototype.regional['af'];
+	}
+})(jQuery);
+﻿/* http://keith-wood.name/calendars.html
+   Amharic (አማርኛ) localisation for Gregorian/Julian calendars for jQuery.
+   Leyu Sisay. */
+(function($) {
+	$.calendars.calendars.gregorian.prototype.regional['am'] = {
+		name: 'Gregorian',
+		epochs: ['BCE', 'CE'],
+		monthNames: ['ጃንዋሪ','ፈብርዋሪ','ማርች','አፕሪል','ሜይ','ጁን',
+		'ጁላይ','ኦገስት','ሴፕቴምበር','ኦክቶበር','ኖቬምበር','ዲሴምበር'],
+		monthNamesShort: ['ጃንዋ', 'ፈብር', 'ማርች', 'አፕሪ', 'ሜይ', 'ጁን',
+		'ጁላይ', 'ኦገስ', 'ሴፕቴ', 'ኦክቶ', 'ኖቬም', 'ዲሴም'],
+		dayNames: ['ሰንዴይ', 'መንዴይ', 'ትዩስዴይ', 'ዌንስዴይ', 'ተርሰዴይ', 'ፍራይዴይ', 'ሳተርዴይ'],
+		dayNamesShort: ['ሰንዴ', 'መንዴ', 'ትዩስ', 'ዌንስ', 'ተርሰ', 'ፍራይ', 'ሳተር'],
+		dayNamesMin: ['ሰን', 'መን', 'ትዩ', 'ዌን', 'ተር', 'ፍራ', 'ሳተ'],
+		dateFormat: 'dd/mm/yyyy',
+		firstDay: 1,
+		isRTL: false
+	};
+	if ($.calendars.calendars.julian) {
+		$.calendars.calendars.julian.prototype.regional['am'] =
+			$.calendars.calendars.gregorian.prototype.regional['am'];
 	}
 })(jQuery);
 ﻿/* http://keith-wood.name/calendars.html
@@ -47,6 +64,29 @@
 	if ($.calendars.calendars.julian) {
 		$.calendars.calendars.julian.prototype.regional['ar-DZ'] =
 			$.calendars.calendars.gregorian.prototype.regional['ar-DZ'];
+	}
+})(jQuery);
+﻿/* http://keith-wood.name/calendars.html
+   Arabic localisation for Gregorian/Julian calendars for jQuery.
+   Mahmoud Khaled -- mahmoud.khaled@badrit.com
+   NOTE: monthNames are the new months names */
+(function($) {
+	$.calendars.calendars.gregorian.prototype.regional['ar-EG'] = {
+		name: 'Gregorian',
+		epochs: ['BCE', 'CE'],
+		monthNames: ['يناير', 'فبراير', 'مارس', 'إبريل', 'مايو', 'يونية',
+		'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'],
+		monthNamesShort: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+		dayNames:  ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'],
+		dayNamesShort: ['أحد', 'اثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة', 'سبت'],
+		dayNamesMin: ['أحد', 'اثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة', 'سبت'],
+		dateFormat: 'dd/mm/yyyy',
+		firstDay: 6,
+		isRTL: true
+	};
+	if ($.calendars.calendars.julian) {
+		$.calendars.calendars.julian.prototype.regional['ar-EG'] =
+			$.calendars.calendars.gregorian.prototype.regional['ar-EG'];
 	}
 })(jQuery);
 ﻿/* http://keith-wood.name/calendars.html
@@ -671,6 +711,27 @@
 	}
 })(jQuery);
 ﻿/* http://keith-wood.name/calendars.html
+   Hindi INDIA localisation for Gregorian/Julian calendars for jQuery.
+   Written by Pawan Kumar Singh. */
+(function($) {
+	$.calendars.calendars.gregorian.prototype.regional['hi-IN'] = {
+		name: 'Gregorian',
+		epochs: ['BCE', 'CE'],
+		monthNames: ['जनवरी',' फरवरी', 'मार्च', 'अप्रैल', 'मई', 'जून','जुलाई', 'अगस्त', 'सितम्बर', 'अक्टूबर', 'नवम्बर', 'दिसम्बर'],
+		monthNamesShort: ['जन', 'फर', 'मार्च','अप्रै', 'मई', 'जून','जुलाई', 'अग', 'सित', 'अक्टू', 'नव', 'दिस'],
+		dayNames: ['रविवार', 'सोमवार', 'मंगलवार', 'बुधवार', 'गुरुवार', 'शुक्रवार', 'शनिवार'],
+		dayNamesShort: ['रवि', 'सोम', 'मंगल', 'बुध', 'गुरु', 'शुक्र', 'शनि'],
+		dayNamesMin: ['र','सो','मं','बु','गु','शु','श'],
+		dateFormat: 'dd/mm/yyyy',
+		firstDay: 1,
+		isRTL: false
+	};
+	if ($.calendars.calendars.julian) {
+		$.calendars.calendars.julian.prototype.regional['hi-IN'] =
+			$.calendars.calendars.gregorian.prototype.regional['hi-IN'];
+	}
+})(jQuery);
+﻿/* http://keith-wood.name/calendars.html
    Croatian localisation for Gregorian/Julian calendars for jQuery.
    Written by Vjekoslav Nesek. */
 (function($) {
@@ -832,17 +893,63 @@
 	}
 })(jQuery);
 ﻿/* http://keith-wood.name/calendars.html
+   Georgian localisation for Gregorian/Julian calendars for jQuery.
+   Andrei Gorbushkin. */
+(function($) {
+	$.calendars.calendars.gregorian.prototype.regional['ka'] = {
+		name: 'Gregorian',
+		epochs: ['BCE', 'CE'],
+		monthNames: ['იანვარი','თებერვალი','მარტი','აპრილი','მაისი','ივნისი',
+		'ივლისი','აგვისტო','სექტემბერი','ოქტომბერი','ნოემბერი','დეკემბერი'],
+		monthNamesShort: ['იან', 'თებ', 'მარ', 'აპრ', 'მაისი', 'ივნ',
+		'ივლ', 'აგვ', 'სექ', 'ოქტ', 'ნოე', 'დეკ'],
+		dayNames: ['კვირა', 'ორშაბათი', 'სამშაბათი', 'ოთხშაბათი', 'ხუთშაბათი', 'პარასკევი', 'შაბათი'],
+		dayNamesShort: ['კვ', 'ორშ', 'სამ', 'ოთხ', 'ხუთ', 'პარ', 'შაბ'],
+		dayNamesMin: ['კვ','ორ','სმ','ოთ', 'ხშ', 'პრ','შბ'],
+		dateFormat: 'dd/mm/yyyy',
+		firstDay: 1,
+		isRTL: false
+	};
+	if ($.calendars.calendars.julian) {
+		$.calendars.calendars.julian.prototype.regional['ka'] =
+			$.calendars.calendars.gregorian.prototype.regional['ka'];
+	}
+})(jQuery);
+﻿/* http://keith-wood.name/calendars.html
+   Khmer initialisation for Gregorian/Julian calendars for jQuery.
+   Written by Sovichet Tep (sovichet.tep@gmail.com). */
+(function($) {
+	$.calendars.calendars.gregorian.prototype.regional['km'] = {
+		name: 'Gregorian',
+		epochs: ['BCE', 'CE'],
+		monthNames: ['ខែ​មករា','ខែ​កុម្ភៈ','ខែ​មិនា','ខែ​មេសា','ខែ​ឧសភា','ខែ​មិថុនា',
+		'ខែ​កក្កដា','ខែ​សីហា','ខែ​កញ្ញា','ខែ​តុលា','ខែ​វិច្ឆិកា','ខែ​ធ្នូ'],
+		monthNamesShort: ['មក', 'កុ', 'មិនា', 'មេ', 'ឧស', 'មិថុ',
+		'កក្ក', 'សី', 'កញ្ញា', 'តុលា', 'វិច្ឆិ', 'ធ្នូ'],
+		dayNames: ['ថ្ងៃ​អាទិត្យ', 'ថ្ងៃ​ចន្ទ', 'ថ្ងៃ​អង្គារ', 'ថ្ងៃ​ពុធ', 'ថ្ងៃ​ព្រហស្បត្តិ៍', 'ថ្ងៃ​សុក្រ', 'ថ្ងៃ​សៅរ៍'],
+		dayNamesShort: ['អា', 'ចន្ទ', 'អង្គ', 'ពុធ', 'ព្រហ', 'សុ', 'សៅរ៍'],
+		dayNamesMin: ['អា','ច','អ','ពុ','ព្រ','សុ','ស'],
+		dateFormat: 'dd/mm/yyyy',
+		firstDay: 1,
+		isRTL: false
+	};
+	if ($.calendars.calendars.julian) {
+		$.calendars.calendars.julian.prototype.regional['km'] =
+			$.calendars.calendars.gregorian.prototype.regional['km'];
+	}
+})(jQuery);
+﻿/* http://keith-wood.name/calendars.html
    Korean localisation for Gregorian/Julian calendars for jQuery.
-   Written by DaeKwon Kang (ncrash.dk@gmail.com). */
+   Written by DaeKwon Kang (ncrash.dk@gmail.com), Edited by Genie. */
 (function($) {
 	$.calendars.calendars.gregorian.prototype.regional['ko'] = {
 		name: 'Gregorian',
 		epochs: ['BCE', 'CE'],
-		monthNames: ['1월(JAN)','2월(FEB)','3월(MAR)','4월(APR)','5월(MAY)','6월(JUN)',
-		'7월(JUL)','8월(AUG)','9월(SEP)','10월(OCT)','11월(NOV)','12월(DEC)'],
-		monthNamesShort: ['1월(JAN)','2월(FEB)','3월(MAR)','4월(APR)','5월(MAY)','6월(JUN)',
-		'7월(JUL)','8월(AUG)','9월(SEP)','10월(OCT)','11월(NOV)','12월(DEC)'],
-		dayNames: ['일','월','화','수','목','금','토'],
+		monthNames: ['1월','2월','3월','4월','5월','6월',
+		'7월','8월','9월','10월','11월','12월'],
+		monthNamesShort: ['1월','2월','3월','4월','5월','6월',
+		'7월','8월','9월','10월','11월','12월'],
+		dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'],
 		dayNamesShort: ['일','월','화','수','목','금','토'],
 		dayNamesMin: ['일','월','화','수','목','금','토'],
 		dateFormat: 'yyyy-mm-dd',
@@ -1013,6 +1120,29 @@
 	if ($.calendars.calendars.julian) {
 		$.calendars.calendars.julian.prototype.regional['ms'] =
 			$.calendars.calendars.gregorian.prototype.regional['ms'];
+	}
+})(jQuery);
+﻿/* http://keith-wood.name/calendars.html
+   Maltese localisation for Gregorian/Julian calendars for jQuery.
+   Written by Chritian Sciberras (uuf6429@gmail.com). */
+(function($) {
+	$.calendars.calendars.gregorian.prototype.regional['mt'] = {
+		name: 'Gregorian',
+		epochs: ['BCE', 'CE'],
+		monthNames: ['Jannar','Frar','Marzu','April','Mejju','Ġunju',
+		'Lulju','Awissu','Settembru','Ottubru','Novembru','Diċembru'],
+		monthNamesShort: ['Jan', 'Fra', 'Mar', 'Apr', 'Mej', 'Ġun',
+		'Lul', 'Awi', 'Set', 'Ott', 'Nov', 'Diċ'],
+		dayNames: ['Il-Ħadd', 'It-Tnejn', 'It-Tlieta', 'L-Erbgħa', 'Il-Ħamis', 'Il-Ġimgħa', 'Is-Sibt'],
+		dayNamesShort: ['Ħad', 'Tne', 'Tli', 'Erb', 'Ħam', 'Ġim', 'Sib'],
+		dayNamesMin: ['Ħ','T','T','E','Ħ','Ġ','S'],
+		dateFormat: 'dd/mm/yyyy',
+		firstDay: 1,
+		isRTL: false
+	};
+	if ($.calendars.calendars.julian) {
+		$.calendars.calendars.julian.prototype.regional['mt'] =
+			$.calendars.calendars.gregorian.prototype.regional['mt'];
 	}
 })(jQuery);
 ﻿/* http://keith-wood.name/calendars.html
@@ -1406,7 +1536,7 @@
 	}
 })(jQuery);
 ﻿/* http://keith-wood.name/calendars.html
-   Ukranian localisation for Gregorian/Julian calendars for jQuery.
+   Ukrainian localisation for Gregorian/Julian calendars for jQuery.
    Written by Maxim Drogobitskiy (maxdao@gmail.com). */
 (function($) {
 	$.calendars.calendars.gregorian.prototype.regional['uk'] = {

@@ -1,0 +1,39 @@
+{
+	"name": "kbw.calendars",
+	"title": "jQuery Calendars",
+	"description": "This plugin provides support for various world calendars, including a datepicker. * Calendars: Gregorian, Julian, Taiwanese, Thai, Persian, Islamic, Hebrew, Ethiopian, Coptic, Mayan. * Parse and format dates in all these calendars. * Style the datepicker using one of five themes, or use any of the standard Themeroller themes. * Over 70 localisations for Gregorian/Julian calendars.",
+	"keywords": [
+		"calendar",
+		"date",
+		"datepicker",
+		"i18n",
+		"input",
+		"ui",
+		"validation"
+	],
+	"version": "1.2.0",
+	"author": {
+		"name": "Keith Wood",
+		"url": "http://keith-wood.name/"
+	},
+	"maintainers": [
+		{
+			"name": "Keith Wood",
+			"email": "kbwood@iinet.com.au",
+			"url": "http://keith-wood.name/"
+		}
+	],
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt"
+		}
+	],
+	"bugs": "https://github.com/kbwood/calendars/issues",
+	"homepage": "http://keith-wood.name/calendars.html",
+	"docs": "http://keith-wood.name/calendarsRef.html",
+	"download": "http://keith-wood.name/calendars.html",
+	"dependencies": {
+		"jquery": ">=1.6"
+	}
+}

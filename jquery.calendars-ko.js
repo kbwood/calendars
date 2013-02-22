@@ -1,15 +1,15 @@
 ﻿/* http://keith-wood.name/calendars.html
    Korean localisation for Gregorian/Julian calendars for jQuery.
-   Written by DaeKwon Kang (ncrash.dk@gmail.com). */
+   Written by DaeKwon Kang (ncrash.dk@gmail.com), Edited by Genie. */
 (function($) {
 	$.calendars.calendars.gregorian.prototype.regional['ko'] = {
 		name: 'Gregorian',
 		epochs: ['BCE', 'CE'],
-		monthNames: ['1월(JAN)','2월(FEB)','3월(MAR)','4월(APR)','5월(MAY)','6월(JUN)',
-		'7월(JUL)','8월(AUG)','9월(SEP)','10월(OCT)','11월(NOV)','12월(DEC)'],
-		monthNamesShort: ['1월(JAN)','2월(FEB)','3월(MAR)','4월(APR)','5월(MAY)','6월(JUN)',
-		'7월(JUL)','8월(AUG)','9월(SEP)','10월(OCT)','11월(NOV)','12월(DEC)'],
-		dayNames: ['일','월','화','수','목','금','토'],
+		monthNames: ['1월','2월','3월','4월','5월','6월',
+		'7월','8월','9월','10월','11월','12월'],
+		monthNamesShort: ['1월','2월','3월','4월','5월','6월',
+		'7월','8월','9월','10월','11월','12월'],
+		dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'],
 		dayNamesShort: ['일','월','화','수','목','금','토'],
 		dayNamesMin: ['일','월','화','수','목','금','토'],
 		dateFormat: 'yyyy-mm-dd',

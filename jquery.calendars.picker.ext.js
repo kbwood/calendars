@@ -1,8 +1,7 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Calendars date picker extensions for jQuery v1.1.4.
+   Calendars date picker extensions for jQuery v1.2.0.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
-   Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
-   MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
+   Available under the MIT (https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt) license. 
    Please attribute the author if you use it. */
 
 (function($) { // Hide scope, no $ conflict
@@ -94,14 +93,16 @@ $.extend($.calendars.picker, {
 	                    this refers to the target input or division */
 	hoverCallback: function(onHover) {
 		return function(picker, calendar, inst) {
-			var target = this;
-			var renderer = inst.get('renderer');
-			picker.find(renderer.daySelector + ' a, ' + renderer.daySelector + ' span').
-				hover(function() {
-					onHover.apply(target, [$.calendars.picker.retrieveDate(target, this),
-						this.nodeName.toLowerCase() == 'a']);
-				},
-				function() { onHover.apply(target, []); });
+			if ($.isFunction(onHover)) {
+				var target = this;
+				var renderer = inst.options.renderer;
+				picker.find(renderer.daySelector + ' a, ' + renderer.daySelector + ' span').
+					hover(function() {
+						onHover.apply(target, [$(target).calendarsPicker('retrieveDate', this),
+							this.nodeName.toLowerCase() == 'a']);
+					},
+					function() { onHover.apply(target, []); });
+			}
 		};
 	},
 
@@ -112,7 +113,7 @@ $.extend($.calendars.picker, {
 	   @param  inst      (object) the current instance settings */
 	highlightWeek: function(picker, calendar, inst) {
 		var target = this;
-		var renderer = inst.get('renderer');
+		var renderer = inst.options.renderer;
 		picker.find(renderer.daySelector + ' a, ' + renderer.daySelector + ' span').
 			hover(function() {
 				$(this).parents('tr').find(renderer.daySelector + ' *').
@@ -130,10 +131,8 @@ $.extend($.calendars.picker, {
 	   @param  calendar  (*Calendar) the calendar implementation
 	   @param  inst      (object) the current instance settings */
 	showStatus: function(picker, calendar, inst) {
-		var target = this;
-		var renderer = inst.get('renderer');
-		var isTR = (renderer.selectedClass == 'ui-state-active');
-		var defaultStatus = inst.get('defaultStatus') || '&nbsp;';
+		var isTR = (inst.options.renderer.selectedClass == 'ui-state-active');
+		var defaultStatus = inst.options.defaultStatus || '&nbsp;';
 		var status = $('<div class="' + (!isTR ? 'calendars-status' :
 			'ui-datepicker-status ui-widget-header ui-helper-clearfix ui-corner-all') + '">' +
 			defaultStatus + '</div>').
@@ -153,12 +152,9 @@ $.extend($.calendars.picker, {
 	   @param  inst      (object) the current instance settings */
 	monthNavigation: function(picker, calendar, inst) {
 		var target = $(this);
-		var renderer = inst.get('renderer');
-		var isTR = (renderer.selectedClass == 'ui-state-active');
+		var isTR = (inst.options.renderer.selectedClass == 'ui-state-active');
 		var minDate = inst.curMinDate();
 		var maxDate = inst.get('maxDate');
-		var monthNames = calendar.local.monthNames;
-		var monthNamesShort = calendar.local.monthNamesShort;
 		var year = inst.drawDate.year();
 		var html = '<div class="' + (!isTR ? 'calendars-month-nav' : 'ui-datepicker-month-nav') + '">';
 		for (var i = 0; i < calendar.monthsInYear(year); i++) {
@@ -168,13 +164,13 @@ $.extend($.calendars.picker, {
 				calendar.newDate(year, i + calendar.minMonth, calendar.minDay).compareTo(maxDate) < +1));
 			html += '<div>' + (inRange ? '<a href="#" class="jd' +
 				calendar.newDate(year, i + calendar.minMonth, calendar.minDay).toJD() + '"' : '<span') +
-				' title="' + monthNames[ord] + '">' + monthNamesShort[ord] +
+				' title="' + calendar.local.monthNames[ord] + '">' + calendar.local.monthNamesShort[ord] +
 				(inRange ? '</a>' : '</span>') + '</div>';
 		}
 		html += '</div>';
 		$(html).insertAfter(picker.find('div.calendars-nav,div.ui-datepicker-header:first')).
 			find('a').click(function() {
-				var date = $.calendars.picker.retrieveDate(target[0], this);
+				var date = target.calendarsPicker('retrieveDate', this);
 				target.calendarsPicker('showMonth', date.year(), date.month());
 				return false;
 			});
@@ -198,7 +194,7 @@ $.extend($.calendars.picker, {
 					for (var i = 1; i < calendar.daysInWeek(); i++) {
 						dates.push(date = date.newDate().add(1, 'd'));
 					}
-					if (inst.get('rangeSelect')) {
+					if (inst.options.rangeSelect) {
 						dates.splice(1, dates.length - 2);
 					}
 					target.calendarsPicker('setDate', dates).calendarsPicker('hide');
@@ -226,7 +222,7 @@ $.extend($.calendars.picker, {
 					for (var i = 1; i < dim; i++) {
 						dates.push(date = date.newDate().add(1, 'd'));
 					}
-					if (inst.get('rangeSelect')) {
+					if (inst.options.rangeSelect) {
 						dates.splice(1, dates.length - 2);
 					}
 					target.calendarsPicker('setDate', dates).calendarsPicker('hide');

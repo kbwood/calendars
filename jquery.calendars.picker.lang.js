@@ -1,12 +1,6 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Calendars date picker localisations for jQuery v1.1.4.
-   Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
-   Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
-   MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
-   Please attribute the author if you use it. */
-/* http://keith-wood.name/calendars.html
    Afrikaans localisation for calendars datepicker for jQuery.
-   Written by Renier Pretorius. */
+   Written by Renier Pretorius and Ruediger Thiede. */
 (function($) {
 	$.calendars.picker.regional['af'] = {
 		renderer: $.calendars.picker.defaultRenderer,
@@ -16,14 +10,35 @@
 		nextJumpText: '&#x3e;&#x3e;', nextJumpStatus: 'Vertoon volgende jaar',
 		currentText: 'Vandag', currentStatus: 'Vertoon huidige maand',
 		todayText: 'Vandag', todayStatus: 'Vertoon huidige maand',
-		clearText: 'Kanselleer', clearStatus: 'Korigeer die huidige datum',
-		closeText: 'Selekteer', closeStatus: 'Sluit sonder verandering',
-		yearStatus: 'Vertoon n ander jaar', monthStatus: 'Vertoon n ander maand',
+		clearText: 'Vee uit', clearStatus: 'Verwyder die huidige datum',
+		closeText: 'Klaar', closeStatus: 'Sluit sonder verandering',
+		yearStatus: 'Vertoon \'n ander jaar', monthStatus: 'Vertoon \'n ander maand',
 		weekText: 'Wk', weekStatus: 'Week van die jaar',
-		dayStatus: 'Kies DD, M d', defaultStatus: 'Kies n datum',
+		dayStatus: 'Kies DD, M d', defaultStatus: 'Kies \'n datum',
 		isRTL: false
 	};
 	$.calendars.picker.setDefaults($.calendars.picker.regional['af']);
+})(jQuery);
+﻿/* http://keith-wood.name/calendars.html
+   Amharic (አማርኛ) localisation for calendars datepicker for jQuery.
+   Leyu Sisay. */
+(function($) {
+	$.calendars.picker.regional['am'] = {
+		renderer: $.calendars.picker.defaultRenderer,
+		prevText: 'ያለፈ', prevStatus: 'ያለፈውን ወር አሳይ',
+		prevJumpText: '&#x3c;&#x3c;', prevJumpStatus: 'ያለፈውን ዓመት አሳይ',
+		nextText: 'ቀጣይ', nextStatus: 'ቀጣዩን ወር አሳይ',
+		nextJumpText: '&#x3e;&#x3e;', nextJumpStatus: 'ቀጣዩን ዓመት አሳይ',
+		currentText: 'አሁን', currentStatus: 'የአሁኑን ወር አሳይ',
+		todayText: 'ዛሬ', todayStatus: 'የዛሬን ወር አሳይ',
+		clearText: 'አጥፋ', clearStatus: 'የተመረጠውን ቀን አጥፋ',
+		closeText: 'ዝጋ', closeStatus: 'የቀን መምረጫውን ዝጋ',
+		yearStatus: 'ዓመቱን ቀይር', monthStatus: 'ወሩን ቀይር',
+		weekText: 'ሳም', weekStatus: 'የዓመቱ ሳምንት ',
+		dayStatus: 'DD, M d, yyyy ምረጥ', defaultStatus: 'ቀን ምረጥ',
+		isRTL: false
+	};
+	$.calendars.picker.setDefaults($.calendars.picker.regional['am']);
 })(jQuery);
 ﻿/* http://keith-wood.name/calendars.html
    Algerian (and Tunisian) Arabic localisation for calendars datepicker for jQuery.
@@ -45,6 +60,28 @@
 		isRTL: true
 	};
 	$.calendars.picker.setDefaults($.calendars.picker.regional['ar-DZ']);
+})(jQuery);
+﻿/* http://keith-wood.name/calendars.html
+   Arabic localisation for calendars datepicker for jQuery.
+   Mahmoud Khaled -- mahmoud.khaled@badrit.com
+   NOTE: monthNames are the new months names */
+(function($) {
+	$.calendars.picker.regional['ar-EG'] = {
+		renderer: $.calendars.picker.defaultRenderer,
+		prevText: '&#x3c;السابق', prevStatus: 'عرض الشهر السابق',
+		prevJumpText: '&#x3c;&#x3c;', prevJumpStatus: '',
+		nextText: 'التالي&#x3e;', nextStatus: 'عرض الشهر القادم',
+		nextJumpText: '&#x3e;&#x3e;', nextJumpStatus: '',
+		currentText: 'اليوم', currentStatus: 'عرض الشهر الحالي',
+		todayText: 'اليوم', todayStatus: 'عرض الشهر الحالي',
+		clearText: 'مسح', clearStatus: 'امسح التاريخ الحالي',
+		closeText: 'إغلاق', closeStatus: 'إغلاق بدون حفظ',
+		yearStatus: 'عرض سنة آخرى', monthStatus: 'عرض شهر آخر',
+		weekText: 'أسبوع', weekStatus: 'أسبوع السنة',
+		dayStatus: 'اختر D, M d', defaultStatus: 'اختر يوم',
+		isRTL: true
+	};
+	$.calendars.picker.setDefaults($.calendars.picker.regional['ar-EG']);
 })(jQuery);
 ﻿/* http://keith-wood.name/calendars.html
    Arabic localisation for calendars datepicker for jQuery.
@@ -614,6 +651,27 @@
 	$.calendars.picker.setDefaults($.calendars.picker.regional['he']);
 })(jQuery);
 ﻿/* http://keith-wood.name/calendars.html
+   Hindi INDIA localisation for calendars datepicker for jQuery.
+   Written by Pawan Kumar Singh. */
+(function($) {
+	$.calendars.picker.regional['hi-IN'] = {
+		renderer: $.calendars.picker.defaultRenderer,
+		prevText: 'पिछला', prevStatus: 'पिछला महीना देखें',
+		prevJumpText: '&#x3c;&#x3c;', prevJumpStatus: 'पिछला वर्ष देखें',
+		nextText: 'अगला', nextStatus: 'अगला महीना देखें',
+		nextJumpText: '&#x3e;&#x3e;', nextJumpStatus: 'अगला वर्ष देखें',
+		currentText: 'वर्तमान', currentStatus: 'वर्तमान महीना देखें',
+		todayText: 'आज', todayStatus: 'वर्तमान दिन देखें',
+		clearText: 'साफ', clearStatus: 'वर्तमान दिनांक मिटाए',
+		closeText: 'समाप्त', closeStatus: 'बदलाव के बिना बंद',
+		yearStatus: 'एक अलग वर्ष का चयन करें', monthStatus: 'एक अलग महीने का चयन करें',
+		weekText: 'Wk', weekStatus: 'वर्ष का सप्ताह',
+		dayStatus: 'चुने DD, M d', defaultStatus: 'एक तिथि का चयन करें',
+		isRTL: false
+	};
+	$.calendars.picker.setDefaults($.calendars.picker.regional['hi-IN']);
+})(jQuery);
+﻿/* http://keith-wood.name/calendars.html
    Croatian localisation for calendars datepicker for jQuery.
    Written by Vjekoslav Nesek. */
 (function($) {
@@ -763,24 +821,66 @@
 	$.calendars.picker.setDefaults($.calendars.picker.regional['ja']);
 })(jQuery);
 ﻿/* http://keith-wood.name/calendars.html
+   Georgian localisation for calendars datepicker for jQuery.
+   Andrei Gorbushkin. */
+(function($) {
+	$.calendars.picker.regional['ka'] = {
+		renderer: $.calendars.picker.defaultRenderer,
+		prevText: '<უკან', prevStatus: 'წინა თვე',
+		prevJumpText: '&#x3c;&#x3c;', prevJumpStatus: 'წინა წელი',
+		nextText: 'წინ>', nextStatus: 'შემდეგი თვე',
+		nextJumpText: '&#x3e;&#x3e;', nextJumpStatus: 'შემდეგი წელი',
+		currentText: 'მიმდინარე', currentStatus: 'მიმდინარე თვე',
+		todayText: 'დღეს', todayStatus: 'მიმდინარე დღე',
+		clearText: 'გასუფთავება', clearStatus: 'მიმდინარე თარიღის წაშლა',
+		closeText: 'არის', closeStatus: 'დახურვა უცვლილებოდ',
+		yearStatus: 'სხვა წელი', monthStatus: 'სხვა თვე',
+		weekText: 'კვ', weekStatus: 'წლის კვირა',
+		dayStatus: 'აირჩიეთ DD, M d', defaultStatus: 'აიღჩიეთ თარიღი',
+		isRTL: false
+	};
+	$.calendars.picker.setDefaults($.calendars.picker.regional['ka']);
+})(jQuery);
+﻿/* http://keith-wood.name/calendars.html
+   Khmer initialisation for calendars datepicker for jQuery.
+   Written by Sovichet Tep (sovichet.tep@gmail.com). */
+(function($) {
+	$.calendars.picker.regional['km'] = {
+		renderer: $.calendars.picker.defaultRenderer,
+		prevText: 'ថយ​ក្រោយ', prevStatus: '',
+		prevJumpText: '&#x3c;&#x3c;', prevJumpStatus: '',
+		nextText: 'ទៅ​មុខ', nextStatus: '',
+		nextJumpText: '&#x3e;&#x3e;', nextJumpStatus: '',
+		currentText: 'ថ្ងៃ​នេះ', currentStatus: '',
+		todayText: 'ថ្ងៃ​នេះ', todayStatus: '',
+		clearText: 'X', clearStatus: '',
+		closeText: 'រួច​រាល់', closeStatus: '',
+		yearStatus: '', monthStatus: '',
+		weekText: 'Wk', weekStatus: '',
+		dayStatus: 'DD d MM', defaultStatus: '',
+		isRTL: false
+	};
+	$.calendars.picker.setDefaults($.calendars.picker.regional['km']);
+})(jQuery);
+﻿/* http://keith-wood.name/calendars.html
    Korean localisation for calendars datepicker for jQuery.
-   Written by DaeKwon Kang (ncrash.dk@gmail.com). */
+   Written by DaeKwon Kang (ncrash.dk@gmail.com), Edited by Genie. */
 (function($) {
 	$.calendars.picker.regional['ko'] = {
 		renderer: $.extend({}, $.calendars.picker.defaultRenderer,
 			{month: $.calendars.picker.defaultRenderer.month.
-				replace(/monthHeader/, 'monthHeader:MM yyyy년')}),
-		prevText: '이전달', prevStatus: '',
-		prevJumpText: '&#x3c;&#x3c;', prevJumpStatus: '',
-		nextText: '다음달', nextStatus: '',
-		nextJumpText: '&#x3e;&#x3e;', nextJumpStatus: '',
-		currentText: '오늘', currentStatus: '',
-		todayText: '오늘', todayStatus: '',
-		clearText: '지우기', clearStatus: '',
+				replace(/monthHeader/, 'monthHeader:yyyy년 MM')}),
+		prevText: '이전달', prevStatus: '이전달을 표시합니다',
+		prevJumpText: '&#x3c;&#x3c;', prevJumpStatus: '이전 연도를 표시합니다',
+		nextText: '다음달', nextStatus: '다음달을 표시합니다',
+		nextJumpText: '&#x3e;&#x3e;', nextJumpStatus: '다음 연도를 표시합니다',
+		currentText: '현재', currentStatus: '입력한 달을 표시합니다',
+		todayText: '오늘', todayStatus: '이번달을 표시합니다',
+		clearText: '지우기', clearStatus: '입력한 날짜를 지웁니다',
 		closeText: '닫기', closeStatus: '',
-		yearStatus: '', monthStatus: '',
-		weekText: 'Wk', weekStatus: '',
-		dayStatus: 'DD, M d', defaultStatus: '',
+		yearStatus: '표시할 연도를 변경합니다', monthStatus: '표시할 월을 변경합니다',
+		weekText: 'Wk', weekStatus: '해당 연도의 주차',
+		dayStatus: 'M d일 (D)', defaultStatus: '날짜를 선택하세요',
 		isRTL: false
 	};
 	$.calendars.picker.setDefaults($.calendars.picker.regional['ko']);
@@ -933,6 +1033,27 @@
 	$.calendars.picker.setDefaults($.calendars.picker.regional['ms']);
 })(jQuery);
 ﻿/* http://keith-wood.name/calendars.html
+   Maltese localisation for calendars datepicker for jQuery.
+   Written by Chritian Sciberras (uuf6429@gmail.com). */
+(function($) {
+	$.calendars.picker.regional['mt'] = {
+		renderer: $.calendars.picker.defaultRenderer,
+		prevText: 'Ta Qabel', prevStatus: 'Ix-xahar ta qabel',
+ 		prevJumpText: '&#x3c;&#x3c;', prevJumpStatus: 'Is-sena ta qabel',
+ 		nextText: 'Li Jmiss', nextStatus: 'Ix-xahar li jmiss',
+ 		nextJumpText: '&#x3e;&#x3e;', nextJumpStatus: 'Is-sena li jmiss',
+ 		currentText: 'Illum', currentStatus: 'Ix-xahar ta llum',
+ 		todayText: 'Illum', todayStatus: 'Uri ix-xahar ta llum',
+ 		clearText: 'Ħassar', clearStatus: 'Ħassar id-data',
+ 		closeText: 'Lest', closeStatus: 'Għalaq mingħajr tibdiliet',
+ 		yearStatus: 'Uri sena differenti', monthStatus: 'Uri xahar differenti',
+		weekText: 'Ġm', weekStatus: 'Il-Ġimgħa fis-sena',
+		dayStatus: 'Għazel DD, M d', defaultStatus: 'Għazel data',
+		isRTL: false
+	};
+	$.calendars.picker.setDefaults($.calendars.picker.regional['mt']);
+})(jQuery);
+﻿/* http://keith-wood.name/calendars.html
    Dutch/Belgian localisation for calendars datepicker for jQuery.
    Written by Mathias Bynens <http://mathiasbynens.be/>. */
 (function($) {
@@ -1022,17 +1143,17 @@
 (function($) {
 	$.calendars.picker.regional['pt-BR'] = {
 		renderer: $.calendars.picker.defaultRenderer,
-		prevText: '&#x3c;Anterior', prevStatus: '',
-		prevJumpText: '&#x3c;&#x3c;', prevJumpStatus: '',
-		nextText: 'Pr&oacute;ximo&#x3e;', nextStatus: '',
-		nextJumpText: '&#x3e;&#x3e;', nextJumpStatus: '',
-		currentText: 'Hoje', currentStatus: '',
-		todayText: 'Hoje', todayStatus: '',
-		clearText: 'Limpar', clearStatus: '',
-		closeText: 'Fechar', closeStatus: '',
-		yearStatus: '', monthStatus: '',
-		weekText: 'Sm', weekStatus: '',
-		dayStatus: 'DD, M d', defaultStatus: '',
+		prevText: '&lt;Anterior', prevStatus: 'Mostra o mês anterior', 
+		prevJumpText: '&lt;&lt;', prevJumpStatus: 'Mostra o ano anterior', 
+		nextText: 'Próximo&gt;', nextStatus: 'Mostra o próximo mês', 
+		nextJumpText: '&gt;&gt;', nextJumpStatus: 'Mostra o próximo ano',
+		currentText: 'Atual', currentStatus: 'Mostra o mês atual',
+		todayText: 'Hoje', todayStatus: 'Vai para hoje', 
+		clearText: 'Limpar', clearStatus: 'Limpar data',
+		closeText: 'Fechar', closeStatus: 'Fechar o calendário',
+		yearStatus: 'Selecionar ano', monthStatus: 'Selecionar mês',
+		weekText: 's', weekStatus: 'Semana do ano', 
+		dayStatus: 'DD, d \'de\' M \'de\' yyyy', defaultStatus: 'Selecione um dia',
 		isRTL: false
 	};
 	$.calendars.picker.setDefaults($.calendars.picker.regional['pt-BR']);
@@ -1290,7 +1411,7 @@
 	$.calendars.picker.setDefaults($.calendars.picker.regional['tr']);
 })(jQuery);
 ﻿/* http://keith-wood.name/calendars.html
-   Ukranian localisation for calendars datepicker for jQuery.
+   Ukrainian localisation for calendars datepicker for jQuery.
    Written by Maxim Drogobitskiy (maxdao@gmail.com). */
 (function($) {
 	$.calendars.picker.regional['uk'] = {

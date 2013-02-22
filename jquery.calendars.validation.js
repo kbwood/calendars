@@ -1,9 +1,8 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Calendars Validation extension for jQuery 1.1.4.
+   Calendars Validation extension for jQuery 1.2.0.
    Requires Jörn Zaefferer's Validation plugin (http://plugins.jquery.com/project/validate).
    Written by Keith Wood (kbwood{at}iinet.com.au).
-   Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
-   MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
+   Available under the MIT (https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt) license. 
    Please attribute the author if you use it. */
 
 (function($) { // Hide the namespace
@@ -38,7 +37,7 @@ if ($.fn.validate) {
 		   @param  elem    (element) the selected datepicker element */
 		selectDate: function(target, elem) {
 			this.selectDateOrig(target, elem);
-			var inst = $.data(target, $.calendars.picker.dataName);
+			var inst = $.data(target, $.calendars.picker.propertyName);
 			if (!inst.inline && $.fn.validate) {
 				var validation = $(target).parents('form').validate();
 				if (validation) {
@@ -51,9 +50,9 @@ if ($.fn.validate) {
 		   @param  error    (jQuery) the error message
 		   @param  element  (jQuery) the field in error */
 		errorPlacement: function(error, element) {
-			var inst = $.data(element[0], $.calendars.picker.dataName);
+			var inst = $.data(element[0], $.calendars.picker.propertyName);
 			if (inst) {
-				error[inst.get('isRTL') ? 'insertBefore' : 'insertAfter'](
+				error[inst.options.isRTL ? 'insertBefore' : 'insertAfter'](
 					inst.trigger.length > 0 ? inst.trigger : element);
 			}
 			else {
@@ -80,12 +79,12 @@ if ($.fn.validate) {
 	var lastElement = null;
 
 	/* Validate date field. */
-	$.validator.addMethod('cpDate', function(value, element, params) {
+	$.validator.addMethod('cpDate', function(value, element) {
 			lastElement = element;
 			return this.optional(element) || validateEach(value, element);
 		},
 		function(params) {
-			var inst = $.data(lastElement, $.calendars.picker.dataName);
+			var inst = $.data(lastElement, $.calendars.picker.propertyName);
 			var minDate = inst.get('minDate');
 			var maxDate = inst.get('maxDate');
 			var messages = $.calendars.picker._defaults;
@@ -101,14 +100,12 @@ if ($.fn.validate) {
 	   @param  element  (element) the field control
 	   @return  (boolean) true if OK, false if failed validation */
 	function validateEach(value, element) {
-		var inst = $.data(element, $.calendars.picker.dataName);
-		var rangeSelect = inst.get('rangeSelect');
-		var multiSelect = inst.get('multiSelect');
-		var dates = (multiSelect ? value.split(inst.get('multiSeparator')) :
-			(rangeSelect ? value.split(inst.get('rangeSeparator')) : [value]));
-		var ok = (multiSelect && dates.length <= multiSelect) ||
-			(!multiSelect && rangeSelect && dates.length == 2) ||
-			(!multiSelect && !rangeSelect && dates.length == 1);
+		var inst = $.data(element, $.calendars.picker.propertyName);
+		var dates = (inst.options.multiSelect ? value.split(inst.options.multiSeparator) :
+			(inst.options.rangeSelect ? value.split(inst.options.rangeSeparator) : [value]));
+		var ok = (inst.options.multiSelect && dates.length <= inst.options.multiSelect) ||
+			(!inst.options.multiSelect && inst.options.rangeSelect && dates.length == 2) ||
+			(!inst.options.multiSelect && !inst.options.rangeSelect && dates.length == 1);
 		if (ok) {
 			try {
 				var dateFormat = inst.get('dateFormat');
@@ -116,7 +113,7 @@ if ($.fn.validate) {
 				var maxDate = inst.get('maxDate');
 				var cp = $(element);
 				$.each(dates, function(i, v) {
-					dates[i] = inst.get('calendar').parseDate(dateFormat, v);
+					dates[i] = inst.options.calendar.parseDate(dateFormat, v);
 					ok = ok && (!dates[i] || (cp.calendarsPicker('isSelectable', dates[i]) &&
 						(!minDate || dates[i].compareTo(minDate) != -1) &&
 						(!maxDate || dates[i].compareTo(maxDate) != +1)));
@@ -126,7 +123,7 @@ if ($.fn.validate) {
 				ok = false;
 			}
 		}
-		if (ok && rangeSelect) {
+		if (ok && inst.options.rangeSelect) {
 			ok = (dates[0].compareTo(dates[1]) != +1);
 		}
 		return ok;
@@ -212,19 +209,18 @@ if ($.fn.validate) {
 		if (source.newDate && source.extraInfo) { // Already a CDate
 			return [source];
 		}
-		var inst = $.data(element, $.calendars.picker.dataName);
-		var calendar = inst.get('calendar');
+		var inst = $.data(element, $.calendars.picker.propertyName);
 		var thatDate = null;
 		try {
 			if (typeof source == 'string' && source != 'today') {
-				thatDate = calendar.parseDate(inst.get('dateFormat'), source);
+				thatDate = inst.options.calendar.parseDate(inst.get('dateFormat'), source);
 			}
 		}
 		catch (e) {
 			// Ignore
 		}
 		thatDate = (thatDate ? [thatDate] : (source == 'today' ?
-			[calendar.today()] : (noOther ? [] : $(source).calendarsPicker('getDate'))));
+			[inst.options.calendar.today()] : (noOther ? [] : $(source).calendarsPicker('getDate'))));
 		return thatDate;
 	}
 }

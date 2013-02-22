@@ -1,5 +1,5 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Ukranian localisation for calendars datepicker for jQuery.
+   Ukrainian localisation for calendars datepicker for jQuery.
    Written by Maxim Drogobitskiy (maxdao@gmail.com). */
 (function($) {
 	$.calendars.picker.regional['uk'] = {

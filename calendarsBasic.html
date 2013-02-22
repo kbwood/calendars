@@ -3,9 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 <title>jQuery Calendars</title>
-<style type="text/css">
-</style>
-<script type="text/javascript" src="jquery-1.4.2.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript" src="jquery.calendars.js"></script>
 <script type="text/javascript" src="jquery.calendars.plus.js"></script>
 <script type="text/javascript" src="jquery.calendars.taiwan.js"></script>
@@ -18,9 +16,8 @@
 <script type="text/javascript" src="jquery.calendars.ethiopian.js"></script>
 <script type="text/javascript" src="jquery.calendars.mayan.js"></script>
 <script type="text/javascript">
-var calendar;
-
 $(function() {
+	var calendar;
 	$('#calendar').change(function() {
 		calendar = $.calendars.instance($(this).val());
 		$('#default').text(calendar.local.dateFormat);

@@ -1,20 +1,20 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Calendars for jQuery v1.1.4.
+   Calendars for jQuery v1.2.0.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
-   Dual licensed under the GPL (http://dev.jquery.com/browser/trunk/jquery/GPL-LICENSE.txt) and 
-   MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
+   Available under the MIT (https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt) license. 
    Please attribute the author if you use it. */
 
 (function($) { // Hide scope, no $ conflict
 
 /* Calendars - generic date access and manipulation. */
 function Calendars() {
-	this.regional = {
-		'': {invalidCalendar: 'Calendar {0} not found',
-			invalidDate: 'Invalid {0} date',
-			invalidMonth: 'Invalid {0} month',
-			invalidYear: 'Invalid {0} year',
-			differentCalendars: 'Cannot mix {0} and {1} dates'}
+	this.regional = [];
+	this.regional[''] = {
+		invalidCalendar: 'Calendar {0} not found',
+		invalidDate: 'Invalid {0} date',
+		invalidMonth: 'Invalid {0} month',
+		invalidYear: 'Invalid {0} year',
+		differentCalendars: 'Cannot mix {0} and {1} dates'
 	};
 	this.local = this.regional[''];
 	this.calendars = {};
@@ -617,7 +617,7 @@ $.extend(BaseCalendar.prototype, {
    and http://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar.
    @param  language  (string) the language code (default English) for localisation (optional) */
 function GregorianCalendar(language) {
-	this.local = this.regional[language || ''] || this.regional[''];
+	this.local = this.regional[language] || this.regional[''];
 }
 
 GregorianCalendar.prototype = new BaseCalendar;

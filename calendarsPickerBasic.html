@@ -3,22 +3,22 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 <title>jQuery Calendars Datepicker</title>
-<style type="text/css">
-@import "jquery.calendars.picker.css";
-/* Or use these for a ThemeRoller theme
-@import "themes16/southstreet/ui.all.css";
-@import "ui-southstreet.datepick.css";
-*/
-</style>
-<script type="text/javascript" src="jquery-1.4.2.js"></script>
+<link rel="stylesheet" type="text/css" href="jquery.calendars.picker.css">
+<!-- OR for ThemeRoller styling
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/themes/south-street/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="ui-southstreet.datepick.css">
+-->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript" src="jquery.calendars.js"></script>
 <script type="text/javascript" src="jquery.calendars.plus.js"></script>
 <script type="text/javascript" src="jquery.calendars.picker.js"></script>
+<!--script type="text/javascript" src="jquery.calendars.picker.ext.js"></script--><!-- Include for ThemeRoller styling -->
+<script type="text/javascript" src="jquery.calendars.persian.js"></script>
 <script type="text/javascript">
 $(function() {
-//	$.calendars.picker.setDefaults({renderer: $.calendars.picker.themerollerRenderer}); // Requires jquery.calendars.picker.ext.js
-	$('#popupDatepicker').calendarsPicker();
-	$('#inlineDatepicker').calendarsPicker({onSelect: showDate});
+//	$.calendars.picker.setDefaults({renderer: $.calendars.picker.themeRollerRenderer}); // Requires jquery.calendars.picker.ext.js
+	$('#popupDatepicker').calendarsPicker({calendar: $.calendars.instance('persian')});
+	$('#inlineDatepicker').calendarsPicker({calendar: $.calendars.instance('persian'), onSelect: showDate});
 });
 
 function showDate(date) {
