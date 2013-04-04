@@ -1,5 +1,5 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Nepali calendar for jQuery v0.9
+   Nepali calendar for jQuery v1.0.0
    Written by Artur Neumann (ict.projects{at}nepal.inf.org) April 2013.
    Available under the MIT (https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt) license. 
    Please attribute the author if you use it. */
@@ -29,9 +29,6 @@ $.extend(NepaliCalendar.prototype, {
 	firstMonth: 1, // The first month in the year
 	minDay: 1, // The minimum day number
 	daysPerYear: 365,
-	'': function (){
-		console.log ("a");
-	},
 	
 	regional: { // Localisations
 		'': {
@@ -39,11 +36,8 @@ $.extend(NepaliCalendar.prototype, {
 			epochs: ['BBS', 'ABS'],
 			monthNames: ["Baisakh", "Jestha", "Ashadh", "Shrawan", "Bhadra", "Ashwin", "Kartik", 
 						 "Mangsir", "Paush", "Mangh", "Falgun", "Chaitra"],
-			monthNamesShort: ["Bai", "Je", "As", "Shra", "Bha", "Ash", "Kar", 
-								"Mang", "Pau", "Ma", "Fal", "Chai"],
+			monthNamesShort: ["Bai", "Je", "As", "Shra", "Bha", "Ash", "Kar", "Mang", "Pau", "Ma", "Fal", "Chai"],
 			dayNames: ['Aaitabaar', 'Sombaar', 'Manglbaar', 'Budhabaar', 'Bihibaar', 'Shukrabaar', 'Shanibaar'],
-			//dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-
 			dayNamesShort: ['Aaita', 'Som', 'Mangl', 'Budha', 'Bihi', 'Shukra', 'Shani'],
 			dayNamesMin: ['Aai', 'So', 'Man', 'Bu', 'Bi', 'Shu', 'Sha'],
 			dateFormat: 'dd/mm/yyyy', // See format options on BaseCalendar.formatDate
@@ -63,7 +57,6 @@ $.extend(NepaliCalendar.prototype, {
 	   @param  day    (number) the day to examine
 	   @return  (number) the week of the year
 	   @throws  error if an invalid date or a different calendar used */
-	//TODO test
 	weekOfYear: function(year, month, day) {
 		// Find Sunday of this week starting on Sunday
 		var checkDate = this.newDate(year, month, day);
@@ -116,7 +109,6 @@ $.extend(NepaliCalendar.prototype, {
 	   @param  day    (number) the day to examine
 	   @return  (boolean) true if a week day, false if not
 	   @throws  error if an invalid date or a different calendar used */
-	//TODO test
 	weekDay: function(year, month, day) {
 		return this.dayOfWeek(year, month, day) != 6;
 	},
@@ -220,7 +212,6 @@ $.extend(NepaliCalendar.prototype, {
 		
 		gregorianYear = gregorianDate.year();
 
-		
 		gregorianDayOfYear = gregorianDate.dayOfYear();
 		nepaliYear = gregorianYear + 56; //this is not final, it could be also +57 but +56 is always true for 1st Jan.
 
@@ -248,11 +239,7 @@ $.extend(NepaliCalendar.prototype, {
 				nepaliMonth = 1;
 				nepaliYear++;
 			}	
-
 			daysSinceJanFirstToEndOfNepaliMonth += this.NEPALI_CALENDAR_DATA[nepaliYear][nepaliMonth];
-
-
-
 		}
 
 		//the last step is to calculate the nepali day-of-month
@@ -281,7 +268,6 @@ $.extend(NepaliCalendar.prototype, {
 			{
 				console.log(nepaliYearToCreate);
 				this.NEPALI_CALENDAR_DATA[nepaliYearToCreate] = tmp_calendar_data;
-
 			}
 		}
 
@@ -427,13 +413,6 @@ $.extend(NepaliCalendar.prototype, {
 		"2100" : new Array(17, 31, 32, 31, 32, 30, 31, 30, 29, 30, 29, 30, 30),		
 	}
 });	
-
-
-
-//Modulus function which works for non-integers.
-function mod(a, b) {
-	return a - (b * Math.floor(a / b));
-}
 
 // Nepali calendar implementation
 $.calendars.calendars.nepali = NepaliCalendar;
