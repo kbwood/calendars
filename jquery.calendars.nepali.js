@@ -22,7 +22,7 @@ NepaliCalendar.prototype = new $.calendars.baseCalendar;
 
 $.extend(NepaliCalendar.prototype, {
 	name: 'Nepali', // The calendar name
-	jdEpoch: 1700709.5, // Julian date of start of Nepali epoch: 7 October 3761 BCE
+	jdEpoch: 1700709.5, // Julian date of start of Nepali epoch: 14 April 57 BCE
 	daysPerMonth: [31, 31, 32, 32, 31, 30, 30, 29, 30, 29, 30, 30], // Days per month in a common year
 	hasYearZero: false, // True if has a year zero, false if not
 	minMonth: 1, // The minimum month number
