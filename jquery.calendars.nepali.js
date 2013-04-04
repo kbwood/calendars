@@ -19,16 +19,20 @@ function NepaliCalendar(language) {
 
 NepaliCalendar.prototype = new $.calendars.baseCalendar;
 
+
 $.extend(NepaliCalendar.prototype, {
 	name: 'Nepali', // The calendar name
 	jdEpoch: 1700709.5, // Julian date of start of Nepali epoch: 7 October 3761 BCE
-	daysPerMonth: [31, 32, 32, 32, 32, 31, 30, 30, 30, 30, 30, 31], // Days per month in a common year
+	daysPerMonth: [31, 31, 32, 32, 31, 30, 30, 29, 30, 29, 30, 30], // Days per month in a common year
 	hasYearZero: false, // True if has a year zero, false if not
 	minMonth: 1, // The minimum month number
 	firstMonth: 1, // The first month in the year
 	minDay: 1, // The minimum day number
 	daysPerYear: 365,
-
+	'': function (){
+		console.log ("a");
+	},
+	
 	regional: { // Localisations
 		'': {
 			name: 'Nepali', // The calendar name
@@ -38,10 +42,12 @@ $.extend(NepaliCalendar.prototype, {
 			monthNamesShort: ["Bai", "Je", "As", "Shra", "Bha", "Ash", "Kar", 
 								"Mang", "Pau", "Ma", "Fal", "Chai"],
 			dayNames: ['Aaitabaar', 'Sombaar', 'Manglbaar', 'Budhabaar', 'Bihibaar', 'Shukrabaar', 'Shanibaar'],
+			//dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+
 			dayNamesShort: ['Aaita', 'Som', 'Mangl', 'Budha', 'Bihi', 'Shukra', 'Shani'],
 			dayNamesMin: ['Aai', 'So', 'Man', 'Bu', 'Bi', 'Shu', 'Sha'],
 			dateFormat: 'dd/mm/yyyy', // See format options on BaseCalendar.formatDate
-			firstDay: 0, // The first day of the week, Sun = 0, Mon = 1, ...
+			firstDay: 1, // The first day of the week, Sun = 0, Mon = 1, ...
 			isRTL: false, // True if right-to-left language, false if left-to-right
 			showMonthAfterYear: false, // True if the year select precedes month, false for month then year
 			yearSuffix: '' // Additional text to append to the year in the month headers
@@ -115,19 +121,6 @@ $.extend(NepaliCalendar.prototype, {
 		return this.dayOfWeek(year, month, day) != 6;
 	},
 
-	/* Retrieve additional information about a date - year type.
-	   @param  year   (CDate) the date to examine or
-	                  (number) the year to examine
-	   @param  month  (number) the month to examine
-	   @param  day    (number) the day to examine
-	   @return  (object) additional information - contents depends on calendar
-	   @throws  error if an invalid date or a different calendar used */
-	//TODO do we need that?
-	extraInfo: function(year, month, day) {
-		var date = this._validate(year, month, day, $.calendars.local.invalidDate);
-		return {yearType: (this.leapYear(date) ? 'embolismic' : 'common') + ' ' +
-			['deficient', 'regular', 'complete'][this.daysInYear(date) % 10 - 3]};
-	},
 
 	/* Retrieve the Julian date equivalent for this date,
 	   i.e. days since January 1, 4713 BCE Greenwich noon.
@@ -142,12 +135,13 @@ $.extend(NepaliCalendar.prototype, {
 		nepaliYear = date.year();
 		nepaliMonth = date.month();
 		nepaliDay = date.day();
-		
 		var gregorianCalendar = $.calendars.instance();
 		var gregorianDayOfYear = 0; //we will add all the days that went by since the 1st. January and then we can get the gregorian Date
 		var gregorianYear;
 		var nepaliMonthToCheck = nepaliMonth;
 		var nepaliYearToCheck = nepaliYear;
+		
+		this._createMissingCalendarData(nepaliYear);
 		
 		//get the correct year
 		if (nepaliMonthToCheck > 9
@@ -204,10 +198,7 @@ $.extend(NepaliCalendar.prototype, {
 		}		
 		
 		
-		var gregorianDate = gregorianCalendar.newDate(gregorianYear,1,1);
-
-		gregorianDate.add(gregorianDayOfYear,'d');
-		return gregorianDate.toJD();
+		return gregorianCalendar.newDate(gregorianYear,1,1).add(gregorianDayOfYear,'d').toJD();
 	},
 	
 
@@ -226,13 +217,15 @@ $.extend(NepaliCalendar.prototype, {
 		var nepaliYear;
 		var nepaliDayOfMonth;
 		var gregorianDate = gregorianCalendar.fromJD(jd);
-
+		
 		gregorianYear = gregorianDate.year();
 
 		
 		gregorianDayOfYear = gregorianDate.dayOfYear();
 		nepaliYear = gregorianYear + 56; //this is not final, it could be also +57 but +56 is always true for 1st Jan.
 
+		this._createMissingCalendarData(nepaliYear);
+		
 		//get the nepali day in Paush (month 9) of 1st January 
 		dayOfFirstJanInPaush = this.NEPALI_CALENDAR_DATA[nepaliYear][0];
 
@@ -254,7 +247,8 @@ $.extend(NepaliCalendar.prototype, {
 			if (nepaliMonth > 12) {
 				nepaliMonth = 1;
 				nepaliYear++;
-			}			
+			}	
+
 			daysSinceJanFirstToEndOfNepaliMonth += this.NEPALI_CALENDAR_DATA[nepaliYear][nepaliMonth];
 
 
@@ -271,7 +265,30 @@ $.extend(NepaliCalendar.prototype, {
 		
 		return this.newDate(nepaliYear, nepaliMonth, nepaliDayOfMonth);
 	},
+	
+	/* Creates missing data in the NEPALI_CALENDAR_DATA table. This data will not be correct but just give an estimated result. Mostly -/+ 1 day
+	   @param  nepaliYear (number) the missing year numebr 
+	 */
+	_createMissingCalendarData: function (nepaliYear) {
+
+		var tmp_calendar_data = this.daysPerMonth.slice(0);
+		tmp_calendar_data.unshift(17);
+
+		var nepaliYearToCreate;
+		for (nepaliYearToCreate = (nepaliYear-1); nepaliYearToCreate < (nepaliYear + 2); nepaliYearToCreate++ )
+		{
+			if (typeof this.NEPALI_CALENDAR_DATA[nepaliYearToCreate] == 'undefined') 
+			{
+				console.log(nepaliYearToCreate);
+				this.NEPALI_CALENDAR_DATA[nepaliYearToCreate] = tmp_calendar_data;
+
+			}
+		}
+
+	},
+	
 	NEPALI_CALENDAR_DATA:  {
+		
 		//this data are from http://www.ashesh.com.np
 		"1970" : new Array(18, 31, 31, 32, 31, 31, 31, 30, 29, 30, 29, 30, 30),
 		"1971" : new Array(18, 31, 31, 32, 31, 32, 30, 30, 29, 30, 29, 30, 30),
@@ -410,6 +427,8 @@ $.extend(NepaliCalendar.prototype, {
 		"2100" : new Array(17, 31, 32, 31, 32, 30, 31, 30, 29, 30, 29, 30, 30),		
 	}
 });	
+
+
 
 //Modulus function which works for non-integers.
 function mod(a, b) {
