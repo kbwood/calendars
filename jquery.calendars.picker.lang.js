@@ -1,4 +1,9 @@
 ﻿/* http://keith-wood.name/calendars.html
+   Calendars date picker localisations for jQuery v1.2.1.
+   Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
+   Available under the MIT (https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt) license. 
+   Please attribute the author if you use it. */
+/* http://keith-wood.name/calendars.html
    Afrikaans localisation for calendars datepicker for jQuery.
    Written by Renier Pretorius and Ruediger Thiede. */
 (function($) {

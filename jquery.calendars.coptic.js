@@ -1,5 +1,5 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Coptic calendar for jQuery v1.2.0.
+   Coptic calendar for jQuery v1.2.1.
    Written by Keith Wood (kbwood{at}iinet.com.au) February 2010.
    Available under the MIT (https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt) license. 
    Please attribute the author if you use it. */
@@ -39,7 +39,9 @@ $.extend(CopticCalendar.prototype, {
 			dayNamesMin: ['Tk', 'Pes', 'Psh', 'Pef', 'Pt', 'Pso', 'Psa'],
 			dateFormat: 'dd/mm/yyyy', // See format options on BaseCalendar.formatDate
 			firstDay: 0, // The first day of the week, Sun = 0, Mon = 1, ...
-			isRTL: false // True if right-to-left language, false if left-to-right
+			isRTL: false, // True if right-to-left language, false if left-to-right
+			showMonthAfterYear: false, // True if the year select precedes month, false for month then year
+			yearSuffix: '' // Additional text to append to the year in the month headers
 		}
 	},
 

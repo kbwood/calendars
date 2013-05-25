@@ -1,5 +1,5 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Calendars Validation extension for jQuery 1.2.0.
+   Calendars Validation extension for jQuery 1.2.1.
    Requires Jörn Zaefferer's Validation plugin (http://plugins.jquery.com/project/validate).
    Written by Keith Wood (kbwood{at}iinet.com.au).
    Available under the MIT (https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt) license. 

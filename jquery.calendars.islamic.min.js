@@ -1,5 +1,5 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Islamic calendar for jQuery v1.2.0.
+   Islamic calendar for jQuery v1.2.1.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
    Available under the MIT (https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt) license. 
    Please attribute the author if you use it. */

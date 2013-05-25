@@ -1,5 +1,5 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Calendars for jQuery v1.2.0.
+   Calendars for jQuery v1.2.1.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
    Available under the MIT (https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt) license. 
    Please attribute the author if you use it. */
@@ -476,7 +476,7 @@ $.extend(BaseCalendar.prototype, {
 				while (m < calendar.minMonth) {
 					y--;
 					m += calendar.monthsInYear(y);
-					}
+				}
 				var yearMonths = calendar.monthsInYear(y);
 				while (m > yearMonths - 1 + calendar.minMonth) {
 					y++;
@@ -786,7 +786,7 @@ $.calendars.calendars.gregorian = GregorianCalendar;
 
 })(jQuery);
 /* http://keith-wood.name/calendars.html
-   Calendars extras for jQuery v1.2.0.
+   Calendars extras for jQuery v1.2.1.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
    Available under the MIT (https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt) license. 
    Please attribute the author if you use it. */
@@ -1162,7 +1162,7 @@ $.extend($.calendars.baseCalendar.prototype, {
 
 })(jQuery);
 /* http://keith-wood.name/calendars.html
-   Calendars date picker for jQuery v1.2.0.
+   Calendars date picker for jQuery v1.2.1.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
    Available under the MIT (https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt) license. 
    Please attribute the author if you use it. */
@@ -1762,8 +1762,6 @@ $.extend(CalendarsPicker.prototype, {
 			// And display
 			var showAnim = inst.options.showAnim;
 			var showSpeed = inst.options.showSpeed;
-			showSpeed = (showSpeed == 'normal' && $.ui && $.ui.version >= '1.8' ?
-				'_default' : showSpeed);
 			if ($.effects && $.effects[showAnim]) {
 				var data = inst.div.data(); // Update old effects data
 				for (var key in data) {
@@ -1774,7 +1772,7 @@ $.extend(CalendarsPicker.prototype, {
 				inst.div.data(data).show(showAnim, inst.options.showOptions, showSpeed);
 			}
 			else {
-				inst.div[showAnim || 'show'](showAnim ? showSpeed : null);
+				inst.div[showAnim || 'show'](showAnim ? showSpeed : 0);
 			}
 		}
 	},
@@ -1973,8 +1971,6 @@ $.extend(CalendarsPicker.prototype, {
 		if (inst && inst == plugin.curInst) {
 			var showAnim = (immediate ? '' : inst.options.showAnim);
 			var showSpeed = inst.options.showSpeed;
-			showSpeed = (showSpeed == 'normal' && $.ui && $.ui.version >= '1.8' ?
-				'_default' : showSpeed);
 			var postProcess = function() {
 				if (!inst.div) {
 					return;
@@ -1993,10 +1989,7 @@ $.extend(CalendarsPicker.prototype, {
 			else {
 				var hideAnim = (showAnim == 'slideDown' ? 'slideUp' :
 					(showAnim == 'fadeIn' ? 'fadeOut' : 'hide'));
-				inst.div[hideAnim]((showAnim ? showSpeed : null), postProcess);
-			}
-			if (!showAnim) {
-				postProcess();
+				inst.div[hideAnim]((showAnim ? showSpeed : 0), postProcess);
 			}
 		}
 	},
