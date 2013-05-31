@@ -1,6 +1,6 @@
 ﻿/* http://keith-wood.name/calendars.html
    Nepali calendar for jQuery v1.0.0
-   Written by Artur Neumann (ict.projects{at}nepal.inf.org) April 2013.
+   Written by Artur Neumann working at INF http://www.inf.org April 2013.
    Available under the MIT (https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt) license. 
    Please attribute the author if you use it. */
 

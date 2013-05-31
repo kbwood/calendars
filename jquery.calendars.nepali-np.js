@@ -1,6 +1,6 @@
 ﻿/* http://keith-wood.name/calendars.html
    Nepali localisation for Nepali calendar for jQuery.
-   Written by Artur Neumann (ict.projects{at}nepal.inf.org) April 2013. */
+   Written by Artur Neumann working at INF http://www.inf.org April 2013. */
 (function($) {
 	$.calendars.calendars.nepali.prototype.regional['np'] = {
 			name: 'Nepali', // The calendar name
