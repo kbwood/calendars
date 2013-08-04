@@ -87,7 +87,7 @@ $.extend(UmmAlQuraCalendar.prototype, {
 	   @throws  error if an invalid month/year or a different calendar used */
 	daysInMonth: function (year, month) {
 		var date = this._validate(year, month, this.minDay, $.calendars.local.invalidMonth);
-		var mcjdn = date.toJD() - 2400000 + 0.5; // Modified Chronological Julian Day Number (MCJDN)
+		var mcjdn = date.toJD() - 2400000 + 0.5 + this.adjustment; // Modified Chronological Julian Day Number (MCJDN)
 		// the MCJDN's of the start of the lunations in the Umm al-Qura calendar are stored in the 'ummalqura_dat' array
 		var index = 0;
 		for (var i = 0; i < ummalqura_dat.length; i++) {
