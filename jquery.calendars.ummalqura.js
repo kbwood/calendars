@@ -25,6 +25,7 @@ $.extend(UmmAlQuraCalendar.prototype, {
 	minMonth: 1, // The minimum month number
 	firstMonth: 1, // The first month in the year
 	minDay: 1, // The minimum day number
+	adjustment: 0, // Islamic date adjustment for changing after lunar sighting
 
 	regional: { // Localisations
 		'': {
@@ -86,7 +87,7 @@ $.extend(UmmAlQuraCalendar.prototype, {
 	   @throws  error if an invalid month/year or a different calendar used */
 	daysInMonth: function (year, month) {
 		var date = this._validate(year, month, this.minDay, $.calendars.local.invalidMonth);
-		var mcjdn = date.toJD() - 2400000 + 0.5; // Modified Chronological Julian Day Number (MCJDN)
+		var mcjdn = date.toJD() - 2400000 + 0.5 + this.adjustment; // Modified Chronological Julian Day Number (MCJDN)
 		// the MCJDN's of the start of the lunations in the Umm al-Qura calendar are stored in the 'ummalqura_dat' array
 		var index = 0;
 		for (var i = 0; i < ummalqura_dat.length; i++) {
@@ -121,14 +122,14 @@ $.extend(UmmAlQuraCalendar.prototype, {
 		var date = this._validate(year, month, day, $.calendars.local.invalidDate);
 		var index = (12 * (date.year() - 1)) + date.month() - 16260;
 		var mcjdn = date.day() + ummalqura_dat[index - 1] - 1;
-		return mcjdn + 2400000 - 0.5; // Modified Chronological Julian Day Number (MCJDN)
+		return mcjdn + 2400000 - 0.5 - this.adjustment; // Modified Chronological Julian Day Number (MCJDN)
 	},
 
 	/* Create a new date from a Julian date.
 	   @param  jd  (number) the Julian date to convert
 	   @return  (CDate) the equivalent date */
 	fromJD: function (jd) {
-		var mcjdn = jd - 2400000 + 0.5; // Modified Chronological Julian Day Number (MCJDN)
+	    var mcjdn = jd - 2400000 + 0.5 + this.adjustment; // Modified Chronological Julian Day Number (MCJDN)
 		// the MCJDN's of the start of the lunations in the Umm al-Qura calendar 
 		// are stored in the 'ummalqura_dat' array
 		var index = 0;
