@@ -40,7 +40,7 @@ $.extend(NepaliCalendar.prototype, {
 			dayNamesShort: ['Aaita', 'Som', 'Mangl', 'Budha', 'Bihi', 'Shukra', 'Shani'],
 			dayNamesMin: ['Aai', 'So', 'Man', 'Bu', 'Bi', 'Shu', 'Sha'],
 			dateFormat: 'dd/mm/yyyy', // See format options on BaseCalendar.formatDate
-			firstDay: 1, // The first day of the week, Sun = 0, Mon = 1, ...
+			firstDay: 0, // The first day of the week, Sun = 0, Mon = 1, ...
 			isRTL: false, // True if right-to-left language, false if left-to-right
 			showMonthAfterYear: false, // True if the year select precedes month, false for month then year
 			yearSuffix: '' // Additional text to append to the year in the month headers
