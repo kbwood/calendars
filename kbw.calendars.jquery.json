@@ -11,7 +11,7 @@
 		"ui",
 		"validation"
 	],
-	"version": "1.2.1",
+	"version": "2.0.0",
 	"author": {
 		"name": "Keith Wood",
 		"url": "http://keith-wood.name/"
@@ -34,6 +34,6 @@
 	"docs": "http://keith-wood.name/calendarsRef.html",
 	"download": "http://keith-wood.name/calendars.html",
 	"dependencies": {
-		"jquery": ">=1.6"
+		"jquery": ">=1.7"
 	}
 }
