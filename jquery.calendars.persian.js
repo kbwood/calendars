@@ -1,7 +1,7 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Persian calendar for jQuery v2.0.0.
+   Persian calendar for jQuery v2.0.1.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
-   Available under the MIT (https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt) license. 
+   Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */
 
 (function($) { // Hide scope, no $ conflict

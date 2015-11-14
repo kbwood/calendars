@@ -1,6 +1,6 @@
 ﻿{
   "name": "kbwood_calendars",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "This plugin provides support for various world calendars, including a datepicker. * Calendars: Gregorian, Julian, Taiwanese, Thai, Persian, Islamic, Umm al-Qura, Hebrew, Ethiopian, Coptic, Nepali, Mayan. * Parse and format dates in all these calendars. * Style the datepicker using one of five themes, or use any of the standard Themeroller themes. * Over 70 localisations for Gregorian/Julian calendars.",
   "keywords": [
     "calendar",
@@ -11,7 +11,7 @@
     "ui",
     "validation"
   ],
-  "license": "MIT",
+  "license": "http://keith-wood.name/licence.html",
   "authors": [
     "Keith Wood"
   ],
@@ -26,7 +26,7 @@
     "jquery.calendars.picker-*.js",
     "jquery.*.min.js"
   ],
-  "dependencies": [
+  "dependencies": {
     "jquery": ">=1.7"
-  ]
+  }
 }

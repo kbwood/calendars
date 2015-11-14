@@ -1,7 +1,7 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Calendars for jQuery v2.0.0.
+   Calendars for jQuery v2.0.1.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
-   Available under the MIT (https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt) license. 
+   Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */
 
 (function($) { // Hide scope, no $ conflict
@@ -856,9 +856,9 @@
 
 })(jQuery);
 /* http://keith-wood.name/calendars.html
-   Calendars extras for jQuery v2.0.0.
+   Calendars extras for jQuery v2.0.1.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
-   Available under the MIT (https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt) license. 
+   Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */
 
 (function($) { // Hide scope, no $ conflict
@@ -1284,9 +1284,9 @@
 
 })(jQuery);
 /* http://keith-wood.name/calendars.html
-   Calendars date picker for jQuery v2.0.0.
+   Calendars date picker for jQuery v2.0.1.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
-   Available under the MIT (https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt) license. 
+   Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */
 
 (function($) { // Hide scope, no $ conflict
@@ -1730,10 +1730,12 @@
 			@property [closeText='Close'] {string} Text for the close command.
 			@property [closeStatus='Close the datepicker'] {string} Status text for the close command.
 			@property [yearStatus='Change the year'] {string} Status text for year selection.
+			@property [earlierText='&#160;&#160;▲'] {string} Text for earlier years.
+			@property [laterText='&#160;&#160;▼'] {string} Text for later years.
 			@property [monthStatus='Change the month'] {string} Status text for month selection.
 			@property [weekText='Wk'] {string} Text for week of the year column header.
 			@property [weekStatus='Week of the year'] {string} Status text for week of the year column header.
-			@property [dayStatus='Select DD,&nbsp;M&nbsp;d,&nbsp;yyyy'] {string} Status text for selectable days.
+			@property [dayStatus='Select DD,&#160;M&#160;d,&#160;yyyy'] {string} Status text for selectable days.
 			@property [defaultStatus='Select a date'] {string} Status text shown by default.
 			@property [isRTL=false] {boolean} <code>true</code> if language is right-to-left. */
 		regionalOptions: { // Available regional settings, indexed by language/country code
@@ -1756,6 +1758,8 @@
 				closeText: 'Close',
 				closeStatus: 'Close the datepicker',
 				yearStatus: 'Change the year',
+				earlierText: '&#160;&#160;▲',
+				laterText: '&#160;&#160;▼',
 				monthStatus: 'Change the month',
 				weekText: 'Wk',
 				weekStatus: 'Week of the year',
@@ -2123,7 +2127,10 @@
 					}
 				}
 				if (inst.inline) {
+					var index = $('a, :input', elem).index($(':focus', elem));
 					elem.html(this._generateContent(elem[0], inst));
+					var focus = elem.find('a, :input');
+					focus.eq(Math.max(Math.min(index, focus.length - 1), 0)).focus();
 				}
 				else if (plugin.curInst === inst) {
 					if (!inst.div) {
@@ -2305,10 +2312,10 @@
 			@param event {KeyEvent} The keystroke.
 			@return {boolean} <code>true</code> if not handled, <code>false</code> if handled. */
 		_keyDown: function(event) {
-			var elem = event.target;
+			var elem = (event.data && event.data.elem) || event.target;
 			var inst = plugin._getInst(elem);
 			var handled = false;
-			if (inst.div) {
+			if (inst.inline || inst.div) {
 				if (event.keyCode === 9) { // Tab - close
 					plugin.hide(elem);
 				}
@@ -2356,7 +2363,7 @@
 			@param event {KeyEvent} The keystroke.
 			@return {boolean} <code>true</code> if allowed, <code>false</code> if not allowed. */
 		_keyPress: function(event) {
-			var inst = plugin._getInst(event.target);
+			var inst = plugin._getInst((event.data && event.data.elem) || event.target);
 			if (!$.isEmptyObject(inst) && inst.options.constrainInput) {
 				var ch = String.fromCharCode(event.keyCode || event.charCode);
 				var allowedChars = plugin._allowedChars(inst);
@@ -2419,7 +2426,7 @@
 			@param event {KeyEvent} The keystroke.
 			@return {boolean} <code>true</code> if allowed, <code>false</code> if not allowed. */
 		_keyUp: function(event) {
-			var elem = event.target;
+			var elem = (event.data && event.data.elem) || event.target;
 			var inst = plugin._getInst(elem);
 			if (!$.isEmptyObject(inst) && !inst.ctrlKey && inst.lastVal !== inst.elem.val()) {
 				try {
@@ -2702,7 +2709,7 @@
 				else {
 					inst.selectedDates = [date];
 				}
-				inst.prevDate = date.newDate();
+				inst.prevDate = inst.drawDate = date.newDate();
 				this._updateInput(elem);
 				if (inst.inline || inst.pickingRange || inst.selectedDates.length <
 						(inst.options.multiSelect || (inst.options.rangeSelect ? 2 : 1))) {
@@ -2770,18 +2777,17 @@
 			}
 			// Add datepicker behaviour
 			var self = this;
+			function removeHighlight() {
+				(inst.inline ? $(this).closest('.' + self._getMarker()) : inst.div).
+					find(inst.options.renderer.daySelector + ' a').
+					removeClass(inst.options.renderer.highlightedClass);
+			}
 			picker.find(inst.options.renderer.daySelector + ' a').hover(
 					function() {
-						(inst.inline ? $(this).closest('.' + self._getMarker()) : inst.div).
-							find(inst.options.renderer.daySelector + ' a').
-							removeClass(inst.options.renderer.highlightedClass);
+						removeHighlight.apply(this);
 						$(this).addClass(inst.options.renderer.highlightedClass);
 					},
-					function() {
-						(inst.inline ? $(this).closest('.' + self._getMarker()) : inst.div).
-							find(inst.options.renderer.daySelector + ' a').
-							removeClass(inst.options.renderer.highlightedClass);
-					}).
+					removeHighlight).
 				click(function() {
 					self.selectDate(elem, this);
 				}).end().
@@ -2813,6 +2819,9 @@
 						inst.elem.focus();
 					}
 				});
+			// Add keyboard handling
+			var data = {elem: inst.elem[0]};
+			picker.keydown(data, this._keyDown).keypress(data, this._keyPress).keyup(data, this._keyUp);
 			// Add command behaviour
 			picker.find('.' + inst.options.renderer.commandClass).click(function() {
 					if (!$(this).hasClass(inst.options.renderer.disabledClass)) {
@@ -2916,7 +2925,7 @@
 						(dateInfo.title || (inst.options.dayStatus && selectable) ? ' title="' +
 						(dateInfo.title || drawDate.formatDate(inst.options.dayStatus)) + '"' : '') + '>' +
 						(inst.options.showOtherMonths || drawDate.month() === month ?
-						dateInfo.content || drawDate.day() : '&nbsp;') +
+						dateInfo.content || drawDate.day() : '&#160;') +
 						(selectable ? '</a>' : '</span>'));
 					drawDate.add(1, 'd');
 					jd++;
@@ -3011,26 +3020,40 @@
 					'" title="' + inst.options.yearStatus + '">';
 				start = calendar.newDate(start + 1, calendar.firstMonth, calendar.minDay).add(-1, 'd');
 				end = calendar.newDate(end, calendar.firstMonth, calendar.minDay);
-				var addYear = function(y) {
+				var addYear = function(y, yDisplay) {
 					if (y !== 0 || calendar.hasYearZero) {
 						selector += '<option value="' +
 							Math.min(month, calendar.monthsInYear(y) - 1 + calendar.minMonth) +
 							'/' + y + '"' + (year === y ? ' selected="selected"' : '') + '>' +
-							y + '</option>';
+							(yDisplay || y) + '</option>';
 					}
 				};
 				if (start.toJD() < end.toJD()) {
 					start = (minDate && minDate.compareTo(start) === +1 ? minDate : start).year();
 					end = (maxDate && maxDate.compareTo(end) === -1 ? maxDate : end).year();
+					var earlierLater = Math.floor((end - start) / 2);
+					if (!minDate || minDate.year() < start) {
+						addYear(start - earlierLater, inst.options.earlierText);
+					}
 					for (var y = start; y <= end; y++) {
 						addYear(y);
+					}
+					if (!maxDate || maxDate.year() > end) {
+						addYear(end + earlierLater, inst.options.laterText);
 					}
 				}
 				else {
 					start = (maxDate && maxDate.compareTo(start) === -1 ? maxDate : start).year();
 					end = (minDate && minDate.compareTo(end) === +1 ? minDate : end).year();
+					var earlierLater = Math.floor((start - end) / 2);
+					if (!maxDate || maxDate.year() > start) {
+						addYear(start + earlierLater, inst.options.earlierText);
+					}
 					for (var y = start; y >= end; y--) {
 						addYear(y);
+					}
+					if (!minDate || minDate.year() < end) {
+						addYear(end - earlierLater, inst.options.laterText);
 					}
 				}
 				selector += '</select>';

@@ -1,9 +1,8 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Calendars date picker localisations for jQuery v2.0.0.
+   Calendars date picker localisations for jQuery v2.0.1.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
-   Available under the MIT (https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt) license. 
+   Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */
-
 /* http://keith-wood.name/calendars.html
    Afrikaans localisation for calendars datepicker for jQuery.
    Written by Renier Pretorius and Ruediger Thiede. */
@@ -89,7 +88,7 @@
 	};
 	$.calendarsPicker.setDefaults($.calendarsPicker.regionalOptions['ar-EG']);
 })(jQuery);
-/* http://keith-wood.name/calendars.html
+﻿/* http://keith-wood.name/calendars.html
    Arabic localisation for calendars datepicker for jQuery.
    Khaled Al Horani -- خالد الحوراني -- koko.dw@gmail.com */
 (function($) {
@@ -110,7 +109,7 @@
 	};
 	$.calendarsPicker.setDefaults($.calendarsPicker.regionalOptions['ar']);
 })(jQuery);
-/* http://keith-wood.name/calendars.html
+﻿/* http://keith-wood.name/calendars.html
    Azerbaijani localisation for calendars datepicker for jQuery.
    Written by Jamil Najafov (necefov33@gmail.com). */
 (function($) {
@@ -608,7 +607,7 @@
 		clearText: 'Limpar', clearStatus: 'Borrar data actual',
 		closeText: 'Pechar', closeStatus: 'Pechar sen gardar',
 		yearStatus: 'Amosar outro ano', monthStatus: 'Amosar outro mes',
-		weekHeader: 'Sm', weekStatus: 'Semana do ano',
+		weekText: 'Sm', weekStatus: 'Semana do ano',
 		dayStatus: 'D, M d', defaultStatus: 'Selecciona Data',
 		isRTL: false
 	};

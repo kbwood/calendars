@@ -1,5 +1,5 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Hebrew localisation for Hebrew calendar for jQuery v2.0.0.
+   Hebrew localisation for Hebrew calendar for jQuery v2.0.1.
    Amir Hardon (ahardon at gmail dot com). */
 (function($) {
 	$.calendars.calendars.hebrew.prototype.regionalOptions['he'] = {

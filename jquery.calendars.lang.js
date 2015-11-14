@@ -1,9 +1,8 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Calendars localisations for jQuery v2.0.0.
+   Calendars localisations for jQuery v2.0.1.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
-   Available under the MIT (https://github.com/jquery/jquery/blob/master/MIT-LICENSE.txt) license. 
+   Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */
-
 /* http://keith-wood.name/calendars.html
    Afrikaans localisation for Gregorian/Julian calendars for jQuery.
    Written by Renier Pretorius and Ruediger Thiede. */
@@ -1059,7 +1058,7 @@
 			$.calendars.calendars.gregorian.prototype.regionalOptions['me'];
 	}
 })(jQuery);
-﻿/* http://keith-wood.name/calendars.html
+/* http://keith-wood.name/calendars.html
    Македонски MK localisation for Gregorian/Julian calendars for jQuery.
    Hajan Selmani (hajan [at] live [dot] com). */
 (function($) {
@@ -1495,7 +1494,7 @@
 			$.calendars.calendars.gregorian.prototype.regionalOptions['ta'];
 	}
 })(jQuery);
-﻿/* http://keith-wood.name/calendars.html
+/* http://keith-wood.name/calendars.html
    Thai localisation for Gregorian/Julian calendars for jQuery.
    Written by pipo (pipo@sixhead.com). */
 (function($) {

@@ -1,5 +1,5 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Farsi/Persian localisation for Islamic calendar for jQuery v2.0.0.
+   Farsi/Persian localisation for Islamic calendar for jQuery v2.0.1.
    Written by Keith Wood (kbwood{at}iinet.com.au) August 2009. */
 (function($) {
 	$.calendars.calendars.islamic.prototype.regionalOptions['fa'] = {
