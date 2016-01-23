@@ -12,6 +12,7 @@
 		dayNames: ['Duminică', 'Luni', 'Marti', 'Miercuri', 'Joi', 'Vineri', 'Sâmbătă'],
 		dayNamesShort: ['Dum', 'Lun', 'Mar', 'Mie', 'Joi', 'Vin', 'Sâm'],
 		dayNamesMin: ['Du','Lu','Ma','Mi','Jo','Vi','Sâ'],
+		digits: null,
 		dateFormat: 'dd.mm.yyyy',
 		firstDay: 1,
 		isRTL: false

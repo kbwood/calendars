@@ -12,6 +12,7 @@
 		dayNames: ['Igandea','Astelehena','Asteartea','Asteazkena','Osteguna','Ostirala','Larunbata'],
 		dayNamesShort: ['Iga','Ast','Ast','Ast','Ost','Ost','Lar'],
 		dayNamesMin: ['Ig','As','As','As','Os','Os','La'],
+		digits: null,
 		dateFormat: 'yyyy/mm/dd',
 		firstDay: 1,
 		isRTL: false

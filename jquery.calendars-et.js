@@ -12,6 +12,7 @@
 		dayNames: ['Pühapäev', 'Esmaspäev', 'Teisipäev', 'Kolmapäev', 'Neljapäev', 'Reede', 'Laupäev'],
 		dayNamesShort: ['Pühap', 'Esmasp', 'Teisip', 'Kolmap', 'Neljap', 'Reede', 'Laup'],
 		dayNamesMin: ['P','E','T','K','N','R','L'],
+		digits: null,
 		dateFormat: 'dd.mm.yyyy',
 		firstDay: 1,
 		isRTL: false

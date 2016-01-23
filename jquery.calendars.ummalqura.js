@@ -1,5 +1,5 @@
 ﻿/* http://keith-wood.name/calendars.html
-   UmmAlQura calendar for jQuery v2.0.1.
+   UmmAlQura calendar for jQuery v2.0.2.
    Written by Amro Osama March 2013.
    Modified by Binnooh.com & www.elm.sa - 2014 - Added dates back to 1276 Hijri year.
    Available under the MIT (http://keith-wood.name/licence.html) license. 
@@ -62,6 +62,7 @@
 				monthNamesShort: ['Muh', 'Saf', 'Rab1', 'Rab2', 'Jum1', 'Jum2', 'Raj', 'Sha\'', 'Ram', 'Shaw', 'DhuQ', 'DhuH'],
 				dayNames: ['Yawm al-Ahad', 'Yawm al-Ithnain', 'Yawm al-Thalāthā’', 'Yawm al-Arba‘ā’', 'Yawm al-Khamīs', 'Yawm al-Jum‘a', 'Yawm al-Sabt'],
 				dayNamesMin: ['Ah', 'Ith', 'Th', 'Ar', 'Kh', 'Ju', 'Sa'],
+				digits: null,
 				dateFormat: 'yyyy/mm/dd',
 				firstDay: 6,
 				isRTL: true

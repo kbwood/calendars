@@ -1,4 +1,4 @@
-﻿/* http://keith-wood.name/calendars.html
+/* http://keith-wood.name/calendars.html
    Simplified Chinese localisation for Gregorian/Julian calendars for jQuery.
    Written by Cloudream (cloudream@gmail.com). */
 (function($) {
@@ -12,6 +12,8 @@
 		dayNames: ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'],
 		dayNamesShort: ['周日','周一','周二','周三','周四','周五','周六'],
 		dayNamesMin: ['日','一','二','三','四','五','六'],
+		digits: $.calendars.substituteChineseDigits(
+			['〇', '一', '二', '三', '四', '五', '六', '七', '八', '九'], ['', '十', '百', '千']),
 		dateFormat: 'yyyy-mm-dd',
 		firstDay: 1,
 		isRTL: false

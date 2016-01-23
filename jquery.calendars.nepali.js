@@ -1,5 +1,5 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Nepali calendar for jQuery v2.0.1.
+   Nepali calendar for jQuery v2.0.2.
    Written by Artur Neumann (ict.projects{at}nepal.inf.org) April 2013.
    Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */
@@ -71,6 +71,7 @@
 				dayNames: ['Aaitabaar', 'Sombaar', 'Manglbaar', 'Budhabaar', 'Bihibaar', 'Shukrabaar', 'Shanibaar'],
 				dayNamesShort: ['Aaita', 'Som', 'Mangl', 'Budha', 'Bihi', 'Shukra', 'Shani'],
 				dayNamesMin: ['Aai', 'So', 'Man', 'Bu', 'Bi', 'Shu', 'Sha'],
+				digits: null,
 				dateFormat: 'dd/mm/yyyy',
 				firstDay: 1,
 				isRTL: false
@@ -191,8 +192,8 @@
 				// For the first days of Paush we are now in negative values,
 				// because in the end of the gregorian year we substract
 				// 365 / 366 days (P.S. remember math in school + - gives -)
-				if (gregorianDayOfYear <= 0) {
-					gregorianDayOfYear += (gregorianCalendar.leapYear(gregorianYear) ? 366 : 365);
+				if (gregorianDayOfYear < 0) {
+					gregorianDayOfYear += gregorianCalendar.daysInYear(gregorianYear);
 				}
 			}
 			else {

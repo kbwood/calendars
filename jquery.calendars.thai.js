@@ -1,6 +1,6 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Thai calendar for jQuery v2.0.1.
-   Written by Keith Wood (kbwood{at}iinet.com.au) February 2010.
+   Thai calendar for jQuery v2.0.2.
+   Written by Keith Wood (wood.keith{at}optusnet.com.au) February 2010.
    Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */
 
@@ -69,6 +69,7 @@
 				dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
 				dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
 				dayNamesMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+				digits: null,
 				dateFormat: 'dd/mm/yyyy',
 				firstDay: 0,
 				isRTL: false

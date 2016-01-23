@@ -1,53 +1,50 @@
-﻿/* http://keith-wood.name/calendars.html
-   Taiwanese (Minguo) calendar for jQuery v2.0.2.
-   Written by Keith Wood (wood.keith{at}optusnet.com.au) February 2010.
+/* http://keith-wood.name/calendars.html
+   Nanakshahi calendar for jQuery v2.0.2.
+   Written by Keith Wood (wood.keith{at}optusnet.com.au) January 2016.
    Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */
 
 (function($) { // Hide scope, no $ conflict
 
-	var gregorianCalendar = $.calendars.instance();
-
-	/** Implementation of the Taiwanese calendar.
-		See http://en.wikipedia.org/wiki/Minguo_calendar.
-		@class TaiwanCalendar
+	/** Implementation of the Nanakshahi calendar.
+		See also <a href="https://en.wikipedia.org/wiki/Nanakshahi_calendar">https://en.wikipedia.org/wiki/Nanakshahi_calendar</a>.
+		@class NanakshahiCalendar
 		@param [language=''] {string} The language code (default English) for localisation. */
-	function TaiwanCalendar(language) {
+	function NanakshahiCalendar(language) {
 		this.local = this.regionalOptions[language || ''] || this.regionalOptions[''];
 	}
 
-	TaiwanCalendar.prototype = new $.calendars.baseCalendar;
+	NanakshahiCalendar.prototype = new $.calendars.baseCalendar;
+	
+	var gregorian = $.calendars.instance('gregorian');
 
-	$.extend(TaiwanCalendar.prototype, {
+	$.extend(NanakshahiCalendar.prototype, {
 		/** The calendar name.
-			@memberof TaiwanCalendar */
-		name: 'Taiwan',
-		/** Julian date of start of Taiwan epoch: 1 January 1912 CE (Gregorian).
-			@memberof TaiwanCalendar */
-		jdEpoch: 2419402.5,
-		/** Difference in years between Taiwan and Gregorian calendars.
-			@memberof TaiwanCalendar */
-		yearsOffset: 1911,
+			@memberof NanakshahiCalendar */
+		name: 'Nanakshahi',
+		/** Julian date of start of Nanakshahi epoch: 14 March 1469 CE.
+			@memberof NanakshahiCalendar */
+		jdEpoch: 2257673.5,
 		/** Days per month in a common year.
-			@memberof TaiwanCalendar */
-		daysPerMonth: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
+			@memberof NanakshahiCalendar */
+		daysPerMonth: [31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 30, 30],
 		/** <code>true</code> if has a year zero, <code>false</code> if not.
-			@memberof TaiwanCalendar */
+			@memberof NanakshahiCalendar */
 		hasYearZero: false,
 		/** The minimum month number.
-			@memberof TaiwanCalendar */
+			@memberof NanakshahiCalendar */
 		minMonth: 1,
 		/** The first month in the year.
-			@memberof TaiwanCalendar */
+			@memberof NanakshahiCalendar */
 		firstMonth: 1,
 		/** The minimum day number.
-			@memberof TaiwanCalendar */
+			@memberof NanakshahiCalendar */
 		minDay: 1,
 
 		/** Localisations for the plugin.
 			Entries are objects indexed by the language code ('' being the default US/English).
 			Each object has the following attributes.
-			@memberof TaiwanCalendar
+			@memberof NanakshahiCalendar
 			@property name {string} The calendar name.
 			@property epochs {string[]} The epoch names.
 			@property monthNames {string[]} The long names of the months of the year.
@@ -61,47 +58,48 @@
 			@property isRTL {number} <code>true</code> if this localisation reads right-to-left. */
 		regionalOptions: { // Localisations
 			'': {
-				name: 'Taiwan',
-				epochs: ['BROC', 'ROC'],
-				monthNames: ['January', 'February', 'March', 'April', 'May', 'June',
-				'July', 'August', 'September', 'October', 'November', 'December'],
-				monthNamesShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-				dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-				dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-				dayNamesMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+				name: 'Nanakshahi',
+				epochs: ['BN', 'AN'],
+				monthNames: ['Chet', 'Vaisakh', 'Jeth', 'Harh', 'Sawan', 'Bhadon',
+				'Assu', 'Katak', 'Maghar', 'Poh', 'Magh', 'Phagun'],
+				monthNamesShort: ['Che', 'Vai', 'Jet', 'Har', 'Saw', 'Bha', 'Ass', 'Kat', 'Mgr', 'Poh', 'Mgh', 'Pha'],
+				dayNames: ['Somvaar', 'Mangalvar', 'Budhvaar', 'Veervaar', 'Shukarvaar', 'Sanicharvaar', 'Etvaar'],
+				dayNamesShort: ['Som', 'Mangal', 'Budh', 'Veer', 'Shukar', 'Sanichar', 'Et'],
+				dayNamesMin: ['So', 'Ma', 'Bu', 'Ve', 'Sh', 'Sa', 'Et'],
 				digits: null,
-				dateFormat: 'yyyy/mm/dd',
-				firstDay: 1,
+				dateFormat: 'dd-mm-yyyy',
+				firstDay: 0,
 				isRTL: false
 			}
 		},
 
 		/** Determine whether this date is in a leap year.
-			@memberof TaiwanCalendar
+			@memberof NanakshahiCalendar
 			@param year {CDate|number} The date to examine or the year to examine.
 			@return {boolean} <code>true</code> if this is a leap year, <code>false</code> if not.
 			@throws Error if an invalid year or a different calendar used. */
 		leapYear: function(year) {
-			var date = this._validate(year, this.minMonth, this.minDay, $.calendars.local.invalidYear);
-			var year = this._t2gYear(date.year());
-			return gregorianCalendar.leapYear(year);
+			var date = this._validate(year, this.minMonth, this.minDay,
+				$.calendars.local.invalidYear || $.calendars.regionalOptions[''].invalidYear);
+			return gregorian.leapYear(date.year() + (date.year() < 1 ? 1 : 0) + 1469);
 		},
 
-		/** Determine the week of the year for a date - ISO 8601.
-			@memberof TaiwanCalendar
+		/** Determine the week of the year for a date.
+			@memberof NanakshahiCalendar
 			@param year {CDate|number} The date to examine or the year to examine.
 			@param [month] {number} The month to examine.
 			@param [day] {number} The day to examine.
 			@return {number} The week of the year.
 			@throws Error if an invalid date or a different calendar used. */
 		weekOfYear: function(year, month, day) {
-			var date = this._validate(year, this.minMonth, this.minDay, $.calendars.local.invalidYear);
-			var year = this._t2gYear(date.year());
-			return gregorianCalendar.weekOfYear(year, date.month(), date.day());
+			// Find Monday of this week starting on Monday
+			var checkDate = this.newDate(year, month, day);
+			checkDate.add(1 - (checkDate.dayOfWeek() || 7), 'd');
+			return Math.floor((checkDate.dayOfYear() - 1) / 7) + 1;
 		},
 
 		/** Retrieve the number of days in a month.
-			@memberof TaiwanCalendar
+			@memberof NanakshahiCalendar
 			@param year {CDate|number} The date to examine or the year of the month.
 			@param [month] {number} The month.
 			@return {number} The number of days in this month.
@@ -109,11 +107,11 @@
 		daysInMonth: function(year, month) {
 			var date = this._validate(year, month, this.minDay, $.calendars.local.invalidMonth);
 			return this.daysPerMonth[date.month() - 1] +
-				(date.month() === 2 && this.leapYear(date.year()) ? 1 : 0);
+				(date.month() === 12 && this.leapYear(date.year()) ? 1 : 0);
 		},
 
 		/** Determine whether this date is a week day.
-			@memberof TaiwanCalendar
+			@memberof NanakshahiCalendar
 			@param year {CDate|number} The date to examine or the year to examine.
 			@param [month] {number} The month to examine.
 			@param [day] {number} The day to examine.
@@ -125,48 +123,44 @@
 
 		/** Retrieve the Julian date equivalent for this date,
 			i.e. days since January 1, 4713 BCE Greenwich noon.
-			@memberof TaiwanCalendar
+			@memberof NanakshahiCalendar
 			@param year {CDate|number} The date to convert or the year to convert.
 			@param [month] {number} The month to convert.
 			@param [day] {number} The day to convert.
 			@return {number} The equivalent Julian date.
 			@throws Error if an invalid date or a different calendar used. */
 		toJD: function(year, month, day) {
-			var date = this._validate(year, month, day, $.calendars.local.invalidDate);
-			var year = this._t2gYear(date.year());
-			return gregorianCalendar.toJD(year, date.month(), date.day());
+			var date = this._validate(year, month, day, $.calendars.local.invalidMonth);
+			var year = date.year();
+			if (year < 0) { year++; } // No year zero
+			var doy = date.day();
+			for (var m = 1; m < date.month(); m++) {
+				doy += this.daysPerMonth[m - 1];
+			}
+			return doy + gregorian.toJD(year + 1468, 3, 13);
 		},
 
 		/** Create a new date from a Julian date.
-			@memberof TaiwanCalendar
+			@memberof NanakshahiCalendar
 			@param jd {number} The Julian date to convert.
 			@return {CDate} The equivalent date. */
 		fromJD: function(jd) {
-			var date = gregorianCalendar.fromJD(jd);
-			var year = this._g2tYear(date.year());
-			return this.newDate(year, date.month(), date.day());
-		},
-
-		/** Convert Taiwanese to Gregorian year.
-			@memberof TaiwanCalendar
-			@private
-			@param year {number} The Taiwanese year.
-			@return {number} The corresponding Gregorian year. */
-		_t2gYear: function(year) {
-			return year + this.yearsOffset + (year >= -this.yearsOffset && year <= -1 ? 1 : 0);
-		},
-
-		/** Convert Gregorian to Taiwanese year.
-			@memberof TaiwanCalendar
-			@private
-			@param year {number} The Gregorian year.
-			@return {number} The corresponding Taiwanese year. */
-		_g2tYear: function(year) {
-			return year - this.yearsOffset - (year >= 1 && year <= this.yearsOffset ? 1 : 0);
+			jd = Math.floor(jd + 0.5);
+			var year = Math.floor((jd - (this.jdEpoch - 1)) / 366);
+			while (jd >= this.toJD(year + 1, 1, 1)) {
+				year++;
+			}
+			var day = jd - Math.floor(this.toJD(year, 1, 1) + 0.5) + 1;
+			var month = 1;
+			while (day > this.daysInMonth(year, month)) {
+				day -= this.daysInMonth(year, month);
+				month++;
+			}
+			return this.newDate(year, month, day);
 		}
 	});
 
-	// Taiwan calendar implementation
-	$.calendars.calendars.taiwan = TaiwanCalendar;
+	// Nanakshahi calendar implementation
+	$.calendars.calendars.nanakshahi = NanakshahiCalendar;
 
 })(jQuery);

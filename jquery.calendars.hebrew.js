@@ -1,6 +1,6 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Hebrew calendar for jQuery v2.0.1.
-   Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
+   Hebrew calendar for jQuery v2.0.2.
+   Written by Keith Wood (wood.keith{at}optusnet.com.au) August 2009.
    Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */
 
@@ -65,6 +65,7 @@
 				dayNames: ['Yom Rishon', 'Yom Sheni', 'Yom Shlishi', 'Yom Revi\'i', 'Yom Chamishi', 'Yom Shishi', 'Yom Shabbat'],
 				dayNamesShort: ['Ris', 'She', 'Shl', 'Rev', 'Cha', 'Shi', 'Sha'],
 				dayNamesMin: ['Ri','She','Shl','Re','Ch','Shi','Sha'],
+				digits: null,
 				dateFormat: 'dd/mm/yyyy',
 				firstDay: 0,
 				isRTL: false

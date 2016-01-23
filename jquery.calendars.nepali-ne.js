@@ -1,5 +1,5 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Nepali localisation for Nepali calendar for jQuery v2.0.1.
+   Nepali localisation for Nepali calendar for jQuery v2.0.2.
    Written by Artur Neumann (ict.projects{at}nepal.inf.org) April 2013. */
 (function($) {
 	$.calendars.calendars.nepali.prototype.regionalOptions['ne'] = {
@@ -10,6 +10,7 @@
 		dayNames: ['आइतवार', 'सोमवार', 'मगलवार', 'बुधवार', 'बिहिवार', 'शुक्रवार', 'शनिवार'],
 		dayNamesShort: ['आइत', 'सोम', 'मगल', 'बुध', 'बिहि', 'शुक्र', 'शनि'],
 		dayNamesMin: ['आ', 'सो', 'म', 'बु', 'बि', 'शु', 'श'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 1,
 		isRTL: false

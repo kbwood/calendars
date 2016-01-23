@@ -1,6 +1,6 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Calendars localisations for jQuery v2.0.1.
-   Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
+   Calendars localisations for jQuery v2.0.2.
+   Written by Keith Wood (wood.keith{at}optusnet.com.au) August 2009.
    Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */
 /* http://keith-wood.name/calendars.html
@@ -17,6 +17,7 @@
 		dayNames: ['Sondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrydag', 'Saterdag'],
 		dayNamesShort: ['Son', 'Maan', 'Dins', 'Woens', 'Don', 'Vry', 'Sat'],
 		dayNamesMin: ['So','Ma','Di','Wo','Do','Vr','Sa'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -40,6 +41,7 @@
 		dayNames: ['ሰንዴይ', 'መንዴይ', 'ትዩስዴይ', 'ዌንስዴይ', 'ተርሰዴይ', 'ፍራይዴይ', 'ሳተርዴይ'],
 		dayNamesShort: ['ሰንዴ', 'መንዴ', 'ትዩስ', 'ዌንስ', 'ተርሰ', 'ፍራይ', 'ሳተር'],
 		dayNamesMin: ['ሰን', 'መን', 'ትዩ', 'ዌን', 'ተር', 'ፍራ', 'ሳተ'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -62,6 +64,7 @@
 		dayNames: ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'],
 		dayNamesShort: ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'],
 		dayNamesMin: ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 6,
 		isRTL: true
@@ -85,6 +88,7 @@
 		dayNames:  ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'],
 		dayNamesShort: ['أحد', 'اثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة', 'سبت'],
 		dayNamesMin: ['أحد', 'اثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة', 'سبت'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 6,
 		isRTL: true
@@ -109,6 +113,7 @@
 		dayNames: ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'],
 		dayNamesShort: ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'],
 		dayNamesMin: ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'],
+		digits: $.calendars.substituteDigits(['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩']),
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 6,
 		isRTL: true
@@ -132,6 +137,7 @@
 		dayNames: ['Bazar','Bazar ertəsi','Çərşənbə axşamı','Çərşənbə','Cümə axşamı','Cümə','Şənbə'],
 		dayNamesShort: ['B','Be','Ça','Ç','Ca','C','Ş'],
 		dayNamesMin: ['B','B','Ç','С','Ç','C','Ş'],
+		digits: null,
 		dateFormat: 'dd.mm.yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -155,6 +161,7 @@
         dayNames: ['Неделя','Понеделник','Вторник','Сряда','Четвъртък','Петък','Събота'],
         dayNamesShort: ['Нед','Пон','Вто','Сря','Чет','Пет','Съб'],
         dayNamesMin: ['Не','По','Вт','Ср','Че','Пе','Съ'],
+		digits: null,
         dateFormat: 'dd.mm.yyyy',
 		firstDay: 1,
         isRTL: false
@@ -178,6 +185,7 @@
 		dayNames: ['Nedelja','Ponedeljak','Utorak','Srijeda','Četvrtak','Petak','Subota'],
 		dayNamesShort: ['Ned','Pon','Uto','Sri','Čet','Pet','Sub'],
 		dayNamesMin: ['Ne','Po','Ut','Sr','Če','Pe','Su'],
+		digits: null,
 		dateFormat: 'dd.mm.yy',
 		firstDay: 1,
 		isRTL: false
@@ -201,6 +209,7 @@
 		dayNames: ['Diumenge','Dilluns','Dimarts','Dimecres','Dijous','Divendres','Dissabte'],
 		dayNamesShort: ['Dug','Dln','Dmt','Dmc','Djs','Dvn','Dsb'],
 		dayNamesMin: ['Dg','Dl','Dt','Dc','Dj','Dv','Ds'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -224,6 +233,7 @@
 		dayNames: ['neděle', 'pondělí', 'úterý', 'středa', 'čtvrtek', 'pátek', 'sobota'],
 		dayNamesShort: ['ne', 'po', 'út', 'st', 'čt', 'pá', 'so'],
 		dayNamesMin: ['ne','po','út','st','čt','pá','so'],
+		digits: null,
 		dateFormat: 'dd.mm.yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -247,6 +257,7 @@
 		dayNames: ['Søndag','Mandag','Tirsdag','Onsdag','Torsdag','Fredag','Lørdag'],
 		dayNamesShort: ['Søn','Man','Tir','Ons','Tor','Fre','Lør'],
 		dayNamesMin: ['Sø','Ma','Ti','On','To','Fr','Lø'],
+		digits: null,
         dateFormat: 'dd-mm-yyyy',
 		firstDay: 0,
 		isRTL: false
@@ -270,6 +281,7 @@
 		dayNames: ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'],
 		dayNamesShort: ['So','Mo','Di','Mi','Do','Fr','Sa'],
 		dayNamesMin: ['So','Mo','Di','Mi','Do','Fr','Sa'],
+		digits: null,
 		dateFormat: 'dd.mm.yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -293,6 +305,7 @@
 		dayNames: ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'],
 		dayNamesShort: ['So','Mo','Di','Mi','Do','Fr','Sa'],
 		dayNamesMin: ['So','Mo','Di','Mi','Do','Fr','Sa'],
+		digits: null,
 		dateFormat: 'dd.mm.yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -316,6 +329,7 @@
 		dayNames: ['Κυριακή','Δευτέρα','Τρίτη','Τετάρτη','Πέμπτη','Παρασκευή','Σάββατο'],
 		dayNamesShort: ['Κυρ','Δευ','Τρι','Τετ','Πεμ','Παρ','Σαβ'],
 		dayNamesMin: ['Κυ','Δε','Τρ','Τε','Πε','Πα','Σα'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -339,6 +353,7 @@
 		dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
 		dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
 		dayNamesMin: ['Su','Mo','Tu','We','Th','Fr','Sa'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -362,6 +377,7 @@
 		dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
 		dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
 		dayNamesMin: ['Su','Mo','Tu','We','Th','Fr','Sa'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -385,6 +401,7 @@
 		dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
 		dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
 		dayNamesMin: ['Su','Mo','Tu','We','Th','Fr','Sa'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -408,6 +425,7 @@
 		dayNames: ['Dimanĉo','Lundo','Mardo','Merkredo','Ĵaŭdo','Vendredo','Sabato'],
 		dayNamesShort: ['Dim','Lun','Mar','Mer','Ĵaŭ','Ven','Sab'],
 		dayNamesMin: ['Di','Lu','Ma','Me','Ĵa','Ve','Sa'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 0,
 		isRTL: false
@@ -431,6 +449,7 @@
 		dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
 		dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
 		dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 0,
 		isRTL: false
@@ -454,6 +473,7 @@
 		dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
 		dayNamesShort: ['Dom','Lun','Mar','Mié','Jue','Vie','Sab'],
 		dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sa'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 0,
 		isRTL: false
@@ -477,6 +497,7 @@
 		dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
 		dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
 		dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -500,6 +521,7 @@
 		dayNames: ['Pühapäev', 'Esmaspäev', 'Teisipäev', 'Kolmapäev', 'Neljapäev', 'Reede', 'Laupäev'],
 		dayNamesShort: ['Pühap', 'Esmasp', 'Teisip', 'Kolmap', 'Neljap', 'Reede', 'Laup'],
 		dayNamesMin: ['P','E','T','K','N','R','L'],
+		digits: null,
 		dateFormat: 'dd.mm.yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -523,6 +545,7 @@
 		dayNames: ['Igandea','Astelehena','Asteartea','Asteazkena','Osteguna','Ostirala','Larunbata'],
 		dayNamesShort: ['Iga','Ast','Ast','Ast','Ost','Ost','Lar'],
 		dayNamesMin: ['Ig','As','As','As','Os','Os','La'],
+		digits: null,
 		dateFormat: 'yyyy/mm/dd',
 		firstDay: 1,
 		isRTL: false
@@ -545,6 +568,7 @@
 		dayNames: ['يکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنجشنبه','جمعه','شنبه'],
 		dayNamesShort: ['ي','د','س','چ','پ','ج', 'ش'],
 		dayNamesMin: ['ي','د','س','چ','پ','ج', 'ش'],
+		digits: $.calendars.substituteDigits(['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹']),
 		dateFormat: 'yyyy/mm/dd',
 		firstDay: 6,
 		isRTL: true
@@ -568,6 +592,7 @@
 		dayNamesShort: ['Su','Ma','Ti','Ke','To','Pe','Su'],
 		dayNames: ['Sunnuntai','Maanantai','Tiistai','Keskiviikko','Torstai','Perjantai','Lauantai'],
 		dayNamesMin: ['Su','Ma','Ti','Ke','To','Pe','La'],
+		digits: null,
         dateFormat: 'dd.mm.yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -591,6 +616,7 @@
 		dayNames: ['Sunnudagur','Mánadagur','Týsdagur','Mikudagur','Hósdagur','Fríggjadagur','Leyardagur'],
 		dayNamesShort: ['Sun','Mán','Týs','Mik','Hós','Frí','Ley'],
 		dayNamesMin: ['Su','Má','Tý','Mi','Hó','Fr','Le'],
+		digits: null,
 		dateFormat: 'dd-mm-yyyy',
 		firstDay: 0,
 		isRTL: false
@@ -614,6 +640,7 @@
 		dayNames: ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'],
 		dayNamesShort: ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'],
 		dayNamesMin: ['Di','Lu','Ma','Me','Je','Ve','Sa'],
+		digits: null,
 		dateFormat: 'dd.mm.yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -637,6 +664,7 @@
 		dayNames: ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'],
 		dayNamesShort: ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'],
 		dayNamesMin: ['Di','Lu','Ma','Me','Je','Ve','Sa'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -660,6 +688,7 @@
 		dayNames: ['Domingo','Luns','Martes','Mércores','Xoves','Venres','Sábado'],
 		dayNamesShort: ['Dom','Lun','Mar','Mér','Xov','Ven','Sáb'],
 		dayNamesMin: ['Do','Lu','Ma','Me','Xo','Ve','Sá'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -669,7 +698,7 @@
 			$.calendars.calendars.gregorian.prototype.regionalOptions['gl'];
 	}
 })(jQuery);
-﻿/* http://keith-wood.name/calendars.html
+/* http://keith-wood.name/calendars.html
    Gujarati (ગુજરાતી) localisation for Gregorian/Julian calendars for jQuery.
    Naymesh Mistry (naymesh@yahoo.com). */
 (function($) {
@@ -683,6 +712,7 @@
 		dayNames: ['રવિવાર','સોમવાર','મંગળવાર','બુધવાર','ગુરુવાર','શુક્રવાર','શનિવાર'],
 		dayNamesShort: ['રવિ','સોમ','મંગળ','બુધ','ગુરુ','શુક્ર','શનિ'],
 		dayNamesMin: ['ર','સો','મં','બુ','ગુ','શુ','શ'],
+		digits: $.calendars.substituteDigits(['૦', '૧', '૨', '૩', '૪', '૫', '૬', '૭', '૮', '૯']),
 		dateFormat: 'dd-M-yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -706,6 +736,7 @@
 		dayNames: ['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'],
 		dayNamesShort: ['א\'','ב\'','ג\'','ד\'','ה\'','ו\'','שבת'],
 		dayNamesMin: ['א\'','ב\'','ג\'','ד\'','ה\'','ו\'','שבת'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 0,
 		isRTL: true
@@ -727,6 +758,7 @@
 		dayNames: ['रविवार', 'सोमवार', 'मंगलवार', 'बुधवार', 'गुरुवार', 'शुक्रवार', 'शनिवार'],
 		dayNamesShort: ['रवि', 'सोम', 'मंगल', 'बुध', 'गुरु', 'शुक्र', 'शनि'],
 		dayNamesMin: ['र','सो','मं','बु','गु','शु','श'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -750,6 +782,7 @@
 		dayNames: ['Nedjelja','Ponedjeljak','Utorak','Srijeda','Četvrtak','Petak','Subota'],
 		dayNamesShort: ['Ned','Pon','Uto','Sri','Čet','Pet','Sub'],
 		dayNamesMin: ['Ne','Po','Ut','Sr','Če','Pe','Su'],
+		digits: null,
 		dateFormat: 'dd.mm.yyyy.',
 		firstDay: 1,
 		isRTL: false
@@ -773,6 +806,7 @@
 		dayNames: ['Vasárnap', 'Hétfö', 'Kedd', 'Szerda', 'Csütörtök', 'Péntek', 'Szombat'],
 		dayNamesShort: ['Vas', 'Hét', 'Ked', 'Sze', 'Csü', 'Pén', 'Szo'],
 		dayNamesMin: ['V', 'H', 'K', 'Sze', 'Cs', 'P', 'Szo'],
+		digits: null,
 		dateFormat: 'yyyy-mm-dd',
 		firstDay: 1,
 		isRTL: false
@@ -796,6 +830,7 @@
 		dayNames: ['կիրակի','եկուշաբթի','երեքշաբթի','չորեքշաբթի','հինգշաբթի','ուրբաթ','շաբաթ'],
 		dayNamesShort: ['կիր','երկ','երք','չրք','հնգ','ուրբ','շբթ'],
 		dayNamesMin: ['կիր','երկ','երք','չրք','հնգ','ուրբ','շբթ'],
+		digits: null,
 		dateFormat: 'dd.mm.yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -819,6 +854,7 @@
 		dayNames: ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'],
 		dayNamesShort: ['Min','Sen','Sel','Rab','kam','Jum','Sab'],
 		dayNamesMin: ['Mg','Sn','Sl','Rb','Km','jm','Sb'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 0,
 		isRTL: false
@@ -842,6 +878,7 @@
 		dayNames: ['Sunnudagur','Mánudagur','Þriðjudagur','Miðvikudagur','Fimmtudagur','Föstudagur','Laugardagur'],
 		dayNamesShort: ['Sun','Mán','Þri','Mið','Fim','Fös','Lau'],
 		dayNamesMin: ['Su','Má','Þr','Mi','Fi','Fö','La'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 0,
 		isRTL: false
@@ -865,6 +902,7 @@
 		dayNames: ['Domenica','Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato'],
 		dayNamesShort: ['Dom','Lun','Mar','Mer','Gio','Ven','Sab'],
 		dayNamesMin: ['Do','Lu','Ma','Me','Gio','Ve','Sa'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -888,6 +926,8 @@
 		dayNames: ['日曜日','月曜日','火曜日','水曜日','木曜日','金曜日','土曜日'],
 		dayNamesShort: ['日','月','火','水','木','金','土'],
 		dayNamesMin: ['日','月','火','水','木','金','土'],
+		digits: $.calendars.substituteChineseDigits(
+			['〇', '一', '二', '三', '四', '五', '六', '七', '八', '九'], ['', '十', '百', '千']),
 		dateFormat: 'yyyy/mm/dd',
 		firstDay: 0,
 		isRTL: false
@@ -911,6 +951,7 @@
 		dayNames: ['კვირა', 'ორშაბათი', 'სამშაბათი', 'ოთხშაბათი', 'ხუთშაბათი', 'პარასკევი', 'შაბათი'],
 		dayNamesShort: ['კვ', 'ორშ', 'სამ', 'ოთხ', 'ხუთ', 'პარ', 'შაბ'],
 		dayNamesMin: ['კვ','ორ','სმ','ოთ', 'ხშ', 'პრ','შბ'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -934,6 +975,7 @@
 		dayNames: ['ថ្ងៃ​អាទិត្យ', 'ថ្ងៃ​ចន្ទ', 'ថ្ងៃ​អង្គារ', 'ថ្ងៃ​ពុធ', 'ថ្ងៃ​ព្រហស្បត្តិ៍', 'ថ្ងៃ​សុក្រ', 'ថ្ងៃ​សៅរ៍'],
 		dayNamesShort: ['អា', 'ចន្ទ', 'អង្គ', 'ពុធ', 'ព្រហ', 'សុ', 'សៅរ៍'],
 		dayNamesMin: ['អា','ច','អ','ពុ','ព្រ','សុ','ស'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -957,6 +999,7 @@
 		dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'],
 		dayNamesShort: ['일','월','화','수','목','금','토'],
 		dayNamesMin: ['일','월','화','수','목','금','토'],
+		digits: null,
 		dateFormat: 'yyyy-mm-dd',
 		firstDay: 0,
 		isRTL: false
@@ -980,6 +1023,7 @@
 		dayNames: ['sekmadienis','pirmadienis','antradienis','trečiadienis','ketvirtadienis','penktadienis','šeštadienis'],
 		dayNamesShort: ['sek','pir','ant','tre','ket','pen','šeš'],
 		dayNamesMin: ['Se','Pr','An','Tr','Ke','Pe','Še'],
+		digits: null,
 		dateFormat: 'yyyy-mm-dd',
 		firstDay: 1,
 		isRTL: false
@@ -1003,6 +1047,7 @@
 		dayNames: ['svētdiena','pirmdiena','otrdiena','trešdiena','ceturtdiena','piektdiena','sestdiena'],
 		dayNamesShort: ['svt','prm','otr','tre','ctr','pkt','sst'],
 		dayNamesMin: ['Sv','Pr','Ot','Tr','Ct','Pk','Ss'],
+		digits: null,
 		dateFormat: 'dd-mm-yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -1026,6 +1071,7 @@
 		dayNames: ['Neđelja', 'Poneđeljak', 'Utorak', 'Srijeda', 'Četvrtak', 'Petak', 'Subota'],
 		dayNamesShort: ['Neđ', 'Pon', 'Uto', 'Sri', 'Čet', 'Pet', 'Sub'],
 		dayNamesMin: ['Ne','Po','Ut','Sr','Če','Pe','Su'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -1049,6 +1095,7 @@
 		dayNames: ['Неђеља', 'Понеђељак', 'Уторак', 'Сриједа', 'Четвртак', 'Петак', 'Субота'],
 		dayNamesShort: ['Неђ', 'Пон', 'Уто', 'Сри', 'Чет', 'Пет', 'Суб'],
 		dayNamesMin: ['Не','По','Ут','Ср','Че','Пе','Су'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -1058,7 +1105,31 @@
 			$.calendars.calendars.gregorian.prototype.regionalOptions['me'];
 	}
 })(jQuery);
-/* http://keith-wood.name/calendars.html
+﻿/* http://keith-wood.name/calendars.html
+   Malagasy localisation for Gregorian/Julian calendars for jQuery.
+   Fran Boon (fran@aidiq.com). */
+(function($) {
+	$.calendars.calendars.gregorian.prototype.regionalOptions['mg'] = {
+		name: 'Gregorian',
+		epochs: ['BCE', 'CE'],
+		monthNames: ['Janoary','Febroary','Martsa','Aprily','Mey','Jona',
+		'Jolay','Aogositra','Septambra','Oktobra','Novambra','Desembra'],
+		monthNamesShort: ['Jan','Feb','Mar','Apr','Mey','Jon',
+		'Jol','Aog','Sep','Okt','Nov','Des'],
+		dayNames: ['Alahady','Alatsinainy','Talata','Alarobia','Alakamisy','Zoma','Sabotsy'],
+		dayNamesShort: ['Alah','Alat','Tal','Alar','Alak','Zom','Sab'],
+		dayNamesMin: ['Ah','At','Ta','Ar','Ak','Zo','Sa'],
+		digits: null,
+		dateFormat: 'dd/mm/yyyy',
+		firstDay: 1,
+		isRTL: false
+	};
+	if ($.calendars.calendars.julian) {
+		$.calendars.calendars.julian.prototype.regionalOptions['mg'] =
+			$.calendars.calendars.gregorian.prototype.regionalOptions['mg'];
+	}
+})(jQuery);
+﻿/* http://keith-wood.name/calendars.html
    Македонски MK localisation for Gregorian/Julian calendars for jQuery.
    Hajan Selmani (hajan [at] live [dot] com). */
 (function($) {
@@ -1072,6 +1143,7 @@
 		dayNames: ['Недела', 'Понеделник', 'Вторник', 'Среда', 'Четврток', 'Петок', 'Сабота'],
 		dayNamesShort: ['Нед', 'Пон', 'Вто', 'Сре', 'Чет', 'Пет', 'Саб'],
 		dayNamesMin: ['Не','По','Вт','Ср','Че','Пе','Са'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -1095,6 +1167,7 @@
 		dayNames: ['ഞായര്‍', 'തിങ്കള്‍', 'ചൊവ്വ', 'ബുധന്‍', 'വ്യാഴം', 'വെള്ളി', 'ശനി'],
 		dayNamesShort: ['ഞായ', 'തിങ്ക', 'ചൊവ്വ', 'ബുധ', 'വ്യാഴം', 'വെള്ളി', 'ശനി'],
 		dayNamesMin: ['ഞാ','തി','ചൊ','ബു','വ്യാ','വെ','ശ'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -1118,6 +1191,7 @@
 		dayNames: ['Ahad','Isnin','Selasa','Rabu','Khamis','Jumaat','Sabtu'],
 		dayNamesShort: ['Aha','Isn','Sel','Rab','Kha','Jum','Sab'],
 		dayNamesMin: ['Ah','Is','Se','Ra','Kh','Ju','Sa'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 0,
 		isRTL: false
@@ -1141,6 +1215,7 @@
 		dayNames: ['Il-Ħadd', 'It-Tnejn', 'It-Tlieta', 'L-Erbgħa', 'Il-Ħamis', 'Il-Ġimgħa', 'Is-Sibt'],
 		dayNamesShort: ['Ħad', 'Tne', 'Tli', 'Erb', 'Ħam', 'Ġim', 'Sib'],
 		dayNamesMin: ['Ħ','T','T','E','Ħ','Ġ','S'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -1164,6 +1239,7 @@
 		dayNames: ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'],
 		dayNamesShort: ['zon', 'maa', 'din', 'woe', 'don', 'vri', 'zat'],
 		dayNamesMin: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -1187,6 +1263,7 @@
 		dayNames: ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'],
 		dayNamesShort: ['zon', 'maa', 'din', 'woe', 'don', 'vri', 'zat'],
 		dayNamesMin: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
+		digits: null,
 		dateFormat: 'dd-mm-yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -1210,6 +1287,7 @@
 		dayNamesShort: ['Søn','Man','Tir','Ons','Tor','Fre','Lør'],
 		dayNames: ['Søndag','Mandag','Tirsdag','Onsdag','Torsdag','Fredag','Lørdag'],
 		dayNamesMin: ['Sø','Ma','Ti','On','To','Fr','Lø'],
+		digits: null,
 		dateFormat: 'dd.mm.yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -1217,6 +1295,29 @@
 	if ($.calendars.calendars.julian) {
 		$.calendars.calendars.julian.prototype.regionalOptions['no'] =
 			$.calendars.calendars.gregorian.prototype.regionalOptions['no'];
+	}
+})(jQuery);
+﻿/* http://keith-wood.name/calendars.html
+   Punjabi localisation for Gregorian/Julian calendars for jQuery.
+   Sarbjit Singh (sanbroz@gmail.com). */
+(function($) {
+	$.calendars.calendars.gregorian.prototype.regionalOptions['pa'] = {
+		name: 'Gregorian',
+		epochs: ['BCE', 'CE'],
+		monthNames: ['ਜਨਵਰੀ','ਫ਼ਰਵਰੀ','ਮਾਰਚ','ਅਪ੍ਰੈਲ','ਮਈ','ਜੂਨ',
+		'ਜੁਲਾਈ','ਅਗਸਤ','ਸਤੰਬਰ','ਅਕਤੂਬਰ','ਨਵੰਬਰ','ਦਸੰਬਰ'],
+		monthNamesShort: ['ਜਨ', 'ਫ਼ਰ', 'ਮਾਰ', 'ਅਪ੍ਰੈ', 'ਮਈ', 'ਜੂਨ', 'ਜੁਲਾ', 'ਅਗ', 'ਸਤੰ', 'ਅਕ', 'ਨਵੰ', 'ਦਸੰ'],
+		dayNames: ['ਐਤਵਾਰ', 'ਸੋਮਵਾਰ', 'ਮੰਗਲਵਾਰ', 'ਬੁੱਧਵਾਰ', 'ਵੀਰਵਾਰ', 'ਸ਼ੁੱਕਰਵਾਰ', 'ਸ਼ਨਿੱਚਰਵਾਰ'],
+		dayNamesShort: ['ਐਤ', 'ਸੋਮ', 'ਮੰਗਲ', 'ਬੁੱਧ', 'ਵੀਰ', 'ਸ਼ੁੱਕਰ', 'ਸ਼ਨਿੱਚਰ'],
+		dayNamesMin: ['ਐ', 'ਸੋ', 'ਮੰ', 'ਬੁੱ', 'ਵੀ', 'ਸ਼ੁੱ', 'ਸ਼'],
+		digits: $.calendars.substituteDigits(['੦', '੧', '੨', '੩', '੪', '੫', '੬', '੭', '੮', '੯']),
+		dateFormat: 'dd-mm-yyyy',
+		firstDay: 1,
+		isRTL: false
+	};
+	if ($.calendars.calendars.julian) {
+		$.calendars.calendars.julian.prototype.regionalOptions['pa'] =
+			$.calendars.calendars.gregorian.prototype.regionalOptions['pa'];
 	}
 })(jQuery);
 ﻿/* http://keith-wood.name/calendars.html
@@ -1233,6 +1334,7 @@
 		dayNames: ['Niedziela','Poniedzialek','Wtorek','Środa','Czwartek','Piątek','Sobota'],
 		dayNamesShort: ['Nie','Pn','Wt','Śr','Czw','Pt','So'],
 		dayNamesMin: ['N','Pn','Wt','Śr','Cz','Pt','So'],
+		digits: null,
 		dateFormat: 'yyyy-mm-dd',
 		firstDay: 1,
 		isRTL: false
@@ -1256,6 +1358,7 @@
 		dayNames: ['Domingo','Segunda-feira','Terça-feira','Quarta-feira','Quinta-feira','Sexta-feira','Sábado'],
 		dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],
 		dayNamesMin: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 0,
 		isRTL: false
@@ -1279,6 +1382,7 @@
 		dayNames: ['Dumengia','Glindesdi','Mardi','Mesemna','Gievgia','Venderdi','Sonda'],
 		dayNamesShort: ['Dum','Gli','Mar','Mes','Gie','Ven','Som'],
 		dayNamesMin: ['Du','Gl','Ma','Me','Gi','Ve','So'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -1302,6 +1406,7 @@
 		dayNames: ['Duminică', 'Luni', 'Marti', 'Miercuri', 'Joi', 'Vineri', 'Sâmbătă'],
 		dayNamesShort: ['Dum', 'Lun', 'Mar', 'Mie', 'Joi', 'Vin', 'Sâm'],
 		dayNamesMin: ['Du','Lu','Ma','Mi','Jo','Vi','Sâ'],
+		digits: null,
 		dateFormat: 'dd.mm.yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -1325,6 +1430,7 @@
 		dayNames: ['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'],
 		dayNamesShort: ['вск','пнд','втр','срд','чтв','птн','сбт'],
 		dayNamesMin: ['Вс','Пн','Вт','Ср','Чт','Пт','Сб'],
+		digits: null,
 		dateFormat: 'dd.mm.yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -1348,6 +1454,7 @@
 		dayNames: ['Nedel\'a','Pondelok','Utorok','Streda','Štvrtok','Piatok','Sobota'],
 		dayNamesShort: ['Ned','Pon','Uto','Str','Štv','Pia','Sob'],
 		dayNamesMin: ['Ne','Po','Ut','St','Št','Pia','So'],
+		digits: null,
 		dateFormat: 'dd.mm.yyyy',
 		firstDay: 0,
 		isRTL: false
@@ -1372,6 +1479,7 @@
 		dayNames: ['Nedelja','Ponedeljek','Torek','Sreda','&#x10C;etrtek','Petek','Sobota'],
 		dayNamesShort: ['Ned','Pon','Tor','Sre','&#x10C;et','Pet','Sob'],
 		dayNamesMin: ['Ne','Po','To','Sr','&#x10C;e','Pe','So'],
+		digits: null,
 		dateFormat: 'dd.mm.yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -1395,6 +1503,7 @@
 		dayNames: ['E Diel','E Hënë','E Martë','E Mërkurë','E Enjte','E Premte','E Shtune'],
 		dayNamesShort: ['Di','Hë','Ma','Më','En','Pr','Sh'],
 		dayNamesMin: ['Di','Hë','Ma','Më','En','Pr','Sh'],
+		digits: null,
 		dateFormat: 'dd.mm.yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -1417,6 +1526,7 @@
 		dayNames: ['Nedelja','Ponedeljak','Utorak','Sreda','Četvrtak','Petak','Subota'],
 		dayNamesShort: ['Ned','Pon','Uto','Sre','Čet','Pet','Sub'],
 		dayNamesMin: ['Ne','Po','Ut','Sr','Če','Pe','Su'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -1439,6 +1549,7 @@
 		dayNames: ['Недеља','Понедељак','Уторак','Среда','Четвртак','Петак','Субота'],
 		dayNamesShort: ['Нед','Пон','Уто','Сре','Чет','Пет','Суб'],
 		dayNamesMin: ['Не','По','Ут','Ср','Че','Пе','Су'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -1462,6 +1573,7 @@
 		dayNames: ['Söndag','Måndag','Tisdag','Onsdag','Torsdag','Fredag','Lördag'],
 		dayNamesShort: ['Sön','Mån','Tis','Ons','Tor','Fre','Lör'],
 		dayNamesMin: ['Sö','Må','Ti','On','To','Fr','Lö'],
+		digits: null,
         dateFormat: 'yyyy-mm-dd',
 		firstDay: 1,
 		isRTL: false
@@ -1485,6 +1597,7 @@
 		dayNames: ['ஞாயிற்றுக்கிழமை','திங்கட்கிழமை','செவ்வாய்க்கிழமை','புதன்கிழமை','வியாழக்கிழமை','வெள்ளிக்கிழமை','சனிக்கிழமை'],
 		dayNamesShort: ['ஞாயிறு','திங்கள்','செவ்வாய்','புதன்','வியாழன்','வெள்ளி','சனி'],
 		dayNamesMin: ['ஞா','தி','செ','பு','வி','வெ','ச'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -1494,7 +1607,31 @@
 			$.calendars.calendars.gregorian.prototype.regionalOptions['ta'];
 	}
 })(jQuery);
-/* http://keith-wood.name/calendars.html
+﻿/* http://keith-wood.name/calendars.html
+   Telugu localisation for Gregorian/Julian calendars for jQuery.
+   Krishna Srikanth Manda (mandaksk@hotmail.com). */
+(function($) {
+	$.calendars.calendars.gregorian.prototype.regionalOptions['te'] = {
+		name: 'Gregorian',
+		epochs: ['BCE', 'CE'],
+		monthNames: ['జనవరి','ఫిబ్రవరి','మార్చి','ఏప్రిల్','మే','జూన్',
+		'జూలై','ఆగష్టు','సెప్టెంబర్','అక్టోబర్','నవంబర్','డిసెంబర్'],
+		monthNamesShort: ['జన', 'ఫిబ్ర', 'మార్చి', 'ఏప్రి', 'మే', 'జూన్',
+		'జూలై', 'ఆగ', 'సెప్టె', 'అక్టో', 'నవ', 'డిసె'],
+		dayNames: ['ఆదివారం', 'సోమవారం', 'మంగళవారం', 'బుధవారం', 'గురువారం', 'శుక్రవారం', 'శనివారం'],
+		dayNamesShort: ['ఆది', 'సోమ', 'మంగ', 'బుధ', 'గురు', 'శుక్ర', 'శని'],
+		dayNamesMin: ['ఆ','సో','మ','బు','గు','శు','శ'],
+		digits: null,
+		dateFormat: 'dd/mm/yyyy',
+		firstDay: 1,
+		isRTL: false
+	};
+	if ($.calendars.calendars.julian) {
+		$.calendars.calendars.julian.prototype.regionalOptions['te'] =
+			$.calendars.calendars.gregorian.prototype.regionalOptions['te'];
+	}
+})(jQuery);
+﻿/* http://keith-wood.name/calendars.html
    Thai localisation for Gregorian/Julian calendars for jQuery.
    Written by pipo (pipo@sixhead.com). */
 (function($) {
@@ -1508,6 +1645,7 @@
 		dayNames: ['อาทิตย์','จันทร์','อังคาร','พุธ','พฤหัสบดี','ศุกร์','เสาร์'],
 		dayNamesShort: ['อา.','จ.','อ.','พ.','พฤ.','ศ.','ส.'],
 		dayNamesMin: ['อา.','จ.','อ.','พ.','พฤ.','ศ.','ส.'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 0,
 		isRTL: false
@@ -1531,6 +1669,7 @@
 		dayNames: ['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'],
 		dayNamesShort: ['Pz','Pt','Sa','Ça','Pe','Cu','Ct'],
 		dayNamesMin: ['Pz','Pt','Sa','Ça','Pe','Cu','Ct'],
+		digits: null,
 		dateFormat: 'dd.mm.yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -1554,6 +1693,7 @@
 		dayNames: ['якшәмбе','дүшәмбе','сишәмбе','чәршәмбе','пәнҗешәмбе','җомга','шимбә'],
 		dayNamesShort: ['якш','дүш','сиш','чәр','пән','җом','шим'],
 		dayNamesMin: ['Як','Дү','Си','Чә','Пә','Җо','Ши'],
+		digits: null,
 		dateFormat: 'dd.mm.yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -1577,6 +1717,7 @@
 		dayNames: ['неділя','понеділок','вівторок','середа','четвер','п\'ятниця','субота'],
 		dayNamesShort: ['нед','пнд','вів','срд','чтв','птн','сбт'],
 		dayNamesMin: ['Нд','Пн','Вт','Ср','Чт','Пт','Сб'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 1,
 		isRTL: false
@@ -1601,6 +1742,7 @@
 		dayNames: ['اتوار','پير','منگل','بدھ','جمعرات','جمعہ','ہفتہ'],
 		dayNamesShort: ['اتوار','پير','منگل','بدھ','جمعرات','جمعہ','ہفتہ'],
 		dayNamesMin: ['اتوار','پير','منگل','بدھ','جمعرات','جمعہ','ہفتہ'],
+		digits: $.calendars.substituteDigits(['٠', '١', '٢', '٣', '۴', '۵', '۶', '۷', '٨', '٩']),
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 0,
 		firstDay: 1,
@@ -1625,6 +1767,7 @@
 		dayNames: ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'],
 		dayNamesShort: ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'],
 		dayNamesMin: ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 0,
 		isRTL: false
@@ -1634,7 +1777,7 @@
 			$.calendars.calendars.gregorian.prototype.regionalOptions['vi'];
 	}
 })(jQuery);
-﻿/* http://keith-wood.name/calendars.html
+/* http://keith-wood.name/calendars.html
    Simplified Chinese localisation for Gregorian/Julian calendars for jQuery.
    Written by Cloudream (cloudream@gmail.com). */
 (function($) {
@@ -1648,6 +1791,8 @@
 		dayNames: ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'],
 		dayNamesShort: ['周日','周一','周二','周三','周四','周五','周六'],
 		dayNamesMin: ['日','一','二','三','四','五','六'],
+		digits: $.calendars.substituteChineseDigits(
+			['〇', '一', '二', '三', '四', '五', '六', '七', '八', '九'], ['', '十', '百', '千']),
 		dateFormat: 'yyyy-mm-dd',
 		firstDay: 1,
 		isRTL: false
@@ -1671,6 +1816,8 @@
 		dayNames: ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'],
 		dayNamesShort: ['周日','周一','周二','周三','周四','周五','周六'],
 		dayNamesMin: ['日','一','二','三','四','五','六'],
+		digits: $.calendars.substituteChineseDigits(
+			['〇', '一', '二', '三', '四', '五', '六', '七', '八', '九'], ['', '十', '百', '千']),
 		dateFormat: 'dd-mm-yyyy',
 		firstDay: 0,
 		isRTL: false
@@ -1694,6 +1841,8 @@
 		dayNames: ['星期日','星期一','星期二','星期三','星期四','星期五','星期六'],
 		dayNamesShort: ['周日','周一','周二','周三','周四','周五','周六'],
 		dayNamesMin: ['日','一','二','三','四','五','六'],
+		digits: $.calendars.substituteChineseDigits(
+			['〇', '一', '二', '三', '四', '五', '六', '七', '八', '九'], ['', '十', '百', '千']),
 		dateFormat: 'yyyy/mm/dd',
 		firstDay: 1,
 		isRTL: false

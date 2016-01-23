@@ -1,6 +1,6 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Mayan calendar for jQuery v2.0.1.
-   Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
+   Mayan calendar for jQuery v2.0.2.
+   Written by Keith Wood (wood.keith{at}optusnet.com.au) August 2009.
    Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */
 
@@ -67,6 +67,7 @@
 				'10', '11', '12', '13', '14', '15', '16', '17', '18', '19'],
 				dayNamesMin: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
 				'10', '11', '12', '13', '14', '15', '16', '17', '18', '19'],
+				digits: null,
 				dateFormat: 'YYYY.m.d',
 				firstDay: 0,
 				isRTL: false,

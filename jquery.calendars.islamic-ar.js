@@ -1,6 +1,6 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Arabic localisation for Islamic calendar for jQuery v2.0.1.
-   Written by Keith Wood (kbwood{at}iinet.com.au) August 2009. */
+   Arabic localisation for Islamic calendar for jQuery v2.0.2.
+   Written by Keith Wood (wood.keith{at}optusnet.com.au) August 2009. */
 (function($) {
 	$.calendars.calendars.islamic.prototype.regionalOptions['ar'] = {
 		name: 'Islamic',
@@ -12,6 +12,7 @@
 		dayNames: ['يوم الأحد', 'يوم الإثنين', 'يوم الثلاثاء', 'يوم الأربعاء', 'يوم الخميس', 'يوم الجمعة', 'يوم السبت'],
 		dayNamesShort: ['يوم الأحد', 'يوم الإثنين', 'يوم الثلاثاء', 'يوم الأربعاء', 'يوم الخميس', 'يوم الجمعة', 'يوم السبت'],
 		dayNamesMin: ['يوم الأحد', 'يوم الإثنين', 'يوم الثلاثاء', 'يوم الأربعاء', 'يوم الخميس', 'يوم الجمعة', 'يوم السبت'],
+		digits: $.calendars.substituteDigits(['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩']),
 		dateFormat: 'yyyy/mm/dd',
 		firstDay: 6,
 		isRTL: true

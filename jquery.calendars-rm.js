@@ -12,6 +12,7 @@
 		dayNames: ['Dumengia','Glindesdi','Mardi','Mesemna','Gievgia','Venderdi','Sonda'],
 		dayNamesShort: ['Dum','Gli','Mar','Mes','Gie','Ven','Som'],
 		dayNamesMin: ['Du','Gl','Ma','Me','Gi','Ve','So'],
+		digits: null,
 		dateFormat: 'dd/mm/yyyy',
 		firstDay: 1,
 		isRTL: false

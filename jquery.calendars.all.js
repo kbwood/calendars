@@ -1,6 +1,6 @@
-﻿/* http://keith-wood.name/calendars.html
-   Calendars for jQuery v2.0.1.
-   Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
+/* http://keith-wood.name/calendars.html
+   Calendars for jQuery v2.0.2.
+   Written by Keith Wood (wood.keith{at}optusnet.com.au) August 2009.
    Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */
 
@@ -60,6 +60,40 @@
 			calendar = (year != null && year.year ? year.calendar() : (typeof calendar === 'string' ?
 				this.instance(calendar, language) : calendar)) || this.instance();
 			return calendar.newDate(year, month, day);
+		},
+		
+		/** A simple digit substitution function for localising numbers via the Calendar digits option.
+			@member Calendars
+			@param digits {string[]} The substitute digits, for 0 through 9.
+			@return {function} The substitution function. */
+		substituteDigits: function(digits) {
+			return function(value) {
+				return (value + '').replace(/[0-9]/g, function(digit) {
+					return digits[digit];
+				});
+			}
+		},
+		
+		/** Digit substitution function for localising Chinese style numbers via the Calendar digits option.
+			@member Calendars
+			@param digits {string[]} The substitute digits, for 0 through 9.
+			@param powers {string[]} The characters denoting powers of 10, i.e. 1, 10, 100, 1000.
+			@return {function} The substitution function. */
+		substituteChineseDigits: function(digits, powers) {
+			return function(value) {
+				var localNumber = '';
+				var power = 0;
+				while (value > 0) {
+					var units = value % 10;
+					localNumber = (units === 0 ? '' : digits[units] + powers[power]) + localNumber;
+					power++;
+					value = Math.floor(value / 10);
+				}
+				if (localNumber.indexOf(digits[1] + powers[1]) === 0) {
+					localNumber = localNumber.substr(1);
+				}
+				return localNumber || digits[0];
+			}
 		}
 	});
 
@@ -709,6 +743,7 @@
 				dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
 				dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
 				dayNamesMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+				digits: null,
 				dateFormat: 'mm/dd/yyyy',
 				firstDay: 0,
 				isRTL: false
@@ -856,8 +891,8 @@
 
 })(jQuery);
 /* http://keith-wood.name/calendars.html
-   Calendars extras for jQuery v2.0.1.
-   Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
+   Calendars extras for jQuery v2.0.2.
+   Written by Keith Wood (wood.keith{at}optusnet.com.au) August 2009.
    Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */
 
@@ -879,9 +914,14 @@
 			Found in the <code>jquery.calendars.plus.js</code> module.
 			@memberof CDate
 			@param [format] {string} The date format to use (see <a href="BaseCalendar.html#formatDate"><code>formatDate</code></a>).
+			@param [settings] {object} Options for the <code>formatDate</code> function.
 			@return {string} The formatted date. */
-		formatDate: function(format) {
-			return this._calendar.formatDate(format || '', this);
+		formatDate: function(format, settings) {
+			if (typeof format !== 'string') {
+				settings = format;
+				format = '';
+			}
+			return this._calendar.formatDate(format || '', this, settings);
 		}
 	});
 
@@ -983,6 +1023,8 @@
 			@property [monthNamesShort] {string[]} Abbreviated names of the months.
 			@property [monthNames] {string[]} Names of the months.
 			@property [calculateWeek] {CalendarsPickerCalculateWeek} Function that determines week of the year.
+			@property [localNumbers=false] {boolean} <code>true</code> to localise numbers (if available),
+			          <code>false</code> to use normal Arabic numerals.
 			@return {string} The date in the above format.
 			@throws Errors if the date is from a different calendar. */
 		formatDate: function(format, date, settings) {
@@ -1027,6 +1069,11 @@
 			var formatName = function(match, value, shortNames, longNames) {
 				return (doubled(match) ? longNames[value] : shortNames[value]);
 			};
+			// Localise numbers if requested and available
+			var digits = this.local.digits;
+			var localiseNumbers = function(value) {
+				return (settings.localNumbers && digits ? digits(value) : value);
+			};
 			var output = '';
 			var literal = false;
 			for (var iFormat = 0; iFormat < format.length; iFormat++) {
@@ -1040,12 +1087,12 @@
 				}
 				else {
 					switch (format.charAt(iFormat)) {
-						case 'd': output += formatNumber('d', date.day(), 2); break;
+						case 'd': output += localiseNumbers(formatNumber('d', date.day(), 2)); break;
 						case 'D': output += formatName('D', date.dayOfWeek(),
 							dayNamesShort, dayNames); break;
 						case 'o': output += formatNumber('o', date.dayOfYear(), 3); break;
 						case 'w': output += formatNumber('w', date.weekOfYear(), 2); break;
-						case 'm': output += formatNumber('m', date.month(), 2); break;
+						case 'm': output += localiseNumbers(formatNumber('m', date.month(), 2)); break;
 						case 'M': output += formatName('M', date.month() - this.minMonth,
 							monthNamesShort, monthNames); break;
 						case 'y':
@@ -1284,8 +1331,8 @@
 
 })(jQuery);
 /* http://keith-wood.name/calendars.html
-   Calendars date picker for jQuery v2.0.1.
-   Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
+   Calendars date picker for jQuery v2.0.2.
+   Written by Keith Wood (wood.keith{at}optusnet.com.au) August 2009.
    Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */
 
@@ -1630,6 +1677,8 @@
 			@property [fixedWeeks=false] {boolean} <code>true</code> to always show 6 weeks, <code>false</code> to only show as many as are needed.
 			@property [firstDay=null] {number} First day of the week, 0 = Sunday, 1 = Monday, etc., <code>null</code> for <code>calendar</code> default.
 			@property [calculateWeek=null] {CalendarsPickerCalculateWeek} Calculate week of the year from a date, <code>null</code> for <code>calendar</code> default.
+			@property [localNumbers=false] {boolean} <code>true</code> to localise numbers (if available),
+			            <code>false</code> to use normal Arabic numerals.
 			@property [monthsToShow=1] {number|number[]} How many months to show, cols or [rows, cols].
 			@property [monthsOffset=0] {number} How many months to offset the primary month by;
 						may be a function that takes the date and returns the offset.
@@ -1677,6 +1726,7 @@
 			fixedWeeks: false,
 			firstDay: null,
 			calculateWeek: null,
+			localNumbers: false,
 			monthsToShow: 1,
 			monthsOffset: 0,
 			monthsToStep: 1,
@@ -1919,7 +1969,8 @@
 					date.day(findMax(calendar.local[dateFormat.match(/DD/) ? // Longest day
 						'dayNames' : 'dayNamesShort']) + 20 - date.dayOfWeek());
 				}
-				inst.elem.attr('size', date.formatDate(dateFormat).length);
+				inst.elem.attr('size', date.formatDate(dateFormat,
+					{localNumbers: inst.options.localnumbers}).length);
 			}
 		},
 
@@ -2163,11 +2214,12 @@
 				var calendar = inst.options.calendar;
 				var dateFormat = inst.get('dateFormat');
 				var altFormat = inst.options.altFormat || dateFormat;
+				var settings = {localNumbers: inst.options.localNumbers};
 				for (var i = 0; i < inst.selectedDates.length; i++) {
 					value += (keyUp ? '' : (i > 0 ? sep : '') +
-						calendar.formatDate(dateFormat, inst.selectedDates[i]));
+						calendar.formatDate(dateFormat, inst.selectedDates[i], settings));
 					altValue += (i > 0 ? sep : '') +
-						calendar.formatDate(altFormat, inst.selectedDates[i]);
+						calendar.formatDate(altFormat, inst.selectedDates[i], settings);
 				}
 				if (!inst.inline && !keyUp) {
 					$(elem).val(value);
@@ -2758,7 +2810,7 @@
 					' class="' + inst.options.renderer.commandClass + ' ' +
 					inst.options.renderer.commandClass + '-' + name + ' ' + classes +
 					(command.enabled(inst) ? '' : ' ' + inst.options.renderer.disabledClass) + '">' +
-					(date ? date.formatDate(inst.options[command.text]) :
+					(date ? date.formatDate(inst.options[command.text], {localNumbers: inst.options.localNumbers}) :
 					inst.options[command.text]) + '</' + close + '>');
 			};
 			for (var name in inst.options.commands) {
@@ -2885,6 +2937,10 @@
 				(drawDate.dayOfWeek() === firstDay || drawDate.daysInMonth() < calendar.daysInWeek())?
 				calendar.daysInWeek() : 0), 'd');
 			var jd = drawDate.toJD();
+			// Localise numbers if requested and available
+			var localiseNumbers = function(value) {
+				return (inst.options.localNumbers && calendar.local.digits ? calendar.local.digits(value) : value);
+			};
 			// Generate weeks
 			var weeks = '';
 			for (var week = 0; week < numWeeks; week++) {
@@ -2923,9 +2979,10 @@
 						(drawDate.compareTo(inst.drawDate) === 0 && drawDate.month() === month ?
 						' ' + renderer.highlightedClass : '') + '"' +
 						(dateInfo.title || (inst.options.dayStatus && selectable) ? ' title="' +
-						(dateInfo.title || drawDate.formatDate(inst.options.dayStatus)) + '"' : '') + '>' +
+						(dateInfo.title || drawDate.formatDate(inst.options.dayStatus,
+						{localNumbers: inst.options.localNumbers})) + '"' : '') + '>' +
 						(inst.options.showOtherMonths || drawDate.month() === month ?
-						dateInfo.content || drawDate.day() : '&#160;') +
+						dateInfo.content || localiseNumbers(drawDate.day()) : '&#160;') +
 						(selectable ? '</a>' : '</span>'));
 					drawDate.add(1, 'd');
 					jd++;
@@ -2938,7 +2995,8 @@
 				monthHeader[0].substring(13, monthHeader[0].length - 1));
 			monthHeader = (first ? this._generateMonthSelection(
 				inst, year, month, minDate, maxDate, monthHeader, calendar, renderer) :
-				calendar.formatDate(monthHeader, calendar.newDate(year, month, calendar.minDay)));
+				calendar.formatDate(monthHeader, calendar.newDate(year, month, calendar.minDay),
+					{localNumbers: inst.options.localNumbers}));
 			var weekHeader = this._prepare(renderer.weekHeader, inst).
 				replace(/\{days\}/g, this._generateDayHeaders(inst, calendar, renderer));
 			return this._prepare(renderer.month, inst).replace(/\{monthHeader(:[^\}]+)?\}/g, monthHeader).
@@ -2978,7 +3036,8 @@
 			@return {string} The month selection content. */
 		_generateMonthSelection: function(inst, year, month, minDate, maxDate, monthHeader, calendar) {
 			if (!inst.options.changeMonth) {
-				return calendar.formatDate(monthHeader, calendar.newDate(year, month, 1));
+				return calendar.formatDate(monthHeader, calendar.newDate(year, month, 1),
+					{localNumbers: inst.options.localNumbers});
 			}
 			// Months
 			var monthNames = calendar.local[

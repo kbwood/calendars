@@ -13,7 +13,7 @@
 		clearText: 'Limpar', clearStatus: 'Borrar data actual',
 		closeText: 'Pechar', closeStatus: 'Pechar sen gardar',
 		yearStatus: 'Amosar outro ano', monthStatus: 'Amosar outro mes',
-		weekHeader: 'Sm', weekStatus: 'Semana do ano',
+		weekText: 'Sm', weekStatus: 'Semana do ano',
 		dayStatus: 'D, M d', defaultStatus: 'Selecciona Data',
 		isRTL: false
 	};

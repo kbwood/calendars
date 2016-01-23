@@ -1,6 +1,6 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Coptic calendar for jQuery v2.0.1.
-   Written by Keith Wood (kbwood{at}iinet.com.au) February 2010.
+   Coptic calendar for jQuery v2.0.2.
+   Written by Keith Wood (wood.keith{at}optusnet.com.au) February 2010.
    Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */
 
@@ -67,6 +67,7 @@
 				dayNames: ['Tkyriaka', 'Pesnau', 'Pshoment', 'Peftoou', 'Ptiou', 'Psoou', 'Psabbaton'],
 				dayNamesShort: ['Tky', 'Pes', 'Psh', 'Pef', 'Pti', 'Pso', 'Psa'],
 				dayNamesMin: ['Tk', 'Pes', 'Psh', 'Pef', 'Pt', 'Pso', 'Psa'],
+				digits: null,
 				dateFormat: 'dd/mm/yyyy',
 				firstDay: 0,
 				isRTL: false

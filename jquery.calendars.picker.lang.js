@@ -1,6 +1,6 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Calendars date picker localisations for jQuery v2.0.1.
-   Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
+   Calendars datepicker localisations for jQuery v2.0.2.
+   Written by Keith Wood (wood.keith{at}optusnet.com.au) August 2009.
    Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */
 /* http://keith-wood.name/calendars.html

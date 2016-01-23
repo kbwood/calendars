@@ -11,6 +11,7 @@
 		dayNames: ['يکشنبه','دوشنبه','سه‌شنبه','چهارشنبه','پنجشنبه','جمعه','شنبه'],
 		dayNamesShort: ['ي','د','س','چ','پ','ج', 'ش'],
 		dayNamesMin: ['ي','د','س','چ','پ','ج', 'ش'],
+		digits: $.calendars.substituteDigits(['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹']),
 		dateFormat: 'yyyy/mm/dd',
 		firstDay: 6,
 		isRTL: true

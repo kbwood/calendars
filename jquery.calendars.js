@@ -1,6 +1,6 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Calendars for jQuery v2.0.1.
-   Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
+   Calendars for jQuery v2.0.2.
+   Written by Keith Wood (wood.keith{at}optusnet.com.au) August 2009.
    Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */
 
@@ -60,6 +60,40 @@
 			calendar = (year != null && year.year ? year.calendar() : (typeof calendar === 'string' ?
 				this.instance(calendar, language) : calendar)) || this.instance();
 			return calendar.newDate(year, month, day);
+		},
+		
+		/** A simple digit substitution function for localising numbers via the Calendar digits option.
+			@member Calendars
+			@param digits {string[]} The substitute digits, for 0 through 9.
+			@return {function} The substitution function. */
+		substituteDigits: function(digits) {
+			return function(value) {
+				return (value + '').replace(/[0-9]/g, function(digit) {
+					return digits[digit];
+				});
+			}
+		},
+		
+		/** Digit substitution function for localising Chinese style numbers via the Calendar digits option.
+			@member Calendars
+			@param digits {string[]} The substitute digits, for 0 through 9.
+			@param powers {string[]} The characters denoting powers of 10, i.e. 1, 10, 100, 1000.
+			@return {function} The substitution function. */
+		substituteChineseDigits: function(digits, powers) {
+			return function(value) {
+				var localNumber = '';
+				var power = 0;
+				while (value > 0) {
+					var units = value % 10;
+					localNumber = (units === 0 ? '' : digits[units] + powers[power]) + localNumber;
+					power++;
+					value = Math.floor(value / 10);
+				}
+				if (localNumber.indexOf(digits[1] + powers[1]) === 0) {
+					localNumber = localNumber.substr(1);
+				}
+				return localNumber || digits[0];
+			}
 		}
 	});
 
@@ -709,6 +743,7 @@
 				dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
 				dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
 				dayNamesMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+				digits: null,
 				dateFormat: 'mm/dd/yyyy',
 				firstDay: 0,
 				isRTL: false

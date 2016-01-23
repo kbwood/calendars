@@ -1,5 +1,5 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Arabic localisation for UmmAlQura calendar for jQuery v2.0.1.
+   Arabic localisation for UmmAlQura calendar for jQuery v2.0.2.
    Written by Amro Osama March 2013. */
 (function ($) {
 	$.calendars.calendars.ummalqura.prototype.regionalOptions['ar'] = {
@@ -10,6 +10,7 @@
 		dayNames: ['الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'],
 		dayNamesMin: ['الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'],
 		dayNamesShort: ['الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'],
+		digits: $.calendars.substituteDigits(['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩']),
 		dateFormat: 'yyyy/mm/dd', // See format options on BaseCalendar.formatDate
 		firstDay: 6, // The first day of the week, Sat = 0, Sun = 1, ...
 		isRTL: true // True if right-to-left language, false if left-to-right

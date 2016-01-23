@@ -1,6 +1,6 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Julian calendar for jQuery v2.0.1.
-   Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
+   Julian calendar for jQuery v2.0.2.
+   Written by Keith Wood (wood.keith{at}optusnet.com.au) August 2009.
    Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */
 
@@ -22,7 +22,7 @@
 		/** The calendar name.
 			@memberof JulianCalendar */
 		name: 'Julian',
-		/** Julian date of start of Persian epoch: 1 January 0001 AD = 30 December 0001 BCE.
+		/** Julian date of start of Julian epoch: 1 January 0001 AD = 30 December 0001 BCE.
 			@memberof JulianCalendar */
 		jdEpoch: 1721423.5,
 		/** Days per month in a common year.
@@ -66,6 +66,7 @@
 				dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
 				dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
 				dayNamesMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+				digits: null,
 				dateFormat: 'mm/dd/yyyy',
 				firstDay: 0,
 				isRTL: false

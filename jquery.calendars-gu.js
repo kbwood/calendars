@@ -1,4 +1,4 @@
-﻿/* http://keith-wood.name/calendars.html
+/* http://keith-wood.name/calendars.html
    Gujarati (ગુજરાતી) localisation for Gregorian/Julian calendars for jQuery.
    Naymesh Mistry (naymesh@yahoo.com). */
 (function($) {
@@ -12,6 +12,7 @@
 		dayNames: ['રવિવાર','સોમવાર','મંગળવાર','બુધવાર','ગુરુવાર','શુક્રવાર','શનિવાર'],
 		dayNamesShort: ['રવિ','સોમ','મંગળ','બુધ','ગુરુ','શુક્ર','શનિ'],
 		dayNamesMin: ['ર','સો','મં','બુ','ગુ','શુ','શ'],
+		digits: $.calendars.substituteDigits(['૦', '૧', '૨', '૩', '૪', '૫', '૬', '૭', '૮', '૯']),
 		dateFormat: 'dd-M-yyyy',
 		firstDay: 1,
 		isRTL: false

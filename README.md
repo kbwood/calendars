@@ -3,7 +3,7 @@ jQuery World Calendars
 
 This plugin provides support for various world calendars, including a datepicker.
 
-* Calendars: Gregorian, Julian, Taiwanese, Thai, Persian, Islamic, Umm al-Qura, Hebrew, Ethiopian, Coptic, Nepali, Mayan.
+* Calendars: Gregorian, Julian, Taiwanese, Thai, Persian, Islamic, Umm al-Qura, Hebrew, Ethiopian, Coptic, Nepali, Mayan, Nanakshahi, and Discworld.
 * Parse and format dates in all these calendars.
 * Style the datepicker using one of five themes, or use any of the standard Themeroller themes.
 * Over 70 localisations for Gregorian/Julian calendars.

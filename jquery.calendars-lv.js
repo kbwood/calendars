@@ -12,6 +12,7 @@
 		dayNames: ['svētdiena','pirmdiena','otrdiena','trešdiena','ceturtdiena','piektdiena','sestdiena'],
 		dayNamesShort: ['svt','prm','otr','tre','ctr','pkt','sst'],
 		dayNamesMin: ['Sv','Pr','Ot','Tr','Ct','Pk','Ss'],
+		digits: null,
 		dateFormat: 'dd-mm-yyyy',
 		firstDay: 1,
 		isRTL: false

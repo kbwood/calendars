@@ -1,6 +1,6 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Calendars extras for jQuery v2.0.1.
-   Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
+   Calendars extras for jQuery v2.0.2.
+   Written by Keith Wood (wood.keith{at}optusnet.com.au) August 2009.
    Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */
 
@@ -22,9 +22,14 @@
 			Found in the <code>jquery.calendars.plus.js</code> module.
 			@memberof CDate
 			@param [format] {string} The date format to use (see <a href="BaseCalendar.html#formatDate"><code>formatDate</code></a>).
+			@param [settings] {object} Options for the <code>formatDate</code> function.
 			@return {string} The formatted date. */
-		formatDate: function(format) {
-			return this._calendar.formatDate(format || '', this);
+		formatDate: function(format, settings) {
+			if (typeof format !== 'string') {
+				settings = format;
+				format = '';
+			}
+			return this._calendar.formatDate(format || '', this, settings);
 		}
 	});
 
@@ -126,6 +131,8 @@
 			@property [monthNamesShort] {string[]} Abbreviated names of the months.
 			@property [monthNames] {string[]} Names of the months.
 			@property [calculateWeek] {CalendarsPickerCalculateWeek} Function that determines week of the year.
+			@property [localNumbers=false] {boolean} <code>true</code> to localise numbers (if available),
+			          <code>false</code> to use normal Arabic numerals.
 			@return {string} The date in the above format.
 			@throws Errors if the date is from a different calendar. */
 		formatDate: function(format, date, settings) {
@@ -170,6 +177,11 @@
 			var formatName = function(match, value, shortNames, longNames) {
 				return (doubled(match) ? longNames[value] : shortNames[value]);
 			};
+			// Localise numbers if requested and available
+			var digits = this.local.digits;
+			var localiseNumbers = function(value) {
+				return (settings.localNumbers && digits ? digits(value) : value);
+			};
 			var output = '';
 			var literal = false;
 			for (var iFormat = 0; iFormat < format.length; iFormat++) {
@@ -183,12 +195,12 @@
 				}
 				else {
 					switch (format.charAt(iFormat)) {
-						case 'd': output += formatNumber('d', date.day(), 2); break;
+						case 'd': output += localiseNumbers(formatNumber('d', date.day(), 2)); break;
 						case 'D': output += formatName('D', date.dayOfWeek(),
 							dayNamesShort, dayNames); break;
 						case 'o': output += formatNumber('o', date.dayOfYear(), 3); break;
 						case 'w': output += formatNumber('w', date.weekOfYear(), 2); break;
-						case 'm': output += formatNumber('m', date.month(), 2); break;
+						case 'm': output += localiseNumbers(formatNumber('m', date.month(), 2)); break;
 						case 'M': output += formatName('M', date.month() - this.minMonth,
 							monthNamesShort, monthNames); break;
 						case 'y':

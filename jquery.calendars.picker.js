@@ -1,6 +1,6 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Calendars date picker for jQuery v2.0.1.
-   Written by Keith Wood (kbwood{at}iinet.com.au) August 2009.
+   Calendars date picker for jQuery v2.0.2.
+   Written by Keith Wood (wood.keith{at}optusnet.com.au) August 2009.
    Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */
 
@@ -345,6 +345,8 @@
 			@property [fixedWeeks=false] {boolean} <code>true</code> to always show 6 weeks, <code>false</code> to only show as many as are needed.
 			@property [firstDay=null] {number} First day of the week, 0 = Sunday, 1 = Monday, etc., <code>null</code> for <code>calendar</code> default.
 			@property [calculateWeek=null] {CalendarsPickerCalculateWeek} Calculate week of the year from a date, <code>null</code> for <code>calendar</code> default.
+			@property [localNumbers=false] {boolean} <code>true</code> to localise numbers (if available),
+			            <code>false</code> to use normal Arabic numerals.
 			@property [monthsToShow=1] {number|number[]} How many months to show, cols or [rows, cols].
 			@property [monthsOffset=0] {number} How many months to offset the primary month by;
 						may be a function that takes the date and returns the offset.
@@ -392,6 +394,7 @@
 			fixedWeeks: false,
 			firstDay: null,
 			calculateWeek: null,
+			localNumbers: false,
 			monthsToShow: 1,
 			monthsOffset: 0,
 			monthsToStep: 1,
@@ -634,7 +637,8 @@
 					date.day(findMax(calendar.local[dateFormat.match(/DD/) ? // Longest day
 						'dayNames' : 'dayNamesShort']) + 20 - date.dayOfWeek());
 				}
-				inst.elem.attr('size', date.formatDate(dateFormat).length);
+				inst.elem.attr('size', date.formatDate(dateFormat,
+					{localNumbers: inst.options.localnumbers}).length);
 			}
 		},
 
@@ -878,11 +882,12 @@
 				var calendar = inst.options.calendar;
 				var dateFormat = inst.get('dateFormat');
 				var altFormat = inst.options.altFormat || dateFormat;
+				var settings = {localNumbers: inst.options.localNumbers};
 				for (var i = 0; i < inst.selectedDates.length; i++) {
 					value += (keyUp ? '' : (i > 0 ? sep : '') +
-						calendar.formatDate(dateFormat, inst.selectedDates[i]));
+						calendar.formatDate(dateFormat, inst.selectedDates[i], settings));
 					altValue += (i > 0 ? sep : '') +
-						calendar.formatDate(altFormat, inst.selectedDates[i]);
+						calendar.formatDate(altFormat, inst.selectedDates[i], settings);
 				}
 				if (!inst.inline && !keyUp) {
 					$(elem).val(value);
@@ -1473,7 +1478,7 @@
 					' class="' + inst.options.renderer.commandClass + ' ' +
 					inst.options.renderer.commandClass + '-' + name + ' ' + classes +
 					(command.enabled(inst) ? '' : ' ' + inst.options.renderer.disabledClass) + '">' +
-					(date ? date.formatDate(inst.options[command.text]) :
+					(date ? date.formatDate(inst.options[command.text], {localNumbers: inst.options.localNumbers}) :
 					inst.options[command.text]) + '</' + close + '>');
 			};
 			for (var name in inst.options.commands) {
@@ -1600,6 +1605,10 @@
 				(drawDate.dayOfWeek() === firstDay || drawDate.daysInMonth() < calendar.daysInWeek())?
 				calendar.daysInWeek() : 0), 'd');
 			var jd = drawDate.toJD();
+			// Localise numbers if requested and available
+			var localiseNumbers = function(value) {
+				return (inst.options.localNumbers && calendar.local.digits ? calendar.local.digits(value) : value);
+			};
 			// Generate weeks
 			var weeks = '';
 			for (var week = 0; week < numWeeks; week++) {
@@ -1638,9 +1647,10 @@
 						(drawDate.compareTo(inst.drawDate) === 0 && drawDate.month() === month ?
 						' ' + renderer.highlightedClass : '') + '"' +
 						(dateInfo.title || (inst.options.dayStatus && selectable) ? ' title="' +
-						(dateInfo.title || drawDate.formatDate(inst.options.dayStatus)) + '"' : '') + '>' +
+						(dateInfo.title || drawDate.formatDate(inst.options.dayStatus,
+						{localNumbers: inst.options.localNumbers})) + '"' : '') + '>' +
 						(inst.options.showOtherMonths || drawDate.month() === month ?
-						dateInfo.content || drawDate.day() : '&#160;') +
+						dateInfo.content || localiseNumbers(drawDate.day()) : '&#160;') +
 						(selectable ? '</a>' : '</span>'));
 					drawDate.add(1, 'd');
 					jd++;
@@ -1653,7 +1663,8 @@
 				monthHeader[0].substring(13, monthHeader[0].length - 1));
 			monthHeader = (first ? this._generateMonthSelection(
 				inst, year, month, minDate, maxDate, monthHeader, calendar, renderer) :
-				calendar.formatDate(monthHeader, calendar.newDate(year, month, calendar.minDay)));
+				calendar.formatDate(monthHeader, calendar.newDate(year, month, calendar.minDay),
+					{localNumbers: inst.options.localNumbers}));
 			var weekHeader = this._prepare(renderer.weekHeader, inst).
 				replace(/\{days\}/g, this._generateDayHeaders(inst, calendar, renderer));
 			return this._prepare(renderer.month, inst).replace(/\{monthHeader(:[^\}]+)?\}/g, monthHeader).
@@ -1693,7 +1704,8 @@
 			@return {string} The month selection content. */
 		_generateMonthSelection: function(inst, year, month, minDate, maxDate, monthHeader, calendar) {
 			if (!inst.options.changeMonth) {
-				return calendar.formatDate(monthHeader, calendar.newDate(year, month, 1));
+				return calendar.formatDate(monthHeader, calendar.newDate(year, month, 1),
+					{localNumbers: inst.options.localNumbers});
 			}
 			// Months
 			var monthNames = calendar.local[

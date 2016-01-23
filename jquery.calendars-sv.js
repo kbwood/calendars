@@ -12,6 +12,7 @@
 		dayNames: ['Söndag','Måndag','Tisdag','Onsdag','Torsdag','Fredag','Lördag'],
 		dayNamesShort: ['Sön','Mån','Tis','Ons','Tor','Fre','Lör'],
 		dayNamesMin: ['Sö','Må','Ti','On','To','Fr','Lö'],
+		digits: null,
         dateFormat: 'yyyy-mm-dd',
 		firstDay: 1,
 		isRTL: false

@@ -12,6 +12,7 @@
 		dayNames: ['Sunnudagur','Mánadagur','Týsdagur','Mikudagur','Hósdagur','Fríggjadagur','Leyardagur'],
 		dayNamesShort: ['Sun','Mán','Týs','Mik','Hós','Frí','Ley'],
 		dayNamesMin: ['Su','Má','Tý','Mi','Hó','Fr','Le'],
+		digits: null,
 		dateFormat: 'dd-mm-yyyy',
 		firstDay: 0,
 		isRTL: false
