@@ -62,7 +62,7 @@
 				monthNames: ['Farvardin', 'Ordibehesht', 'Khordad', 'Tir', 'Mordad', 'Shahrivar',
 				'Mehr', 'Aban', 'Azar', 'Day', 'Bahman', 'Esfand'],
 				monthNamesShort: ['Far', 'Ord', 'Kho', 'Tir', 'Mor', 'Sha', 'Meh', 'Aba', 'Aza', 'Day', 'Bah', 'Esf'],
-				dayNames: ['Yekshambe', 'Doshambe', 'Seshambe', 'Chæharshambe', 'Panjshambe', 'Jom\'e', 'Shambe'],
+				dayNames: ['Yekshanbe', 'Doshanbe', 'Seshanbe', 'Chaharshanbe', 'Panjshanbe', 'Jom\'e', 'Shanbe'],
 				dayNamesShort: ['Yek', 'Do', 'Se', 'Chæ', 'Panj', 'Jom', 'Sha'],
 				dayNamesMin: ['Ye','Do','Se','Ch','Pa','Jo','Sh'],
 				digits: null,
