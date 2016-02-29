@@ -13,7 +13,7 @@
 		clearText: 'حذف تاريخ', clearStatus: 'پاک کردن تاريخ جاري',
 		closeText: 'بستن', closeStatus: 'بستن بدون اعمال تغييرات',
 		yearStatus: 'نمايش سال متفاوت', monthStatus: 'نمايش ماه متفاوت',
-		weekText: 'هف', weekStatus: 'هفتهِ سال',
+		weekText: 'هف', weekStatus: 'هفته‌ی سال',
 		dayStatus: 'انتخاب D, M d', defaultStatus: 'انتخاب تاريخ',
 		isRTL: true
 	};
