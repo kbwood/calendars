@@ -204,12 +204,12 @@
 						case 'M': output += formatName('M', date.month() - this.minMonth,
 							monthNamesShort, monthNames); break;
 						case 'y':
-							output += (doubled('y', 2) ? date.year() :
-								(date.year() % 100 < 10 ? '0' : '') + date.year() % 100);
+							output += localiseNumbers((doubled('y', 2) ? date.year() :
+								(date.year() % 100 < 10 ? '0' : '') + date.year() % 100));
 							break;
 						case 'Y':
 							doubled('Y', 2);
-							output += date.formatYear();
+							output += localiseNumbers(date.formatYear());
 							break;
 						case 'J': output += date.toJD(); break;
 						case '@': output += (date.toJD() - this.UNIX_EPOCH) * this.SECS_PER_DAY; break;
