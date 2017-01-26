@@ -195,6 +195,7 @@
 				}
 				else {
 					switch (format.charAt(iFormat)) {
+						case 'E': output += this.epoch(date); break;
 						case 'd': output += localiseNumbers(formatNumber('d', date.day(), 2)); break;
 						case 'D': output += formatName('D', date.dayOfWeek(),
 							dayNamesShort, dayNames); break;
