@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: jquery.calendars.picker.ext.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: jquery.calendars.picker.ext.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>﻿/* http://keith-wood.name/calendars.html
+   Calendars date picker extensions for jQuery v2.1.0.
+   Written by Keith Wood (wood.keith{at}optusnet.com.au) August 2009.
+   Available under the MIT (http://keith-wood.name/licence.html) license. 
+   Please attribute the author if you use it. */
+
+(function($) { // Hide scope, no $ conflict
+	'use strict';
+
+	var themeRollerRenderer = {
+		picker: '&lt;div{popup:start} id="ui-datepicker-div"{popup:end} class="ui-datepicker ui-widget ' +
+		'ui-widget-content ui-helper-clearfix ui-corner-all{inline:start} ui-datepicker-inline{inline:end}">' +
+		'&lt;div class="ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-all">' +
+		'{link:prev}{link:today}{link:next}&lt;/div>{months}' +
+		'{popup:start}&lt;div class="ui-datepicker-header ui-widget-header ui-helper-clearfix ' +
+		'ui-corner-all">{button:clear}{button:close}&lt;/div>{popup:end}' +
+		'&lt;div class="ui-helper-clearfix">&lt;/div>&lt;/div>',
+		monthRow: '&lt;div class="ui-datepicker-row-break">{months}&lt;/div>',
+		month: '&lt;div class="ui-datepicker-group">' +
+		'&lt;div class="ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-all">{monthHeader:MM yyyy}&lt;/div>' +
+		'&lt;table class="ui-datepicker-calendar">&lt;thead>{weekHeader}&lt;/thead>&lt;tbody>{weeks}&lt;/tbody>&lt;/table>&lt;/div>',
+		weekHeader: '&lt;tr>{days}&lt;/tr>',
+		dayHeader: '&lt;th>{day}&lt;/th>',
+		week: '&lt;tr>{days}&lt;/tr>',
+		day: '&lt;td>{day}&lt;/td>',
+		monthSelector: '.ui-datepicker-group',
+		daySelector: 'td',
+		rtlClass: 'ui-datepicker-rtl',
+		multiClass: 'ui-datepicker-multi',
+		defaultClass: 'ui-state-default',
+		selectedClass: 'ui-state-active',
+		highlightedClass: 'ui-state-hover',
+		todayClass: 'ui-state-highlight',
+		otherMonthClass: 'ui-datepicker-other-month',
+		weekendClass: 'ui-datepicker-week-end',
+		commandClass: 'ui-datepicker-cmd',
+		commandButtonClass: 'ui-state-default ui-corner-all',
+		commandLinkClass: '',
+		disabledClass: 'ui-datepicker-disabled'
+	};
+
+	$.extend($.calendarsPicker, {
+
+		/** Template for generating a calendar picker showing week of year.
+			Used with the {@linkcode CalendarsPicker.regionalOptions|renderer} regional option.
+			@memberof CalendarsPicker
+			@example renderer: $.calendarsPicker.weekOfYearRenderer */
+		weekOfYearRenderer: $.extend({}, $.calendarsPicker.defaultRenderer, {
+			weekHeader: '&lt;tr>&lt;th class="calendars-week">' +
+			'&lt;span title="{l10n:weekStatus}">{l10n:weekText}&lt;/span>&lt;/th>{days}&lt;/tr>',
+			week: '&lt;tr>&lt;td class="calendars-week">{weekOfYear}&lt;/td>{days}&lt;/tr>'
+		}),
+
+		/** ThemeRoller template for generating a calendar picker.
+			Used with the {@linkcode CalendarsPicker.regionalOptions|renderer} regional option.
+			@memberof CalendarsPicker
+			@example renderer: $.calendarsPicker.themeRollerRenderer */
+		themeRollerRenderer: themeRollerRenderer,
+
+		/** ThemeRoller template for generating a calendar picker showing week of year.
+			Used with the {@linkcode CalendarsPicker.regionalOptions|renderer} regional option.
+			@memberof CalendarsPicker
+			@example renderer: $.calendarsPicker.themeRollerWeekOfYearRenderer */
+		themeRollerWeekOfYearRenderer: $.extend({}, themeRollerRenderer, {
+			weekHeader: '&lt;tr>&lt;th class="ui-state-hover">&lt;span>{l10n:weekText}&lt;/span>&lt;/th>{days}&lt;/tr>',
+			week: '&lt;tr>&lt;td class="ui-state-hover">{weekOfYear}&lt;/td>{days}&lt;/tr>'
+		}),
+
+		/** Don't allow weekends to be selected.
+			Used with the {@linkcode CalendarsPicker.defaultOptions|onDate} option.
+			@memberof CalendarsPicker
+			@param {CDate} date The current date.
+			@return {object} Information about this date.
+			@example onDate: $.calendarsPicker.noWeekends */
+		noWeekends: function(date) {
+			return {selectable: date.weekDay()};
+		},
+
+		/** Change the first day of the week by clicking on the day header.
+			Used with the {@linkcode CalendarsPicker.defaultOptions|onShow} option.
+			@memberof CalendarsPicker
+			@param {jQuery} picker The completed datepicker division.
+			@example onShow: $.calendarsPicker.changeFirstDay */
+		changeFirstDay: function(picker) {
+			var target = $(this);
+			picker.find('th span').each(function() {
+				if (this.parentNode.className.match(/.*calendars-week.*/)) {
+					return;
+				}
+				$('&lt;a href="javascript:void(0)" class="' + this.className +
+						'" title="Change first day of the week">' + $(this).text() + '&lt;/a>').
+					click(function() {
+						var dow = parseInt(this.className.replace(/^.*calendars-dow-(\d+).*$/, '$1'), 10);
+						target.calendarsPicker('option', {firstDay: dow});
+					}).
+					replaceAll(this);
+			});
+		},
+
+		/** A function to call when a date is hovered.
+			@callback CalendarsPickerOnHover
+			@param {CDate} date The date being hovered or &lt;code>null&lt;/code> on exit.
+			@param {boolean} selectable &lt;code>true&lt;/code> if this date is selectable, &lt;code>false&lt;/code> if not.
+			@example function showHovered(date, selectable) {
+	$('#feedback').text('You are viewing ' + (date ? date.formatDate() : 'nothing'));
+ } */
+
+		/** Add a callback when hovering over dates.
+			Used with the {@linkcode CalendarsPicker.defaultOptions|onShow} option.
+			@memberof CalendarsPicker
+			@param {CalendarsPickerOnHover} onHover The callback when hovering.
+			@example onShow: $.calendarsPicker.hoverCallback(showHovered) */
+		hoverCallback: function(onHover) {
+			return function(picker, calendar, inst) {
+				if ($.isFunction(onHover)) {
+					var target = this;
+					var renderer = inst.options.renderer;
+					picker.find(renderer.daySelector + ' a, ' + renderer.daySelector + ' span').
+						hover(function() {
+							onHover.apply(target, [$(target).calendarsPicker('retrieveDate', this),
+								this.nodeName.toLowerCase() === 'a']);
+						},
+						function() { onHover.apply(target, []); });
+				}
+			};
+		},
+
+		/** Highlight the entire week when hovering over it.
+			Used with the {@linkcode CalendarsPicker.defaultOptions|onShow} option.
+			@memberof CalendarsPicker
+			@param {jQuery} picker The completed datepicker division.
+			@param {BaseCalendar} calendar The calendar implementation.
+			@param {object} inst The current instance settings.
+			@example onShow: $.calendarsPicker.highlightWeek */
+		highlightWeek: function(picker, calendar, inst) {
+			var renderer = inst.options.renderer;
+			picker.find(renderer.daySelector + ' a, ' + renderer.daySelector + ' span').
+				hover(function() {
+					$(this).parents('tr').find(renderer.daySelector + ' *').
+						addClass(renderer.highlightedClass);
+				},
+				function() {
+					$(this).parents('tr').find(renderer.daySelector + ' *').
+						removeClass(renderer.highlightedClass);
+				});
+		},
+
+		/** Show a status bar with messages.
+			Used with the {@linkcode CalendarsPicker.defaultOptions|onShow} option.
+			@memberof CalendarsPicker
+			@param {jQuery} picker The completed datepicker division.
+			@param {BaseCalendar} calendar The calendar implementation.
+			@param {object} inst The current instance settings.
+			@example onShow: $.calendarsPicker.showStatus */
+		showStatus: function(picker, calendar, inst) {
+			var isTR = (inst.options.renderer.selectedClass === 'ui-state-active');
+			var defaultStatus = inst.options.defaultStatus || '&amp;#160;';
+			var status = $('&lt;div class="' + (!isTR ? 'calendars-status' :
+				'ui-datepicker-status ui-widget-header ui-helper-clearfix ui-corner-all') + '">' +
+				defaultStatus + '&lt;/div>').
+				insertAfter(picker.find('.calendars-month-row:last,.ui-datepicker-row-break:last'));
+			picker.find('*[title]').each(function() {
+					var title = $(this).attr('title');
+					$(this).removeAttr('title').hover(
+						function() { status.text(title || defaultStatus); },
+						function() { status.text(defaultStatus); });
+				});
+		},
+
+		/** Allow easier navigation by month.
+			Used with the {@linkcode CalendarsPicker.defaultOptions|onShow} option.
+			@memberof CalendarsPicker
+			@param {jQuery} picker The completed datepicker division.
+			@param {BaseCalendar} calendar The calendar implementation.
+			@param {object} inst The current instance settings.
+			@example onShow: $.calendarsPicker.monthNavigation */
+		monthNavigation: function(picker, calendar, inst) {
+			var target = $(this);
+			var isTR = (inst.options.renderer.selectedClass === 'ui-state-active');
+			var minDate = inst.curMinDate();
+			var maxDate = inst.get('maxDate');
+			var year = inst.drawDate.year();
+			var html = '&lt;div class="' + (!isTR ? 'calendars-month-nav' : 'ui-datepicker-month-nav') + '">';
+			for (var i = 0; i &lt; calendar.monthsInYear(year); i++) {
+				var ord = calendar.fromMonthOfYear(year, i + calendar.minMonth) - calendar.minMonth;
+				var inRange = ((!minDate || calendar.newDate(year, i + calendar.minMonth,
+					calendar.daysInMonth(year, i + calendar.minMonth)).compareTo(minDate) > -1) &amp;&amp; (!maxDate ||
+					calendar.newDate(year, i + calendar.minMonth, calendar.minDay).compareTo(maxDate) &lt; +1));
+				html += '&lt;div>' + (inRange ? '&lt;a href="#" class="jd' +
+					calendar.newDate(year, i + calendar.minMonth, calendar.minDay).toJD() + '"' : '&lt;span') +
+					' title="' + calendar.local.monthNames[ord] + '">' + calendar.local.monthNamesShort[ord] +
+					(inRange ? '&lt;/a>' : '&lt;/span>') + '&lt;/div>';
+			}
+			html += '&lt;/div>';
+			$(html).insertAfter(picker.find('div.calendars-nav,div.ui-datepicker-header:first')).
+				find('a').click(function() {
+					var date = target.calendarsPicker('retrieveDate', this);
+					target.calendarsPicker('showMonth', date.year(), date.month());
+					return false;
+				});
+		},
+
+		/** Select an entire week when clicking on a week number.
+			Use in conjunction with {@linkcode CalendarsPicker.weekOfYearRenderer|weekOfYearRenderer}.
+			Used with the {@linkcode CalendarsPicker.defaultOptions|onShow} option.
+			@memberof CalendarsPicker
+			@param {jQuery} picker The completed datepicker division.
+			@param {BaseCalendar} calendar The calendar implementation.
+			@param {object} inst The current instance settings.
+			@example onShow: $.calendarsPicker.selectWeek */
+		selectWeek: function(picker, calendar, inst) {
+			var target = $(this);
+			picker.find('td.calendars-week span').each(function() {
+				$('&lt;a href="javascript:void(0)" class="' +
+						this.className + '" title="Select the entire week">' +
+						$(this).text() + '&lt;/a>').
+					click(function() {
+						var date = target.calendarsPicker('retrieveDate', this);
+						var dates = [date];
+						for (var i = 1; i &lt; calendar.daysInWeek(); i++) {
+							dates.push(date = date.newDate().add(1, 'd'));
+						}
+						if (inst.options.rangeSelect) {
+							dates.splice(1, dates.length - 2);
+						}
+						target.calendarsPicker('setDate', dates).calendarsPicker('hide');
+					}).
+					replaceAll(this);
+			});
+		},
+
+		/** Select an entire month when clicking on the week header.
+			Use in conjunction with {@linkcode CalendarsPicker.weekOfYearRenderer|weekOfYearRenderer}.
+			Used with the {@linkcode CalendarsPicker.defaultOptions|onShow} option.
+			@memberof CalendarsPicker
+			@param {jQuery} picker The completed datepicker division.
+			@param {BaseCalendar} calendar The calendar implementation.
+			@param {object} inst The current instance settings.
+			@example onShow: $.calendarsPicker.selectMonth */
+		selectMonth: function(picker, calendar, inst) {
+			var target = $(this);
+			picker.find('th.calendars-week').each(function() {
+				$('&lt;a href="javascript:void(0)" title="Select the entire month">' +
+						$(this).text() + '&lt;/a>').
+					click(function() {
+						var date = target.calendarsPicker('retrieveDate', $(this).parents('table').
+							find('td:not(.calendars-week) *:not(.calendars-other-month)')[0]);
+						var dates = [date.day(1)];
+						var dim = calendar.daysInMonth(date);
+						for (var i = 1; i &lt; dim; i++) {
+							dates.push(date = date.newDate().add(1, 'd'));
+						}
+						if (inst.options.rangeSelect) {
+							dates.splice(1, dates.length - 2);
+						}
+						target.calendarsPicker('setDate', dates).calendarsPicker('hide');
+					}).
+					appendTo(this);
+			});
+		},
+
+		/** Select a month only instead of a single day.
+			Used with the {@linkcode CalendarsPicker.defaultOptions|onShow} option.
+			@memberof CalendarsPicker
+			@param {jQuery} picker The completed datepicker division.
+			@param {BaseCalendar} calendar The calendar implementation.
+			@example onShow: $.calendarsPicker.monthOnly */
+		monthOnly: function(picker, calendar) {
+			var target = $(this);
+			$('&lt;div style="text-align: center;">&lt;button type="button">Select&lt;/button>&lt;/div>').
+				insertAfter(picker.find('.calendars-month-row:last,.ui-datepicker-row-break:last')).
+				children().click(function() {
+					var monthYear = picker.find('.calendars-month-year:first').val().split('/');
+					target.calendarsPicker('setDate', calendar.newDate(
+						parseInt(monthYear[1], 10), parseInt(monthYear[0], 10), calendar.minDay)).
+						calendarsPicker('hide');
+				});
+			picker.find('.calendars-month-row table,.ui-datepicker-row-break table').remove();
+		}
+	});
+
+})(jQuery);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BaseCalendar.html">BaseCalendar</a></li><li><a href="Calendars.html">Calendars</a></li><li><a href="CalendarsPicker.html">CalendarsPicker</a></li><li><a href="CDate.html">CDate</a></li><li><a href="CopticCalendar.html">CopticCalendar</a></li><li><a href="DiscworldCalendar.html">DiscworldCalendar</a></li><li><a href="EthiopianCalendar.html">EthiopianCalendar</a></li><li><a href="GregorianCalendar.html">GregorianCalendar</a></li><li><a href="HebrewCalendar.html">HebrewCalendar</a></li><li><a href="IslamicCalendar.html">IslamicCalendar</a></li><li><a href="JulianCalendar.html">JulianCalendar</a></li><li><a href="MayanCalendar.html">MayanCalendar</a></li><li><a href="NanakshahiCalendar.html">NanakshahiCalendar</a></li><li><a href="NepaliCalendar.html">NepaliCalendar</a></li><li><a href="PersianCalendar.html">PersianCalendar</a></li><li><a href="TaiwanCalendar.html">TaiwanCalendar</a></li><li><a href="ThaiCalendar.html">ThaiCalendar</a></li><li><a href="UmmAlQuraCalendar.html">UmmAlQuraCalendar</a></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Sat Feb 04 2017 13:39:21 GMT+1100 (AUS Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

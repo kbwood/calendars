@@ -1,0 +1,8746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Class: CalendarsPicker</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Class: CalendarsPicker</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>CalendarsPicker</h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+
+    <h4 class="name" id="CalendarsPicker"><span class="type-signature"></span>new CalendarsPicker<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Create the calendars datepicker plugin.
+		<p>Sets an <code>input</code> field to popup a calendar for date entry,
+			or a <code>div</code> or <code>span</code> to show an inline calendar.</p>
+		<p>Expects HTML like:</p>
+		<pre>&lt;input type="text"> or &lt;div>&lt;/div></pre>
+		<p>Provide inline configuration like:</p>
+		<pre>&lt;input type="text" data-calendarsPicker="name: 'value'"/></pre>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.picker.js.html">jquery.calendars.picker.js</a>, <a href="jquery.calendars.picker.js.html#line12">line 12</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>$(selector).calendarsPicker()
+$(selector).calendarsPicker({minDate: 0, maxDate: '+1m +1w'})</code></pre>
+
+
+
+    
+    </div>
+
+    
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+
+    <ul>
+        <li>JQPlugin</li>
+    </ul>
+
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id=".commands"><span class="type-signature">(static) </span>commands<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Command actions that may be added to a layout by name.
+			<ul>
+			<li>prev - Show the previous month (based on <code>monthsToStep</code> option) - <em>PageUp</em></li>
+			<li>prevJump - Show the previous year (based on <code>monthsToJump</code> option) - <em>Ctrl+PageUp</em></li>
+			<li>next - Show the next month (based on <code>monthsToStep</code> option) - <em>PageDown</em></li>
+			<li>nextJump - Show the next year (based on <code>monthsToJump</code> option) - <em>Ctrl+PageDown</em></li>
+			<li>current - Show the currently selected month or today's if none selected - <em>Ctrl+Home</em></li>
+			<li>today - Show today's month - <em>Ctrl+Home</em></li>
+			<li>clear - Erase the date and close the datepicker popup - <em>Ctrl+End</em></li>
+			<li>close - Close the datepicker popup - <em>Esc</em></li>
+			<li>prevWeek - Move the cursor to the previous week - <em>Ctrl+Up</em></li>
+			<li>prevDay - Move the cursor to the previous day - <em>Ctrl+Left</em></li>
+			<li>nextDay - Move the cursor to the next day - <em>Ctrl+Right</em></li>
+			<li>nextWeek - Move the cursor to the next week - <em>Ctrl+Down</em></li>
+			</ul>
+			The command name is the key name and is used to add the command to a layout
+			with '{button:<em>name</em>}' or '{link:<em>name</em>}'. Each has the following attributes.
+</div>
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The field in the regional settings for the displayed text.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>status</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The field in the regional settings for the status text.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>keystroke</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The keystroke to trigger the action, with attributes:
+                <h6>Properties</h6>
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>keyCode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">the code for the keystroke,</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ctrlKey</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><code>true</code> if <em>Ctrl</em> is required,</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>altKey</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><code>true</code> if <em>Alt</em> is required,</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>shiftKey</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><code>true</code> if <em>Shift</em> is required.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>enabled</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#CalendarsPickerCommandEnabled">CalendarsPickerCommandEnabled</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The function that indicates the command is enabled.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>date</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#CalendarsPickerCommandDate">CalendarsPickerCommandDate</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The function to get the date associated with this action.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>action</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#CalendarsPickerCommandAction">CalendarsPickerCommandAction</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The function that implements the action.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.picker.js.html">jquery.calendars.picker.js</a>, <a href="jquery.calendars.picker.js.html#line120">line 120</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".defaultOptions"><span class="type-signature">(static) </span>defaultOptions<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Default settings for the plugin.
+</div>
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>calendar</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Calendar</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    $.calendars.instance()
+                
+                </td>
+            
+
+            <td class="description last">The calendar for this datepicker.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>pickerClass</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    ''
+                
+                </td>
+            
+
+            <td class="description last">CSS class to add to this instance of the datepicker.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>showOnFocus</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last"><code>true</code> for popup on focus, <code>false</code> for not.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>showTrigger</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Element</span>
+|
+
+<span class="param-type">jQuery</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last">Element to be cloned for a trigger,
+				<code>null</code> for none.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>showAnim</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'show'
+                
+                </td>
+            
+
+            <td class="description last">Name of jQuery animation for popup, '' for no animation.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>showOptions</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last">Options for enhanced animations.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>showSpeed</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'normal'
+                
+                </td>
+            
+
+            <td class="description last">Duration of display/closure, named or in milliseconds.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>popupContainer</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Element</span>
+|
+
+<span class="param-type">jQuery</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last">The element to which a popup calendar is added,
+				<code>null</code> for body.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>alignment</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'bottom'
+                
+                </td>
+            
+
+            <td class="description last">Alignment of popup - with nominated corner of input:
+				'top' or 'bottom' aligns depending on language direction,
+				'topLeft', 'topRight', 'bottomLeft', 'bottomRight'.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fixedWeeks</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><code>true</code> to always show 6 weeks,
+				<code>false</code> to only show as many as are needed.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>firstDay</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last">First day of the week, 0 = Sunday, 1 = Monday, etc.,
+				<code>null</code> for <code>calendar</code> default.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>calculateWeek</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#CalendarsPickerCalculateWeek">CalendarsPickerCalculateWeek</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last">Calculate week of the year from a date,
+				<code>null</code> for <code>calendar</code> default.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>localNumbers</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><code>true</code> to localise numbers (if available),
+				<code>false</code> to use normal Arabic numerals.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>monthsToShow</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+|
+
+<span class="param-type">Array.&lt;number></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    1
+                
+                </td>
+            
+
+            <td class="description last">How many months to show, cols or [rows, cols].</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>monthsOffset</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+
+            <td class="description last">How many months to offset the primary month by;
+				may be a function that takes the date and returns the offset.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>monthsToStep</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    1
+                
+                </td>
+            
+
+            <td class="description last">How many months to move when prev/next clicked.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>monthsToJump</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    12
+                
+                </td>
+            
+
+            <td class="description last">How many months to move when large prev/next clicked.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>useMouseWheel</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last"><code>true</code> to use mousewheel if available,
+				<code>false</code> to never use it.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>changeMonth</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last"><code>true</code> to change month/year via drop-down,
+				<code>false</code> for navigation only.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>yearRange</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'c-10:c+10'
+                
+                </td>
+            
+
+            <td class="description last">Range of years to show in drop-down: 'any' for direct text entry
+				or 'start:end', where start/end are '+-nn' for relative to today
+				or 'c+-nn' for relative to the currently selected date
+				or 'nnnn' for an absolute year.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>showOtherMonths</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><code>true</code> to show dates from other months,
+				<code>false</code> to not show them.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>selectOtherMonths</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><code>true</code> to allow selection of dates
+				from other months too.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>defaultDate</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">number</span>
+|
+
+<span class="param-type"><a href="CDate.html">CDate</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last">Date to show if no other selected.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>selectDefaultDate</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><code>true</code> to pre-select the default date
+				if no other is chosen.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>minDate</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">number</span>
+|
+
+<span class="param-type"><a href="CDate.html">CDate</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last">The minimum selectable date.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>maxDate</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">number</span>
+|
+
+<span class="param-type"><a href="CDate.html">CDate</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last">The maximum selectable date.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>dateFormat</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'mm/dd/yyyy'
+                
+                </td>
+            
+
+            <td class="description last">Format for dates.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>autoSize</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><code>true</code> to size the input field according to the date format.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>rangeSelect</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last">Allows for selecting a date range on one date picker.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>rangeSeparator</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    ' - '
+                
+                </td>
+            
+
+            <td class="description last">Text between two dates in a range.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>multiSelect</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    0
+                
+                </td>
+            
+
+            <td class="description last">Maximum number of selectable dates, zero for single select.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>multiSeparator</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    ','
+                
+                </td>
+            
+
+            <td class="description last">Text between multiple dates.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>onDate</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#CalendarsPickerOnDate">CalendarsPickerOnDate</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last">Callback as a date is added to the datepicker.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>onShow</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#CalendarsPickerOnShow">CalendarsPickerOnShow</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last">Callback just before a datepicker is shown.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>onChangeMonthYear</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#CalendarsPickerOnChangeMonthYear">CalendarsPickerOnChangeMonthYear</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last">Callback when a new month/year
+				is selected.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>onSelect</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#CalendarsPickerOnSelect">CalendarsPickerOnSelect</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last">Callback when a date is selected.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>onClose</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#CalendarsPickerOnClose">CalendarsPickerOnClose</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last">Callback when a datepicker is closed.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>altField</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">Element</span>
+|
+
+<span class="param-type">jQuery</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last">Alternate field to update in synch with the datepicker.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>altFormat</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    null
+                
+                </td>
+            
+
+            <td class="description last">Date format for alternate field, defaults to <code>dateFormat</code>.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>constrainInput</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last"><code>true</code> to constrain typed input to
+				<code>dateFormat</code> allowed characters.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>commandsAsDateFormat</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><code>true</code> to apply
+				<code><a href="#formatDate">formatDate</a></code> to the command texts.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>commands</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    this.commands
+                
+                </td>
+            
+
+            <td class="description last">Command actions that may be added to a layout by name.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.picker.js.html">jquery.calendars.picker.js</a>, <a href="jquery.calendars.picker.js.html#line461">line 461</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>$(selector).calendarsPicker({calendar: $.calendars.instance('persian')})
+$(selector).calendarsPicker({monthsToShow: [2, 3], monthsToStep: 6})
+$(selector).calendarsPicker({minDate: $.calendars.newDate(2001, 1, 1),
+  maxDate: $.calendars.newDate(2010, 12, 31)})</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".defaultRenderer"><span class="type-signature">(static) </span>defaultRenderer<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Default template for generating a datepicker.
+			Insert anywhere:
+			<ul>
+			<li>'{l10n:<em>name</em>}' to insert localised value for <em>name</em>,</li>
+			<li>'{link:<em>name</em>}' to insert a link trigger for command <em>name</em>,</li>
+			<li>'{button:<em>name</em>}' to insert a button trigger for command <em>name</em>,</li>
+			<li>'{popup:start}...{popup:end}' to mark a section for inclusion in a popup datepicker only,</li>
+			<li>'{inline:start}...{inline:end}' to mark a section for inclusion in an inline datepicker only.</li>
+			</ul>
+</div>
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>picker</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Overall structure: '{months}' to insert calendar months.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>monthRow</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">One row of months: '{months}' to insert calendar months.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>month</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">A single month: '{monthHeader<em>:dateFormat</em>}' to insert the month header -
+				<em>dateFormat</em> is optional and defaults to 'MM yyyy',
+				'{weekHeader}' to insert a week header, '{weeks}' to insert the month's weeks.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>weekHeader</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">A week header: '{days}' to insert individual day names.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>dayHeader</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Individual day header: '{day}' to insert day name.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>week</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">One week of the month: '{days}' to insert the week's days,
+				'{weekOfYear}' to insert week of year.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>day</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">An individual day: '{day}' to insert day value.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>monthSelector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">jQuery selector, relative to picker, for a single month.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>daySelector</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">jQuery selector, relative to picker, for individual days.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>rtlClass</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Class for right-to-left (RTL) languages.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>multiClass</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Class for multi-month datepickers.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>defaultClass</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Class for selectable dates.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>selectedClass</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Class for currently selected dates.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>highlightedClass</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Class for highlighted dates.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>todayClass</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Class for today.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>otherMonthClass</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Class for days from other months.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>weekendClass</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Class for days on weekends.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>commandClass</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Class prefix for commands.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>commandButtonClass</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Extra class(es) for commands that are buttons.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>commandLinkClass</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Extra class(es) for commands that are links.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>disabledClass</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Class for disabled commands.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.picker.js.html">jquery.calendars.picker.js</a>, <a href="jquery.calendars.picker.js.html#line64">line 64</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".name"><span class="type-signature">(static) </span>name<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    The name of the plugin.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>'calendarsPicker'</li>
+        </ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.picker.js.html">jquery.calendars.picker.js</a>, <a href="jquery.calendars.picker.js.html#line28">line 28</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".regionalOptions"><span class="type-signature">(static) </span>regionalOptions<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Localisations for the plugin.
+			Entries are objects indexed by the language code ('' being the default US/English).
+			Each object has the following attributes.
+</div>
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>renderer</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    this.defaultRenderer
+                
+                </td>
+            
+
+            <td class="description last">The rendering templates.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>prevText</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    '&amp;lt;Prev'
+                
+                </td>
+            
+
+            <td class="description last">Text for the previous month command.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>prevStatus</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'Show the previous month'
+                
+                </td>
+            
+
+            <td class="description last">Status text for the
+						previous month command.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>prevJumpText</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    '&amp;lt;&amp;lt;'
+                
+                </td>
+            
+
+            <td class="description last">Text for the previous year command.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>prevJumpStatus</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'Show the previous year'
+                
+                </td>
+            
+
+            <td class="description last">Status text for the
+						previous year command.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>nextText</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'Next&amp;gt;'
+                
+                </td>
+            
+
+            <td class="description last">Text for the next month command.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>nextStatus</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'Show the next month'
+                
+                </td>
+            
+
+            <td class="description last">Status text for the next month command.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>nextJumpText</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    '&amp;gt;&amp;gt;'
+                
+                </td>
+            
+
+            <td class="description last">Text for the next year command.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>nextJumpStatus</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'Show the next year'
+                
+                </td>
+            
+
+            <td class="description last">Status text for the
+						next year command.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>currentText</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'Current'
+                
+                </td>
+            
+
+            <td class="description last">Text for the current month command.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>currentStatus</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'Show the current month'
+                
+                </td>
+            
+
+            <td class="description last">Status text for the
+						current month command.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>todayText</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'Today'
+                
+                </td>
+            
+
+            <td class="description last">Text for the today's month command.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>todayStatus</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'Show today\'s month'
+                
+                </td>
+            
+
+            <td class="description last">Status text for the today's month command.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>clearText</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'Clear'
+                
+                </td>
+            
+
+            <td class="description last">Text for the clear command.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>clearStatus</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'Clear all the dates'
+                
+                </td>
+            
+
+            <td class="description last">Status text for the clear command.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>closeText</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'Close'
+                
+                </td>
+            
+
+            <td class="description last">Text for the close command.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>closeStatus</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'Close the datepicker'
+                
+                </td>
+            
+
+            <td class="description last">Status text for the close command.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>yearStatus</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'Change the year'
+                
+                </td>
+            
+
+            <td class="description last">Status text for year selection.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>earlierText</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    '&amp;#160;&amp;#160;▲'
+                
+                </td>
+            
+
+            <td class="description last">Text for earlier years.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>laterText</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    '&amp;#160;&amp;#160;▼'
+                
+                </td>
+            
+
+            <td class="description last">Text for later years.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>monthStatus</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'Change the month'
+                
+                </td>
+            
+
+            <td class="description last">Status text for month selection.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>weekText</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'Wk'
+                
+                </td>
+            
+
+            <td class="description last">Text for week of the year column header.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>weekStatus</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'Week of the year'
+                
+                </td>
+            
+
+            <td class="description last">Status text for week of the year
+						column header.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>dayStatus</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'Select DD, M d, yyyy'
+                
+                </td>
+            
+
+            <td class="description last">Status text for selectable days.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>defaultStatus</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    'Select a date'
+                
+                </td>
+            
+
+            <td class="description last">Status text shown by default.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>isRTL</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><code>true</code> if language is right-to-left.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.picker.js.html">jquery.calendars.picker.js</a>, <a href="jquery.calendars.picker.js.html#line541">line 541</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".themeRollerRenderer"><span class="type-signature">(static) </span>themeRollerRenderer<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    ThemeRoller template for generating a calendar picker.
+			Used with the <a href="CalendarsPicker.html#.regionalOptions"><code>renderer</code></a> regional option.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.picker.ext.js.html">jquery.calendars.picker.ext.js</a>, <a href="jquery.calendars.picker.ext.js.html#line58">line 58</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>renderer: $.calendarsPicker.themeRollerRenderer</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".themeRollerWeekOfYearRenderer"><span class="type-signature">(static) </span>themeRollerWeekOfYearRenderer<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    ThemeRoller template for generating a calendar picker showing week of year.
+			Used with the <a href="CalendarsPicker.html#.regionalOptions"><code>renderer</code></a> regional option.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.picker.ext.js.html">jquery.calendars.picker.ext.js</a>, <a href="jquery.calendars.picker.ext.js.html#line64">line 64</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>renderer: $.calendarsPicker.themeRollerWeekOfYearRenderer</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".weekOfYearRenderer"><span class="type-signature">(static) </span>weekOfYearRenderer<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Template for generating a calendar picker showing week of year.
+			Used with the <a href="CalendarsPicker.html#.regionalOptions"><code>renderer</code></a> regional option.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.picker.ext.js.html">jquery.calendars.picker.ext.js</a>, <a href="jquery.calendars.picker.ext.js.html#line48">line 48</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>renderer: $.calendarsPicker.weekOfYearRenderer</code></pre>
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id=".changeDay"><span class="type-signature">(static) </span>changeDay<span class="signature">(elem, offset)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Adjust the currently shown day.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>elem</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The control to affect.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>offset</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The number of days to change by.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.picker.js.html">jquery.calendars.picker.js</a>, <a href="jquery.calendars.picker.js.html#line1468">line 1468</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>$(selector).datepick('changeDay', 7)</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".changeFirstDay"><span class="type-signature">(static) </span>changeFirstDay<span class="signature">(picker)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Change the first day of the week by clicking on the day header.
+			Used with the <a href="CalendarsPicker.html#.defaultOptions"><code>onShow</code></a> option.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>picker</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">jQuery</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The completed datepicker division.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.picker.ext.js.html">jquery.calendars.picker.ext.js</a>, <a href="jquery.calendars.picker.ext.js.html#line84">line 84</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>onShow: $.calendarsPicker.changeFirstDay</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".changeMonth"><span class="type-signature">(static) </span>changeMonth<span class="signature">(elem, offset)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Adjust the currently shown month.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>elem</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The control to affect.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>offset</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The number of months to change by.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.picker.js.html">jquery.calendars.picker.js</a>, <a href="jquery.calendars.picker.js.html#line1455">line 1455</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>$(selector).datepick('changeMonth', 2)</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".clear"><span class="type-signature">(static) </span>clear<span class="signature">(elem)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Clear an input and close a popup datepicker.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>elem</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The control to use.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.picker.js.html">jquery.calendars.picker.js</a>, <a href="jquery.calendars.picker.js.html#line1287">line 1287</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>$(selector).datepick('clear')</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".disable"><span class="type-signature">(static) </span>disable<span class="signature">(elem)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Disable the control.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>elem</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The control to affect.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.picker.js.html">jquery.calendars.picker.js</a>, <a href="jquery.calendars.picker.js.html#line777">line 777</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>$(selector).datepick('disable')</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".enable"><span class="type-signature">(static) </span>enable<span class="signature">(elem)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Enable the control.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>elem</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The control to affect.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.picker.js.html">jquery.calendars.picker.js</a>, <a href="jquery.calendars.picker.js.html#line753">line 753</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>$(selector).datepick('enable')</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".errorFormat"><span class="type-signature">(static) </span>errorFormat<span class="signature">(source, params)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Format a validation error message involving dates.
+				For use in <code>$.validator.addMethod</code>.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>source</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The error message.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>params</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;<a href="CDate.html">CDate</a>></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The dates.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.validation.js.html">jquery.calendars.validation.js</a>, <a href="jquery.calendars.validation.js.html#line157">line 157</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    The formatted message.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".errorPlacement"><span class="type-signature">(static) </span>errorPlacement<span class="signature">(error, elem)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Correct error placement for validation errors - after any trigger.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>error</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">jQuery</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The error message.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>elem</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">jQuery</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The field in error.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.validation.js.html">jquery.calendars.validation.js</a>, <a href="jquery.calendars.validation.js.html#line140">line 140</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>$('form').validate({
+  errorPlacement: $.calendarsPicker.errorPlacement,
+  ...
+});</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".getDate"><span class="type-signature">(static) </span>getDate<span class="signature">(elem)</span><span class="type-signature"> &rarr; {Array.&lt;<a href="CDate.html">CDate</a>>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Retrieve the selected date(s) for a datepicker.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>elem</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The control to examine.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.picker.js.html">jquery.calendars.picker.js</a>, <a href="jquery.calendars.picker.js.html#line1307">line 1307</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    The selected date(s).
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;<a href="CDate.html">CDate</a>></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var dates = $(selector).datepick('getDate')</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".hide"><span class="type-signature">(static) </span>hide<span class="signature">(elem, immediate)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Hide a popup datepicker.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>elem</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+|
+
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The control to use or the current instance settings.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>immediate</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><code>true</code> to close immediately without animation (internal).</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.picker.js.html">jquery.calendars.picker.js</a>, <a href="jquery.calendars.picker.js.html#line1069">line 1069</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>$(selector).datepick('hide')</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".highlightWeek"><span class="type-signature">(static) </span>highlightWeek<span class="signature">(picker, calendar, inst)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Highlight the entire week when hovering over it.
+			Used with the <a href="CalendarsPicker.html#.defaultOptions"><code>onShow</code></a> option.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>picker</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">jQuery</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The completed datepicker division.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>calendar</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="BaseCalendar.html">BaseCalendar</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The calendar implementation.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inst</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The current instance settings.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.picker.ext.js.html">jquery.calendars.picker.ext.js</a>, <a href="jquery.calendars.picker.ext.js.html#line135">line 135</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>onShow: $.calendarsPicker.highlightWeek</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".hoverCallback"><span class="type-signature">(static) </span>hoverCallback<span class="signature">(onHover)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Add a callback when hovering over dates.
+			Used with the <a href="CalendarsPicker.html#.defaultOptions"><code>onShow</code></a> option.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>onHover</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#CalendarsPickerOnHover">CalendarsPickerOnHover</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The callback when hovering.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.picker.ext.js.html">jquery.calendars.picker.ext.js</a>, <a href="jquery.calendars.picker.ext.js.html#line113">line 113</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>onShow: $.calendarsPicker.hoverCallback(showHovered)</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".isDisabled"><span class="type-signature">(static) </span>isDisabled<span class="signature">(elem)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Is the first field in a jQuery collection disabled as a datepicker?
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>elem</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The control to examine.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.picker.js.html">jquery.calendars.picker.js</a>, <a href="jquery.calendars.picker.js.html#line817">line 817</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <code>true</code> if disabled, <code>false</code> if enabled.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>if ($(selector).datepick('isDisabled')) {...}</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".monthNavigation"><span class="type-signature">(static) </span>monthNavigation<span class="signature">(picker, calendar, inst)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Allow easier navigation by month.
+			Used with the <a href="CalendarsPicker.html#.defaultOptions"><code>onShow</code></a> option.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>picker</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">jQuery</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The completed datepicker division.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>calendar</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="BaseCalendar.html">BaseCalendar</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The calendar implementation.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inst</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The current instance settings.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.picker.ext.js.html">jquery.calendars.picker.ext.js</a>, <a href="jquery.calendars.picker.ext.js.html#line177">line 177</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>onShow: $.calendarsPicker.monthNavigation</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".monthOnly"><span class="type-signature">(static) </span>monthOnly<span class="signature">(picker, calendar)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Select a month only instead of a single day.
+			Used with the <a href="CalendarsPicker.html#.defaultOptions"><code>onShow</code></a> option.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>picker</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">jQuery</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The completed datepicker division.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>calendar</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="BaseCalendar.html">BaseCalendar</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The calendar implementation.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.picker.ext.js.html">jquery.calendars.picker.ext.js</a>, <a href="jquery.calendars.picker.ext.js.html#line268">line 268</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>onShow: $.calendarsPicker.monthOnly</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".multipleEvents"><span class="type-signature">(static) </span>multipleEvents<span class="signature">(fns)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Apply multiple event functions.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>fns</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The functions to apply.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.picker.js.html">jquery.calendars.picker.js</a>, <a href="jquery.calendars.picker.js.html#line740">line 740</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>onShow: multipleEvents(fn1, fn2, ...)</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".noWeekends"><span class="type-signature">(static) </span>noWeekends<span class="signature">(date)</span><span class="type-signature"> &rarr; {object}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Don't allow weekends to be selected.
+			Used with the <a href="CalendarsPicker.html#.defaultOptions"><code>onDate</code></a> option.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>date</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="CDate.html">CDate</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The current date.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.picker.ext.js.html">jquery.calendars.picker.ext.js</a>, <a href="jquery.calendars.picker.ext.js.html#line75">line 75</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Information about this date.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>onDate: $.calendarsPicker.noWeekends</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".performAction"><span class="type-signature">(static) </span>performAction<span class="signature">(elem, action)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Perform a named action for a datepicker.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>elem</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The control to affect.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>action</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The name of the <a href="CalendarsPicker.html#.commands">action</a>.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.picker.js.html">jquery.calendars.picker.js</a>, <a href="jquery.calendars.picker.js.html#line1418">line 1418</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>$(selector).calendarsPicker('performAction', 'next')</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".retrieveDate"><span class="type-signature">(static) </span>retrieveDate<span class="signature">(elem, target)</span><span class="type-signature"> &rarr; {<a href="CDate.html">CDate</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Retrieve the date associated with an entry in the datepicker.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>elem</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The control to examine.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>target</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The selected datepicker element.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.picker.js.html">jquery.calendars.picker.js</a>, <a href="jquery.calendars.picker.js.html#line1496">line 1496</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    The corresponding date, or <code>null</code>.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="CDate.html">CDate</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var date = $(selector).datepick('retrieveDate',
+  $('div.datepick-popup a:contains(10)')[0])</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".selectDate"><span class="type-signature">(static) </span>selectDate<span class="signature">(elem, target)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Select a date for this datepicker.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>elem</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The control to examine.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>target</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The selected datepicker element.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.picker.js.html">jquery.calendars.picker.js</a>, <a href="jquery.calendars.picker.js.html#line1507">line 1507</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>$(selector).datepick('selectDate', $('div.datepick-popup a:contains(10)')[0])</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".selectDate"><span class="type-signature">(static) </span>selectDate<span class="signature">(elem, target)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Trigger a validation after updating the input field with the selected date.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>elem</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The control to examine.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>target</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The selected datepicker element.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.validation.js.html">jquery.calendars.validation.js</a>, <a href="jquery.calendars.validation.js.html#line121">line 121</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".selectMonth"><span class="type-signature">(static) </span>selectMonth<span class="signature">(picker, calendar, inst)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Select an entire month when clicking on the week header.
+			Use in conjunction with <a href="CalendarsPicker.html#.weekOfYearRenderer"><code>weekOfYearRenderer</code></a>.
+			Used with the <a href="CalendarsPicker.html#.defaultOptions"><code>onShow</code></a> option.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>picker</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">jQuery</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The completed datepicker division.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>calendar</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="BaseCalendar.html">BaseCalendar</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The calendar implementation.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inst</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The current instance settings.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.picker.ext.js.html">jquery.calendars.picker.ext.js</a>, <a href="jquery.calendars.picker.ext.js.html#line240">line 240</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>onShow: $.calendarsPicker.selectMonth</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".selectWeek"><span class="type-signature">(static) </span>selectWeek<span class="signature">(picker, calendar, inst)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Select an entire week when clicking on a week number.
+			Use in conjunction with <a href="CalendarsPicker.html#.weekOfYearRenderer"><code>weekOfYearRenderer</code></a>.
+			Used with the <a href="CalendarsPicker.html#.defaultOptions"><code>onShow</code></a> option.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>picker</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">jQuery</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The completed datepicker division.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>calendar</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="BaseCalendar.html">BaseCalendar</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The calendar implementation.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inst</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The current instance settings.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.picker.ext.js.html">jquery.calendars.picker.ext.js</a>, <a href="jquery.calendars.picker.ext.js.html#line211">line 211</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>onShow: $.calendarsPicker.selectWeek</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".setDate"><span class="type-signature">(static) </span>setDate<span class="signature">(elem, dates, endDate<span class="signature-attributes">opt</span>, keyUp<span class="signature-attributes">opt</span>, setOpt<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Set the selected date(s) for a datepicker.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>elem</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The control to examine.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>dates</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="CDate.html">CDate</a></span>
+|
+
+<span class="param-type">number</span>
+|
+
+<span class="param-type">string</span>
+|
+
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The selected date(s).</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>endDate</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="CDate.html">CDate</a></span>
+|
+
+<span class="param-type">number</span>
+|
+
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The ending date for a range.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>keyUp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><code>true</code> if coming from <code>keyUp</code> processing (internal).</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setOpt</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><code>true</code> if coming from option processing (internal).</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.picker.js.html">jquery.calendars.picker.js</a>, <a href="jquery.calendars.picker.js.html#line1322">line 1322</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>$(selector).datepick('setDate', new Date(2014, 12-1, 25))
+$(selector).datepick('setDate', '12/25/2014', '01/01/2015')
+$(selector).datepick('setDate', [date1, date2, date3])</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".show"><span class="type-signature">(static) </span>show<span class="signature">(elem)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Show a popup datepicker.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>elem</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Event</span>
+|
+
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">a focus event or the control to use.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.picker.js.html">jquery.calendars.picker.js</a>, <a href="jquery.calendars.picker.js.html#line825">line 825</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>$(selector).datepick('show')</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".showMonth"><span class="type-signature">(static) </span>showMonth<span class="signature">(elem, year<span class="signature-attributes">opt</span>, month<span class="signature-attributes">opt</span>, day<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Set the currently shown month, defaulting to today's.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>elem</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The control to affect.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>year</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The year to show.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>month</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The month to show (calendar minimum month to maximum month).</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>day</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The day to show.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.picker.js.html">jquery.calendars.picker.js</a>, <a href="jquery.calendars.picker.js.html#line1435">line 1435</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>$(selector).datepick('showMonth', 2014, 12, 25)</code></pre>
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".showStatus"><span class="type-signature">(static) </span>showStatus<span class="signature">(picker, calendar, inst)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    Show a status bar with messages.
+			Used with the <a href="CalendarsPicker.html#.defaultOptions"><code>onShow</code></a> option.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>picker</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">jQuery</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The completed datepicker division.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>calendar</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="BaseCalendar.html">BaseCalendar</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The calendar implementation.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>inst</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The current instance settings.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="jquery.calendars.picker.ext.js.html">jquery.calendars.picker.ext.js</a>, <a href="jquery.calendars.picker.ext.js.html#line155">line 155</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>onShow: $.calendarsPicker.showStatus</code></pre>
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BaseCalendar.html">BaseCalendar</a></li><li><a href="Calendars.html">Calendars</a></li><li><a href="CalendarsPicker.html">CalendarsPicker</a></li><li><a href="CDate.html">CDate</a></li><li><a href="CopticCalendar.html">CopticCalendar</a></li><li><a href="DiscworldCalendar.html">DiscworldCalendar</a></li><li><a href="EthiopianCalendar.html">EthiopianCalendar</a></li><li><a href="GregorianCalendar.html">GregorianCalendar</a></li><li><a href="HebrewCalendar.html">HebrewCalendar</a></li><li><a href="IslamicCalendar.html">IslamicCalendar</a></li><li><a href="JulianCalendar.html">JulianCalendar</a></li><li><a href="MayanCalendar.html">MayanCalendar</a></li><li><a href="NanakshahiCalendar.html">NanakshahiCalendar</a></li><li><a href="NepaliCalendar.html">NepaliCalendar</a></li><li><a href="PersianCalendar.html">PersianCalendar</a></li><li><a href="TaiwanCalendar.html">TaiwanCalendar</a></li><li><a href="ThaiCalendar.html">ThaiCalendar</a></li><li><a href="UmmAlQuraCalendar.html">UmmAlQuraCalendar</a></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Sat Feb 04 2017 13:39:22 GMT+1100 (AUS Eastern Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

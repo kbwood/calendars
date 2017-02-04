@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>jQuery Calendars</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/jquery.plugin.min.js"></script>
+<script src="js/jquery.calendars.js"></script>
+<script src="js/jquery.calendars.plus.js"></script>
+<script src="js/jquery.calendars.coptic.js"></script>
+<script src="js/jquery.calendars.discworld.js"></script>
+<script src="js/jquery.calendars.ethiopian.js"></script>
+<script src="js/jquery.calendars.hebrew.js"></script>
+<script src="js/jquery.calendars.islamic.js"></script>
+<script src="js/jquery.calendars.julian.js"></script>
+<script src="js/jquery.calendars.mayan.js"></script>
+<script src="js/jquery.calendars.nanakshahi.js"></script>
+<script src="js/jquery.calendars.nepali.js"></script>
+<script src="js/jquery.calendars.persian.js"></script>
+<script src="js/jquery.calendars.taiwan.js"></script>
+<script src="js/jquery.calendars.thai.js"></script>
+<script src="js/jquery.calendars.ummalqura.js"></script>
+<script>
+$(function() {
+	var calendar;
+	$('#calendar').change(function() {
+		calendar = $.calendars.instance($(this).val());
+		$('#default').text(calendar.local.dateFormat);
+	}).change();
+	$('#check').click(function() {
+		try {
+			var date = calendar.parseDate('', $('#input').val());
+			$('#output').val(calendar.formatDate($('#format').val(), date));
+		}
+		catch (e) {
+			alert(e);
+		}
+	});
+});
+</script>
+</head>
+<body>
+<h1>jQuery Calendars</h1>
+<p>This page demonstrates the very basics of the
+	<a href="http://keith-wood.name/calendars.html">jQuery Calendars plugin</a>.
+	It contains the minimum requirements for using the plugin and
+	can be used as the basis for your own experimentation.</p>
+<p>For more detail see the <a href="http://keith-wood.name/calendarsRef.html">documentation reference</a> page.</p>
+<p>Select a calendar: <select id="calendar">
+		<option value="coptic">Coptic</option>
+		<option value="discworld">Discworld</option>
+		<option value="ethiopian">Ethiopian</option>
+		<option value="gregorian" selected>Gregorian</option>
+		<option value="hebrew">Hebrew</option>
+		<option value="islamic">Islamic</option>
+		<option value="julian">Julian</option>
+		<option value="mayan">Mayan</option>
+		<option value="nanakshahi">Nanakshahi</option>
+		<option value="nepali">Nepali</option>
+		<option value="persian">Persian</option>
+		<option value="taiwan">Taiwan</option>
+		<option value="thai">Thai</option>
+		<option value="ummalqura">Umm al-Qura</option>
+	</select></p>
+<p>Enter a date: <input type="text" id="input" value="01/26/2014"> (<span id="default"></span>)</p>
+<p>Check and format: <input type="text" id="format" value="DD, MM d, yyyy">
+	<button type="button" id="check">Format</button></p>
+<p>Result: <input type="text" id="output" size="40" readonly></p>
+<dl>
+	<dt>Github</dt><dd><a href="https://github.com/kbwood/calendars">https://github.com/kbwood/calendars</a></dd>
+	<dt>Bower</dt><dd>kbw-calendars</dd>
+</dl>
+</body>
+</html>

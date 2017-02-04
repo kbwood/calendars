@@ -1,46 +1,49 @@
-﻿{
-  "name": "kbwood_calendars",
-  "version": "2.0.2",
-  "description": "This plugin provides support for various world calendars, including a datepicker. * Calendars: Gregorian, Julian, Taiwanese, Thai, Persian, Islamic, Umm al-Qura, Hebrew, Ethiopian, Coptic, Nepali, Mayan, Nanakshahi, and Discworld. * Parse and format dates in all these calendars. * Style the datepicker using one of five themes, or use any of the standard Themeroller themes. * Over 70 localisations for Gregorian/Julian calendars.",
-  "keywords": [
-    "calendar",
-	"coptic",
-    "date",
-    "datepicker",
-	"discworld",
-	"ethiopian",
-	"gregorian",
-	"hebrew",
-    "i18n",
-    "input",
-	"islamic",
-	"julian",
-	"mayan",
-	"nanakshahi",
-	"nepali",
-	"persian",
-	"taiwanese",
-	"thai",
-    "ui",
-	"umm al-qura",
-    "validation"
-  ],
-  "license": "http://keith-wood.name/licence.html",
-  "authors": [
-    "Keith Wood"
-  ],
-  "main": "jquery.calendars.js",
-  "ignore": [
-    "*.gif",
-    "*.html",
-    "*.json",
-    "*.md",
-    "*.png",
-    "jquery.calendars-*.js",
-    "jquery.calendars.picker-*.js",
-    "jquery.*.min.js"
-  ],
-  "dependencies": {
-    "jquery": ">=1.7"
-  }
+{
+	"name": "kbw-calendars",
+	"description": "This plugin provides support for various world calendars, including a datepicker.",
+	"keywords": [
+		"calendar",
+		"coptic",
+		"date",
+		"datepicker",
+		"discworld",
+		"ethiopian",
+		"gregorian",
+		"hebrew",
+		"i18n",
+		"input",
+		"islamic",
+		"julian",
+		"mayan",
+		"nanakshahi",
+		"nepali",
+		"persian",
+		"taiwanese",
+		"thai",
+		"ui",
+		"umm al-qura",
+		"validation"
+	],
+	"homepage": "https://github.com/kbwood/calendars",
+	"authors": [
+		"Keith Wood <wood.keith@optusnet.com.au> (http://keith-wood.name)"
+	],
+	"licence": "MIT",
+	"main": [
+		"src/css/jquery.calendars.picker.css",
+		"src/js/jquery.calendars.js"
+	],
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"src/bower_components"
+	],
+	"dependencies": {
+		"jquery": ">=1.7",
+		"kbw-plugin": "~1.0.3"
+	},
+	"devDependencies": {
+		"jquery-validation": "~1.12",
+		"qunit": "~1.23"
+	}
 }
