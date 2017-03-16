@@ -500,7 +500,9 @@ $(selector).calendarsPicker({minDate: $.calendars.newDate(2001, 1, 1),
 			altFormat: null,
 			constrainInput: true,
 			commandsAsDateFormat: false,
-			commands: {} // this.commands
+			commands: {}, // this.commands
+			ownerDocument: document,
+			contentWindow: window
 		},
 
 		/** Localisations for the plugin.
@@ -627,6 +629,9 @@ $(selector).calendarsPicker({minDate: $.calendars.newDate(2001, 1, 1),
 					this.disable(elem[0]);
 				}
 			}
+
+			$(inst.options.ownerDocument).on('mousedown.' + pluginName, plugin._checkExternalClick).
+			on('resize.' + pluginName, function() { plugin.hide(plugin.curInst); });
 		},
 
 		_optionsChanged: function(elem, inst, options) {
@@ -934,7 +939,7 @@ $(selector).calendarsPicker({minDate: $.calendars.newDate(2001, 1, 1),
 						inst.div = $('<div></div>').addClass(this._popupClass).
 							css({display: (hidden ? 'none' : 'static'), position: 'absolute',
 								left: elem.offset().left, top: elem.offset().top + elem.outerHeight()}).
-							appendTo($(inst.options.popupContainer || 'body'));
+							appendTo($(inst.options.popupContainer || inst.options.ownerDocument.body));
 						if ($.fn.mousewheel) {
 							inst.div.mousewheel(this._doMouseWheel);
 						}
@@ -1001,8 +1006,8 @@ $(selector).calendarsPicker({minDate: $.calendars.newDate(2001, 1, 1),
 		_checkOffset: function(inst) {
 			var base = (inst.elem.is(':hidden') && inst.trigger ? inst.trigger : inst.elem);
 			var offset = base.offset();
-			var browserWidth = $(window).width();
-			var browserHeight = $(window).height();
+			var browserWidth = $(inst.options.contentWindow).width();
+			var browserHeight = $(inst.options.contentWindow).height();
 			if (browserWidth === 0) {
 				return offset;
 			}
@@ -1011,8 +1016,8 @@ $(selector).calendarsPicker({minDate: $.calendars.newDate(2001, 1, 1),
 				isFixed = isFixed || $(this).css('position') === 'fixed';
 				return !isFixed;
 			});
-			var scrollX = document.documentElement.scrollLeft || document.body.scrollLeft;
-			var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+			var scrollX = inst.options.ownerDocument.documentElement.scrollLeft || inst.options.ownerDocument.body.scrollLeft;
+			var scrollY = inst.options.ownerDocument.documentElement.scrollTop || inst.options.ownerDocument.body.scrollTop;
 			var above = offset.top - (isFixed ? scrollY : 0) - inst.div.outerHeight();
 			var below = offset.top - (isFixed ? scrollY : 0) + base.outerHeight();
 			var alignL = offset.left - (isFixed ? scrollX : 0);
@@ -1669,7 +1674,7 @@ $(selector).datepick('setDate', [date1, date2, date3]) */
 				picker.addClass(inst.options.pickerClass);
 			}
 			// Resize
-			$('body').append(picker);
+			$(inst.options.ownerDocument.body).append(picker);
 			var width = 0;
 			picker.find(inst.options.renderer.monthSelector).each(function() {
 				width += $(this).outerWidth();
@@ -1937,10 +1942,5 @@ $(selector).datepick('setDate', [date1, date2, date3]) */
 	});
 
 	var plugin = $.calendarsPicker; // Singleton instance
-
-	$(function() {
-		$(document).on('mousedown.' + pluginName, plugin._checkExternalClick).
-			on('resize.' + pluginName, function() { plugin.hide(plugin.curInst); });
-	});
 
 })(jQuery);
