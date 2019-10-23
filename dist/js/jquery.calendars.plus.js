@@ -299,11 +299,19 @@
 			var calendar = this;
 			var getName = function(match, shortNames, longNames, step) {
 				var names = (doubled(match, step) ? longNames : shortNames);
+				var index = -1;
 				for (var i = 0; i < names.length; i++) {
 					if (value.substr(iValue, names[i].length).toLowerCase() === names[i].toLowerCase()) {
-						iValue += names[i].length;
-						return i + calendar.minMonth;
+						if (index === -1) {
+							index = i;
+						} else if (names[i].length > names[index].length) {
+							index = i;
+						}
 					}
+				}
+				if (index > -1) {
+					iValue += names[index].length;
+					return index + calendar.minMonth;
 				}
 				throw ($.calendars.local.unknownNameAt || $.calendars.regionalOptions[''].unknownNameAt).
 					replace(/\{0\}/, iValue);
