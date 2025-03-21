@@ -1,5 +1,5 @@
 /* http://keith-wood.name/calendars.html
-   Punjabi localisation for Nanakshahi calendar for jQuery v2.1.0.
+   Punjabi localisation for Nanakshahi calendar for jQuery v2.2.0.
    Written by Sarbjit Singh January 2016. */
 (function($) {
 	'use strict';

@@ -1,5 +1,5 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Thai localisation for Thai calendars for jQuery v2.1.0.
+   Thai localisation for Thai calendars for jQuery v2.2.0.
    Written by pipo (pipo@sixhead.com). */
 (function($) {
 	'use strict';

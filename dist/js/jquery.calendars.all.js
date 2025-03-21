@@ -1,8 +1,8 @@
 /*! http://keith-wood.name/calendars.html
    Calendars localisations. */
 /* http://keith-wood.name/calendars.html
-   Calendars for jQuery v2.1.0.
-   Written by Keith Wood (wood.keith{at}optusnet.com.au) August 2009.
+   Calendars for jQuery v2.2.0.
+   Written by Keith Wood (kbwood.au{at}gmail.com) August 2009.
    Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */
 
@@ -984,8 +984,8 @@ var jsd = calendar.toJSDate(2014, 1, 26) */
 })(jQuery);
 
 /* http://keith-wood.name/calendars.html
-   Calendars extras for jQuery v2.1.0.
-   Written by Keith Wood (wood.keith{at}optusnet.com.au) August 2009.
+   Calendars extras for jQuery v2.2.0.
+   Written by Keith Wood (kbwood.au{at}gmail.com) August 2009.
    Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */
 
@@ -1251,11 +1251,11 @@ var jsd = calendar.toJSDate(2014, 1, 26) */
 			var dayNames = settings.dayNames || this.local.dayNames;
 			var monthNamesShort = settings.monthNamesShort || this.local.monthNamesShort;
 			var monthNames = settings.monthNames || this.local.monthNames;
-			var jd = -1;
-			var year = -1;
-			var month = -1;
-			var day = -1;
-			var doy = -1;
+			var jd = NaN;
+			var year = NaN;
+			var month = NaN;
+			var day = NaN;
+			var doy = NaN;
 			var shortYear = false;
 			var literal = false;
 			// Check whether a format character is doubled
@@ -1380,14 +1380,14 @@ var jsd = calendar.toJSDate(2014, 1, 26) */
 			if (iValue < value.length) {
 				throw $.calendars.local.unexpectedText || $.calendars.regionalOptions[''].unexpectedText;
 			}
-			if (year === -1) {
+			if (isNaN(year)) {
 				year = this.today().year();
 			}
 			else if (year < 100 && shortYear) {
 				year += (shortYearCutoff === -1 ? 1900 : this.today().year() -
 					this.today().year() % 100 - (year <= shortYearCutoff ? 0 : 100));
 			}
-			if (doy > -1) {
+			if (!isNaN(doy)) {
 				month = 1;
 				day = doy;
 				for (var dim = this.daysInMonth(year, month); day > dim; dim = this.daysInMonth(year, month)) {
@@ -1395,7 +1395,7 @@ var jsd = calendar.toJSDate(2014, 1, 26) */
 					day -= dim;
 				}
 			}
-			return (jd > -1 ? this.fromJD(jd) : this.newDate(year, month, day));
+			return (!isNaN(jd) ? this.fromJD(jd) : this.newDate(year, month, day));
 		},
 
 		/** A date may be specified as an exact value or a relative one.
@@ -1456,8 +1456,8 @@ var jsd = calendar.toJSDate(2014, 1, 26) */
 })(jQuery);
 
 /* http://keith-wood.name/calendars.html
-   Calendars date picker for jQuery v2.1.0.
-   Written by Keith Wood (wood.keith{at}optusnet.com.au) August 2009.
+   Calendars date picker for jQuery v2.2.0.
+   Written by Keith Wood (kbwood.au{at}gmail.com) August 2009.
    Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */
 

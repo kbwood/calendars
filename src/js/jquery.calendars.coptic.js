@@ -1,6 +1,6 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Coptic calendar for jQuery v2.1.0.
-   Written by Keith Wood (wood.keith{at}optusnet.com.au) February 2010.
+   Coptic calendar for jQuery v2.2.0.
+   Written by Keith Wood (kbwood.au{at}gmail.com) February 2010.
    Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */
 
@@ -82,7 +82,7 @@
 			@throws Error if an invalid year or a different calendar used. */
 		leapYear: function(year) {
 			var date = this._validate(year, this.minMonth, this.minDay, $.calendars.local.invalidYear);
-			year = date.year() + (date.year() < 0 ? 1 : 0); // No year zero
+			var year = date.year() + (date.year() < 0 ? 1 : 0); // No year zero
 			return year % 4 === 3 || year % 4 === -1;
 		},
 

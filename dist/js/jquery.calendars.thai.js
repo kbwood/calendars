@@ -1,6 +1,6 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Thai calendar for jQuery v2.1.0.
-   Written by Keith Wood (wood.keith{at}optusnet.com.au) February 2010.
+   Thai calendar for jQuery v2.2.0.
+   Written by Keith Wood (kbwood.au{at}gmail.com) February 2010.
    Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */
 
@@ -84,7 +84,7 @@
 			@throws Error if an invalid year or a different calendar used. */
 		leapYear: function(year) {
 			var date = this._validate(year, this.minMonth, this.minDay, $.calendars.local.invalidYear);
-			year = this._t2gYear(date.year());
+			var year = this._t2gYear(date.year());
 			return gregorianCalendar.leapYear(year);
 		},
 
@@ -97,7 +97,7 @@
 			@throws Error if an invalid date or a different calendar used. */
 		weekOfYear: function(year, month, day) {
 			var date = this._validate(year, month, day, $.calendars.local.invalidYear);
-			year = this._t2gYear(date.year());
+			var year = this._t2gYear(date.year());
 			return gregorianCalendar.weekOfYear(year, date.month(), date.day());
 		},
 
@@ -134,7 +134,7 @@
 			@throws Error if an invalid date or a different calendar used. */
 		toJD: function(year, month, day) {
 			var date = this._validate(year, month, day, $.calendars.local.invalidDate);
-			year = this._t2gYear(date.year());
+			var year = this._t2gYear(date.year());
 			return gregorianCalendar.toJD(year, date.month(), date.day());
 		},
 

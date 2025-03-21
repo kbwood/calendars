@@ -1,6 +1,6 @@
 /* http://keith-wood.name/calendars.html
-   Nanakshahi calendar for jQuery v2.1.0.
-   Written by Keith Wood (wood.keith{at}optusnet.com.au) January 2016.
+   Nanakshahi calendar for jQuery v2.2.0.
+   Written by Keith Wood (kbwood.au{at}gmail.com) January 2016.
    Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */
 
@@ -132,7 +132,7 @@
 			@throws Error if an invalid date or a different calendar used. */
 		toJD: function(year, month, day) {
 			var date = this._validate(year, month, day, $.calendars.local.invalidMonth);
-			year = date.year();
+			var year = date.year();
 			if (year < 0) { year++; } // No year zero
 			var doy = date.day();
 			for (var m = 1; m < date.month(); m++) {

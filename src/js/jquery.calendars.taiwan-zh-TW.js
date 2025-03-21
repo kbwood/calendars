@@ -1,5 +1,5 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Traditional Chinese localisation for Taiwanese calendars for jQuery v2.1.0.
+   Traditional Chinese localisation for Taiwanese calendars for jQuery v2.2.0.
    Written by Ressol (ressol@gmail.com). */
 (function($) {
 	'use strict';

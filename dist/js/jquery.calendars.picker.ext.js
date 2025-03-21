@@ -1,6 +1,6 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Calendars date picker extensions for jQuery v2.1.0.
-   Written by Keith Wood (wood.keith{at}optusnet.com.au) August 2009.
+   Calendars date picker extensions for jQuery v2.2.0.
+   Written by Keith Wood (kbwood.au{at}gmail.com) August 2009.
    Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */
 

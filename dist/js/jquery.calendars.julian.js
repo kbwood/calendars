@@ -1,6 +1,6 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Julian calendar for jQuery v2.1.0.
-   Written by Keith Wood (wood.keith{at}optusnet.com.au) August 2009.
+   Julian calendar for jQuery v2.2.0.
+   Written by Keith Wood (kbwood.au{at}gmail.com) August 2009.
    Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */
 
@@ -81,7 +81,7 @@
 			@throws Error if an invalid year or a different calendar used. */
 		leapYear: function(year) {
 			var date = this._validate(year, this.minMonth, this.minDay, $.calendars.local.invalidYear);
-			year = (date.year() < 0 ? date.year() + 1 : date.year()); // No year zero
+			var year = (date.year() < 0 ? date.year() + 1 : date.year()); // No year zero
 			return (year % 4) === 0;
 		},
 

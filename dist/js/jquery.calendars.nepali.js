@@ -1,5 +1,5 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Nepali calendar for jQuery v2.1.0.
+   Nepali calendar for jQuery v2.2.0.
    Written by Artur Neumann (ict.projects{at}nepal.inf.org) April 2013.
    Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */

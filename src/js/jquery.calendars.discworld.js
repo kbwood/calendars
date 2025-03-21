@@ -1,6 +1,6 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Discworld calendar for jQuery v2.1.0.
-   Written by Keith Wood (wood.keith{at}optusnet.com.au) January 2016.
+   Discworld calendar for jQuery v2.2.0.
+   Written by Keith Wood (kbwood.au{at}gmail.com) January 2016.
    Available under the MIT (http://keith-wood.name/licence.html) license. 
    Please attribute the author if you use it. */
 

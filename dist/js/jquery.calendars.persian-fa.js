@@ -1,5 +1,5 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Farsi/Persian localisation for Persian calendar for jQuery v2.1.0.
+   Farsi/Persian localisation for Persian calendar for jQuery v2.2.0.
    Written by Sajjad Servatjoo (sajjad.servatjoo{at}gmail.com) April 2011. */
 (function($) {
 	'use strict';

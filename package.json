@@ -1,10 +1,12 @@
 {
 	"name": "kbw-calendars",
-	"version": "2.1.2",
-	"license" : "MIT",
-	"dependencies": {},
+	"version": "2.2.0",
+	"license": "MIT",
+	"dependencies": {
+		"grunt-cli": "^1.5.0"
+	},
 	"devDependencies": {
-		"grunt": "~0.4.2",
+		"grunt": "^0.4.5",
 		"grunt-contrib-clean": "~0.5.0",
 		"grunt-contrib-concat": "~0.3.0",
 		"grunt-contrib-copy": "~1.0.0",

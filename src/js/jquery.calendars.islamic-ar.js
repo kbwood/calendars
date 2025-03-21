@@ -1,6 +1,6 @@
 ﻿/* http://keith-wood.name/calendars.html
-   Arabic localisation for Islamic calendar for jQuery v2.1.0.
-   Written by Keith Wood (wood.keith{at}optusnet.com.au) August 2009.
+   Arabic localisation for Islamic calendar for jQuery v2.2.0.
+   Written by Keith Wood (kbwood.au{at}gmail.com) August 2009.
    Updated by Fahad Alqahtani April 2016. */
 (function($) {
 	'use strict';
