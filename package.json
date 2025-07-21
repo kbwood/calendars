@@ -1,6 +1,6 @@
 {
 	"name": "kbw-calendars",
-	"version": "2.2.0",
+	"version": "2.2.1",
 	"license": "MIT",
 	"dependencies": {
 		"grunt-cli": "^1.5.0"

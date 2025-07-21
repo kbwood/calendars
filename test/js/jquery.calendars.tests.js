@@ -1987,7 +1987,7 @@ $(function() {
 	module('Nepali'); // http://www.ashesh.com.np/nepali-calendar/
 
 	test('Nepali calendar', function() {
-		expect(29);
+		expect(28);
 		var nc = $.calendars.instance('Nepali');
 		equal(nc.monthsInYear(2070), 12, 'Nepali - months in year 2070');
 		equal(nc.monthsInYear(2071), 12, 'Nepali - months in year 2071');
@@ -2017,11 +2017,10 @@ $(function() {
 		equal(nc.daysInMonth(2070, 11), 30, 'Nepali - days in month Falgun 2070');
 		equal(nc.daysInMonth(2070, 12), 30, 'Nepali - days in month Chaitra 2070');
 		equal(nc.epoch(2000), 'ABS', 'Nepali - epoch 2000');
-		equal(nc.epoch(-2000), 'BBS', 'Nepali - epoch -2000');
 	});
 
 	test('Nepali days', function() {
-		expect(39);
+		expect(43);
 		var nc = $.calendars.instance('Nepali');
 		var d = nc.newDate(2072, 1, 5);
 		equal(d.year(), 2072, 'Nepali - year');
@@ -2061,7 +2060,11 @@ $(function() {
 		equalDate(d.toJSDate(), today, 'Nepali - today');
 		equal(nc.isValid(2073, 1, 1), true, 'Nepali - valid 01/01/2073');
 		equal(nc.isValid(2073, 12, 31), true, 'Nepali - valid 31/12/2073');
-		equal(nc.isValid(-1, 1, 1), true, 'Nepali - valid 01/01/-0001');
+		equal(nc.isValid(1658, 1, 1), false, 'Nepali - valid 01/01/1658');
+		equal(nc.isValid(1659, 1, 1), true, 'Nepali - valid 01/01/1659');
+		equal(nc.isValid(2100, 1, 1), true, 'Nepali - valid 01/01/2100');
+		equal(nc.isValid(2101, 1, 1), false, 'Nepali - valid 01/01/2101');
+		equal(nc.isValid(-1, 1, 1), false, 'Nepali - valid 01/01/-0001');
 		equal(nc.isValid(0, 1, 1), false, 'Nepali - valid 01/01/0000');
 		equal(nc.isValid(2073, -1, 28), false, 'Nepali - valid 28/-1/2073');
 		equal(nc.isValid(2073, 9, 30), false, 'Nepali - valid 30/9/2073');

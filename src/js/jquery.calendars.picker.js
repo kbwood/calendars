@@ -1850,13 +1850,16 @@ $(selector).datepick('setDate', [date1, date2, date3]) */
 			else {
 				yearRange = yearRange.split(':');
 				var todayYear = calendar.today().year();
-				var start = (yearRange[0].match('c[+-].*') ? year + parseInt(yearRange[0].substring(1), 10) :
-					((yearRange[0].match('[+-].*') ? todayYear : 0) + parseInt(yearRange[0], 10)));
-				var end = (yearRange[1].match('c[+-].*') ? year + parseInt(yearRange[1].substring(1), 10) :
-					((yearRange[1].match('[+-].*') ? todayYear : 0) + parseInt(yearRange[1], 10)));
-				selector = '<select class="' + this._monthYearClass +
-					'" title="' + inst.options.yearStatus + '">';
+				var minYear = minDate ? minDate.year() : -99999;
+				var maxYear = maxDate ? maxDate.year() : 99999;
+				var inRange = function(y) {
+					return Math.min(Math.max(y, minYear), maxYear);
+				};
+				var start = inRange((yearRange[0].match('c[+-].*') ? year + parseInt(yearRange[0].substring(1), 10) :
+					((yearRange[0].match('[+-].*') ? todayYear : 0) + parseInt(yearRange[0], 10))));
 				start = calendar.newDate(start + 1, calendar.firstMonth, calendar.minDay).add(-1, 'd');
+				var end = inRange((yearRange[1].match('c[+-].*') ? year + parseInt(yearRange[1].substring(1), 10) :
+					((yearRange[1].match('[+-].*') ? todayYear : 0) + parseInt(yearRange[1], 10))));
 				end = calendar.newDate(end, calendar.firstMonth, calendar.minDay);
 				var addYear = function(y, yDisplay) {
 					if (y !== 0 || calendar.hasYearZero) {
@@ -1866,33 +1869,33 @@ $(selector).datepick('setDate', [date1, date2, date3]) */
 							(yDisplay || localiseNumbers(y)) + '</option>';
 					}
 				};
-				var earlierLater, y;
+				var earlierLater = Math.floor(Math.abs(end.year() - start.year()) / 2);
+				selector = '<select class="' + this._monthYearClass +
+					'" title="' + inst.options.yearStatus + '">';
 				if (start.toJD() < end.toJD()) {
-					start = (minDate && minDate.compareTo(start) === +1 ? minDate : start).year();
-					end = (maxDate && maxDate.compareTo(end) === -1 ? maxDate : end).year();
-					earlierLater = Math.floor((end - start) / 2);
-					if (!minDate || minDate.year() < start) {
-						addYear(start - earlierLater, inst.options.earlierText);
+					start = inRange(start.year());
+					end = inRange(end.year());
+					if (minYear < start) {
+						addYear(inRange(start - earlierLater), inst.options.earlierText);
 					}
-					for (y = start; y <= end; y++) {
+					for (var y = start; y <= end; y++) {
 						addYear(y);
 					}
-					if (!maxDate || maxDate.year() > end) {
-						addYear(end + earlierLater, inst.options.laterText);
+					if (maxYear > end) {
+						addYear(inRange(end + earlierLater), inst.options.laterText);
 					}
 				}
 				else {
-					start = (maxDate && maxDate.compareTo(start) === -1 ? maxDate : start).year();
-					end = (minDate && minDate.compareTo(end) === +1 ? minDate : end).year();
-					earlierLater = Math.floor((start - end) / 2);
-					if (!maxDate || maxDate.year() > start) {
-						addYear(start + earlierLater, inst.options.earlierText);
+					start = inRange(start.year());
+					end = inRange(end.year());
+					if (maxYear > start) {
+						addYear(inRange(start + earlierLater), inst.options.earlierText);
 					}
-					for (y = start; y >= end; y--) {
+					for (var y = start; y >= end; y--) {
 						addYear(y);
 					}
-					if (!minDate || minDate.year() < end) {
-						addYear(end - earlierLater, inst.options.laterText);
+					if (minYear < end) {
+						addYear(inRange(end - earlierLater), inst.options.laterText);
 					}
 				}
 				selector += '</select>';
